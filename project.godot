@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="Chester Than Light"
+config/name="Chesster Than Light"
 config/icon="res://icon.png"
 
 [rendering]
