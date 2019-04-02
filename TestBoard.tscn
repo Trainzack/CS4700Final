@@ -4,7 +4,7 @@
 [ext_resource path="res://art/units/InvadingPawn.png" type="Texture" id=2]
 [ext_resource path="res://art/tiles/TileBorder.png" type="Texture" id=3]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
@@ -13,7 +13,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
@@ -22,7 +22,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="TestBoard" type="Node" index="0"]
+[node name="TestBoard" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -31,7 +31,7 @@ script = ExtResource( 1 )
 position = Vector2( 395, 376 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 1
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "default"
 _sections_unfolded = [ "Transform", "Z Index" ]
 
@@ -39,7 +39,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 position = Vector2( 694, 546 )
 scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 1 )
+frames = SubResource( 2 )
 animation = "default"
 _sections_unfolded = [ "Transform", "Z Index" ]
 
