@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/AttackOutline.png-1af9722adf07fb060320d23c8ed3474e.stex"
+path="res://.import/TileAttackHighlight5.png-521603ade4d85402fd0c3d7306703ca9.stex"
 
 [deps]
 
-source_file="res://art/tiles/AttackOutline.png"
-dest_files=[ "res://.import/AttackOutline.png-1af9722adf07fb060320d23c8ed3474e.stex" ]
+source_file="res://art/tiles/TileAttackHighlight5.png"
+dest_files=[ "res://.import/TileAttackHighlight5.png-521603ade4d85402fd0c3d7306703ca9.stex" ]
 
 [params]
 
