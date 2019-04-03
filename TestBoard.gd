@@ -27,8 +27,18 @@ func create_board():
 				#400,400 chosen as test starting position to populate the board from
 			tileNode.position = Vector2(300 + j*iso_x_offset + i*iso_x_offset, 370 - j*iso_y_offset + i*iso_y_offset)
 			tileNode.z_index = Z - j
+			tileNode.connect("mouse_entered", self, "process_mouse_enter", [i,j])
+			tileNode.connect("mouse_exited", self, "process_mouse_exit", [i,j])
 			tileArray.append(tileNode)
 		boardArray.append(tileArray)
+
+func process_mouse_enter(gridX,gridY):
+	print(gridX, " ", gridY, " entered")
+	boardArray[gridX][gridY].scale = Vector2(1.0,1.0)
+
+func process_mouse_exit(gridX,gridY):
+	print(gridX, " ", gridY, " exited")
+	boardArray[gridX][gridY].scale = Vector2(0.7,0.7)
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
