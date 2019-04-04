@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MovementTile.png-ccbd9b1af8f798e9bde4ab2d18e82927.stex"
+path="res://.import/TileAttackHighlight4.png-3a5d5fd3552ef4b1570812268b106f94.stex"
 
 [deps]
 
-source_file="res://art/tiles/MovementTile.png"
-dest_files=[ "res://.import/MovementTile.png-ccbd9b1af8f798e9bde4ab2d18e82927.stex" ]
+source_file="res://art/tiles/TileAttackHighlight4.png"
+dest_files=[ "res://.import/TileAttackHighlight4.png-3a5d5fd3552ef4b1570812268b106f94.stex" ]
 
 [params]
 

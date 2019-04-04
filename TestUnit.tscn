@@ -17,7 +17,7 @@ animations = [ {
 custom_solver_bias = 0.0
 extents = Vector2( 47.8257, 48.9313 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" index="0"]
+[node name="AnimatedSprite" type="AnimatedSprite"]
 
 position = Vector2( 490.767, 252.2 )
 frames = SubResource( 1 )

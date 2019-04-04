@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BlackTile.png-885a8d860eed047c840ebd3fb3cdd3e9.stex"
+path="res://.import/HighlightOutline.png-7a76135fddeafb7008390484cf2a145c.stex"
 
 [deps]
 
-source_file="res://art/tiles/BlackTile.png"
-dest_files=[ "res://.import/BlackTile.png-885a8d860eed047c840ebd3fb3cdd3e9.stex" ]
+source_file="res://art/tiles/HighlightOutline.png"
+dest_files=[ "res://.import/HighlightOutline.png-7a76135fddeafb7008390484cf2a145c.stex" ]
 
 [params]
 
