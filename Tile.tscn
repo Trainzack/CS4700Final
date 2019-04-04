@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Tile.gd" type="Script" id=1]
 [ext_resource path="res://art/tiles/WhiteTileCube.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://art/tiles/TileAttackHighlight4.png" type="Texture" id=13]
 [ext_resource path="res://art/tiles/TileAttackHighlight5.png" type="Texture" id=14]
 [ext_resource path="res://art/tiles/TileAttackHighlight6.png" type="Texture" id=15]
+[ext_resource path="res://art/tiles/HighlightOutline.png" type="Texture" id=16]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -49,6 +50,20 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=4]
+
+animations = [ {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "hovered",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "not_hovered",
+"speed": 5.0
+} ]
+
 [sub_resource type="ConvexPolygonShape2D" id=3]
 
 custom_solver_bias = 0.0
@@ -79,6 +94,14 @@ animation = "white"
 frames = SubResource( 2 )
 animation = "none"
 _sections_unfolded = [ "Transform" ]
+
+[node name="Outline" type="AnimatedSprite" parent="TileSprite" index="1"]
+
+position = Vector2( 0, -19 )
+z_index = 10
+frames = SubResource( 4 )
+animation = "not_hovered"
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
