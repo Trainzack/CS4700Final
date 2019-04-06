@@ -18,7 +18,7 @@ func set_highlight(type):
 func toggle_outline():
 	if outline.animation == "not_hovered":
 		outline.animation = "hovered"
-	elif outline.animation == "hovered":
+	else:
 		outline.animation = "not_hovered"
 
 func deactivate():
@@ -27,19 +27,11 @@ func deactivate():
 func _ready():
 	pass
 
+#Handles clicking by propgating a signal to parent nodes
+#Parent nodes must connect the "clicked" signal
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton \
 	and event.button_index == BUTTON_LEFT \
 	and event.is_pressed():
 		emit_signal("clicked")
-
-#Will be changed to do something useful
-func on_click():
-	if highlight_type == "attack":
-		set_highlight("movement")
-	elif highlight_type == "movement":
-		set_highlight("none")
-	elif highlight_type == "none":
-		set_highlight("attack")
-	print("Click")
 #func _process(delta):
