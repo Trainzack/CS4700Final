@@ -47,6 +47,7 @@ func on_click(gridX,gridY):
 #Change this to do something useful for when the mouse enters a tile
 func process_mouse_enter(gridX,gridY):
 	print(gridX, " ", gridY, " entered")
+	print(translate_grid_coordinate(gridX,gridY))
 	boardArray[gridX][gridY].toggle_outline()
 
 #Change this to do something useful for when the mouse exits a tile
@@ -54,4 +55,7 @@ func process_mouse_exit(gridX,gridY):
 	print(gridX, " ", gridY, " exited")
 	boardArray[gridX][gridY].toggle_outline()
 
+#returns the actual coordinate
+func translate_grid_coordinate(gridX,gridY):
+	return Vector2(starting_x + gridX * iso_x_offset + gridY * iso_x_offset, starting_y - gridY*iso_y_offset + gridX*iso_y_offset)
 #func _process(delta):
