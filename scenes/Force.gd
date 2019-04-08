@@ -13,3 +13,6 @@ func startTurn():
 # This method returns the units that this force has
 func getUnits():
 	return null
+	
+func isPlayerControlled():
+	return false
