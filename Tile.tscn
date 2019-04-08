@@ -107,4 +107,11 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 shape = SubResource( 3 )
 
+[node name="SpawnTimer" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
 
