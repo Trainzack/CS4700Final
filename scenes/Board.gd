@@ -1,6 +1,6 @@
 extends Node
 
-var tile_scene = preload("res://Tile.tscn")
+var tile_scene = preload("res://scenes/Tile.tscn")
 
 #offsets used to populate the board. Values come from testing different positions
 var starting_x = 300

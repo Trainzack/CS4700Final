@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://Tile.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Tile.gd" type="Script" id=1]
 [ext_resource path="res://art/tiles/WhiteTileCube.png" type="Texture" id=2]
 [ext_resource path="res://art/tiles/BlackTileCube.png" type="Texture" id=3]
 [ext_resource path="res://art/tiles/TileMovementHighlight1.png" type="Texture" id=4]
@@ -16,6 +16,7 @@
 [ext_resource path="res://art/tiles/TileAttackHighlight5.png" type="Texture" id=14]
 [ext_resource path="res://art/tiles/TileAttackHighlight6.png" type="Texture" id=15]
 [ext_resource path="res://art/tiles/HighlightOutline.png" type="Texture" id=16]
+
 
 [sub_resource type="SpriteFrames" id=1]
 
