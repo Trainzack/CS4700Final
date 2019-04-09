@@ -13,10 +13,6 @@ config_version=3
 config/name="Chesster Than Light"
 config/icon="res://icon.png"
 
-[display]
-
-window/size/fullscreen=true
-
 [rendering]
 
 environment/default_environment="res://default_env.tres"

@@ -1,6 +1,10 @@
 extends Node
 
 var tile_scene = preload("res://scenes/Tile.tscn")
+var pawn_scene = preload("res://scenes/unit_scenes/Pawn.tscn")
+var mann_scene = preload("res://scenes/unit_scenes/Mann.tscn")
+var knight_scene = preload("res://scenes/unit_scenes/Knight.tscn")
+var bishop_scene = preload("res://scenes/unit_scenes/Bishop.tscn")
 
 #offsets used to populate the board. Values come from testing different positions
 var starting_x = 300
@@ -12,6 +16,20 @@ var boardArray = []
 
 func _ready():
 	create_board()
+	var pawn = pawn_scene.instance()
+	pawn.position = translate_grid_coordinate(1,1)
+	add_child(pawn)
+	
+	var mann = mann_scene.instance()
+	mann.position = translate_grid_coordinate(4,6)
+	mann.set_black()
+	add_child(mann)
+	
+	var knight = knight_scene.instance()
+	knight.position = translate_grid_coordinate(3,4)
+	knight.set_white()
+	knight.toggle_select()
+	add_child(knight)
 
 #Positions the tiles of the board onto the screen
 #Also fills up the boardArray with tileArrays, creating a 2d array of tiles
