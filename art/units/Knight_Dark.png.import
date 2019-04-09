@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SelectorIcon2.png-01288c920fcd4c6f8902cae82210d23c.stex"
+path="res://.import/Knight_Dark.png-1687a3a4103cddac9a7a4bd00ea07a86.stex"
 
 [deps]
 
-source_file="res://art/ui/SelectorIcon2.png"
-dest_files=[ "res://.import/SelectorIcon2.png-01288c920fcd4c6f8902cae82210d23c.stex" ]
+source_file="res://art/units/Knight_Dark.png"
+dest_files=[ "res://.import/Knight_Dark.png-1687a3a4103cddac9a7a4bd00ea07a86.stex" ]
 
 [params]
 

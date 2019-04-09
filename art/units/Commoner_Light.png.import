@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SelectorIcon2.png-01288c920fcd4c6f8902cae82210d23c.stex"
+path="res://.import/Commoner_Light.png-3bbfea290c71b863ba4b25c76d1e75d1.stex"
 
 [deps]
 
-source_file="res://art/ui/SelectorIcon2.png"
-dest_files=[ "res://.import/SelectorIcon2.png-01288c920fcd4c6f8902cae82210d23c.stex" ]
+source_file="res://art/units/Commoner_Light.png"
+dest_files=[ "res://.import/Commoner_Light.png-3bbfea290c71b863ba4b25c76d1e75d1.stex" ]
 
 [params]
 

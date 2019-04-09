@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SelectorIcon4.png-5b461da2f3b5b05424c3100c4c215d84.stex"
+path="res://.import/SelectorIcon4.png-2d70a6dd4d207b337cb10795bad24f4b.stex"
 
 [deps]
 
-source_file="res://art/units/SelectorIcon4.png"
-dest_files=[ "res://.import/SelectorIcon4.png-5b461da2f3b5b05424c3100c4c215d84.stex" ]
+source_file="res://art/ui/SelectorIcon4.png"
+dest_files=[ "res://.import/SelectorIcon4.png-2d70a6dd4d207b337cb10795bad24f4b.stex" ]
 
 [params]
 

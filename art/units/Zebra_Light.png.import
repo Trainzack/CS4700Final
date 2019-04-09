@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SelectorIcon2.png-01288c920fcd4c6f8902cae82210d23c.stex"
+path="res://.import/Zebra_Light.png-39cbc9fdb6eb313d72451cf968c7f225.stex"
 
 [deps]
 
-source_file="res://art/ui/SelectorIcon2.png"
-dest_files=[ "res://.import/SelectorIcon2.png-01288c920fcd4c6f8902cae82210d23c.stex" ]
+source_file="res://art/units/Zebra_Light.png"
+dest_files=[ "res://.import/Zebra_Light.png-39cbc9fdb6eb313d72451cf968c7f225.stex" ]
 
 [params]
 

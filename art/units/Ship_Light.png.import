@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SelectorIcon2.png-01288c920fcd4c6f8902cae82210d23c.stex"
+path="res://.import/Ship_Light.png-ae53323aaddf131c41389e5c6cba65d5.stex"
 
 [deps]
 
-source_file="res://art/ui/SelectorIcon2.png"
-dest_files=[ "res://.import/SelectorIcon2.png-01288c920fcd4c6f8902cae82210d23c.stex" ]
+source_file="res://art/units/Ship_Light.png"
+dest_files=[ "res://.import/Ship_Light.png-ae53323aaddf131c41389e5c6cba65d5.stex" ]
 
 [params]
 

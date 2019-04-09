@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SelectorIcon2.png-01288c920fcd4c6f8902cae82210d23c.stex"
+path="res://.import/Giraffe_Light.png-fe8dd0b566e787ac641a5d8718522168.stex"
 
 [deps]
 
-source_file="res://art/ui/SelectorIcon2.png"
-dest_files=[ "res://.import/SelectorIcon2.png-01288c920fcd4c6f8902cae82210d23c.stex" ]
+source_file="res://art/units/Giraffe_Light.png"
+dest_files=[ "res://.import/Giraffe_Light.png-fe8dd0b566e787ac641a5d8718522168.stex" ]
 
 [params]
 

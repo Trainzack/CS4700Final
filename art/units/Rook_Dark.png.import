@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SelectorIcon2.png-01288c920fcd4c6f8902cae82210d23c.stex"
+path="res://.import/Rook_Dark.png-8744dfee2f9717021d05fbcd6eba0aff.stex"
 
 [deps]
 
-source_file="res://art/ui/SelectorIcon2.png"
-dest_files=[ "res://.import/SelectorIcon2.png-01288c920fcd4c6f8902cae82210d23c.stex" ]
+source_file="res://art/units/Rook_Dark.png"
+dest_files=[ "res://.import/Rook_Dark.png-8744dfee2f9717021d05fbcd6eba0aff.stex" ]
 
 [params]
 

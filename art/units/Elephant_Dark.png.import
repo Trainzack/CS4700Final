@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SelectorIcon2.png-01288c920fcd4c6f8902cae82210d23c.stex"
+path="res://.import/Elephant_Dark.png-2e30326a1e1b632429468382b04598f6.stex"
 
 [deps]
 
-source_file="res://art/ui/SelectorIcon2.png"
-dest_files=[ "res://.import/SelectorIcon2.png-01288c920fcd4c6f8902cae82210d23c.stex" ]
+source_file="res://art/units/Elephant_Dark.png"
+dest_files=[ "res://.import/Elephant_Dark.png-2e30326a1e1b632429468382b04598f6.stex" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SelectorIcon2.png-01288c920fcd4c6f8902cae82210d23c.stex"
+path="res://.import/Mann_Light.png-9c0d79c07968d20dfc8564c16b484065.stex"
 
 [deps]
 
-source_file="res://art/ui/SelectorIcon2.png"
-dest_files=[ "res://.import/SelectorIcon2.png-01288c920fcd4c6f8902cae82210d23c.stex" ]
+source_file="res://art/units/Mann_Light.png"
+dest_files=[ "res://.import/Mann_Light.png-9c0d79c07968d20dfc8564c16b484065.stex" ]
 
 [params]
 

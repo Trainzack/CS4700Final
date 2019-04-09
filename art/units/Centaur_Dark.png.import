@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SelectorIcon2.png-01288c920fcd4c6f8902cae82210d23c.stex"
+path="res://.import/Centaur_Dark.png-37c6dbf2cbcbdc084af6d9861e6ec598.stex"
 
 [deps]
 
-source_file="res://art/ui/SelectorIcon2.png"
-dest_files=[ "res://.import/SelectorIcon2.png-01288c920fcd4c6f8902cae82210d23c.stex" ]
+source_file="res://art/units/Centaur_Dark.png"
+dest_files=[ "res://.import/Centaur_Dark.png-37c6dbf2cbcbdc084af6d9861e6ec598.stex" ]
 
 [params]
 
