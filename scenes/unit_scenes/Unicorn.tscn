@@ -22,6 +22,8 @@ animations = [ {
 
 health = 3
 type = "unicorn"
+movement_atoms = [ Vector2( 1, 0 ), Vector2( 1, 1 ) ]
+attack_atoms = [  ]
 
 [node name="UnitSprite" parent="." index="0"]
 

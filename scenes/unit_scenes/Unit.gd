@@ -2,6 +2,7 @@ extends Area2D
 export var health = 0
 var equipmentList = []
 export var type = "abstract_unit"
+onready var moves = $Moves 
 
 #onready var highlight = get_node("UnitSprite").get_node("Highlight")
 onready var selector_icon = $SelectorIcon
@@ -14,6 +15,21 @@ func _ready():
 #		highlight.animation = "unhighlighted"
 #	else:
 #		highlight.animation = "highlighted"
+
+func get_movement_atoms():
+	var movement_atoms = []
+	for move in moves.get_children():
+		if move.type == 0:
+			movement_atoms.append(move.atom)
+	return movement_atoms
+
+func get_attack_atoms():
+	var attack_atoms = []
+	for move in moves.get_children():
+		if move.type == 1:
+			attack_atoms.append(move.atom)
+	return 
+
 func set_white():
 	$UnitSprite.animation = "white"
 

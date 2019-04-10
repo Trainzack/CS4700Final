@@ -1,15 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/unit_scenes/Unit.gd" type="Script" id=1]
-[ext_resource path="res://art/ui/SelectorMarker.png" type="Texture" id=2]
-[ext_resource path="res://art/ui/SelectorMarker3.png" type="Texture" id=3]
-[ext_resource path="res://art/ui/SelectorMarker2.png" type="Texture" id=4]
-[ext_resource path="res://art/ui/SelectorMarker4.png" type="Texture" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"frames": [ null, null, null, null ],
 "loop": true,
 "name": "selected",
 "speed": 2.5
@@ -62,5 +58,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 position = Vector2( 0, -90 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="Moves" type="Node" parent="." index="3"]
 
 
