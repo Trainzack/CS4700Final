@@ -34,6 +34,8 @@ func _ready():
 	
 	var knight = knight_scene.instance()
 	place_unit(knight,5,5)
+	var knight_2 = knight_scene.instance()
+	place_unit(knight_2,1,1)
 
 #Positions the tiles of the board onto the screen
 #Also fills up the boardArray with tileArrays, creating a 2d array of tiles
@@ -96,7 +98,7 @@ func process_movement_atoms(movement_atoms, gridX, gridY):
 		possible_positions.append(Vector2(gridX - atom.x, gridY + atom.y))
 		possible_positions.append(Vector2(gridX - atom.x, gridX - atom.y))
 		for tile_coordinate in possible_positions:
-			if tile_coordinate.x < 8 and tile_coordinate.y < 8:
+			if tile_coordinate.x < 8 and tile_coordinate.x >= 0 and tile_coordinate.y < 8 and tile_coordinate.y >= 0:
 				boardArray[tile_coordinate.x][tile_coordinate.y].set_highlight("movement")
 
 #Change this to do something useful for when the mouse enters a tile
