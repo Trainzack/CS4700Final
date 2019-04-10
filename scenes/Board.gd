@@ -78,6 +78,7 @@ func place_unit(placed_unit, gridX, gridY):
 
 #Deselects the previously selected unit and activates a different one.
 func on_click(gridX,gridY):
+	reset_tiles()
 	previouslyClicked.set_unselected()
 	currentlyClicked = unitArray[gridX][gridY]
 	previouslyClicked = currentlyClicked
@@ -109,6 +110,11 @@ func process_mouse_enter(gridX,gridY):
 func process_mouse_exit(gridX,gridY):
 	#print(gridX, " ", gridY, " exited")
 	boardArray[gridX][gridY].toggle_outline()
+
+func reset_tiles():
+	for i in range(0,8):
+		for j in range(0,8):
+			boardArray[i][j].deactivate()
 
 #returns the actual coordinate that corresponds with a value in the 2D array of tiles.
 func translate_grid_coordinate(gridX,gridY):
