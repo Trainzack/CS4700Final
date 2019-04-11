@@ -4,8 +4,17 @@ extends Node
 # var a = 2
 # var b = "textvar"
 
+# The atom that this move uses
 export(Vector2) var atom = null
-export(int, "Move", "Attack") var type = 0
+
+# Whether this move can be used to reposition a unit
+export(bool) var is_move = false
+
+# Whether this move can be used to attack another unit
+export(bool) var is_attack = false
+
+# Whether this move repeats until stopped
+export(bool) var rider = false
 
 func _ready():
 	# Called when the node is added to the scene for the first time.

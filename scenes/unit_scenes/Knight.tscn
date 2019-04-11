@@ -35,6 +35,8 @@ animation = "white"
 
 script = ExtResource( 5 )
 atom = Vector2( 1, 2 )
-type = 0
+is_move = true
+is_attack = true
+rider = false
 
 

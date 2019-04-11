@@ -19,14 +19,14 @@ func _ready():
 func get_movement_atoms():
 	var movement_atoms = []
 	for move in moves.get_children():
-		if move.type == 0:
+		if move.is_move:
 			movement_atoms.append(move.atom)
 	return movement_atoms
 
 func get_attack_atoms():
 	var attack_atoms = []
 	for move in moves.get_children():
-		if move.type == 1:
+		if move.is_attack:
 			attack_atoms.append(move.atom)
 	return 
 

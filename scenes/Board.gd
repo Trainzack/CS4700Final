@@ -87,7 +87,6 @@ func on_click(gridX,gridY):
 	currentlyClicked.print_info()
 	if currentlyClicked.get_type() != "abstract_unit":
 		currentlyClicked.set_selected()
-	# if currentlyClicked.get_type() == "unit":
 	process_movement_atoms(currentlyClicked.get_movement_atoms(),gridX,gridY)
 
 func process_movement_atoms(movement_atoms, gridX, gridY):

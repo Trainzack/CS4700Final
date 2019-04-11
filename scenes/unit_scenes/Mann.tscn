@@ -34,12 +34,16 @@ animation = "white"
 
 script = ExtResource( 4 )
 atom = Vector2( 1, 0 )
-type = 0
+is_move = true
+is_attack = false
+rider = false
 
 [node name="Diagonal Move" type="Node" parent="Moves" index="1"]
 
 script = ExtResource( 4 )
 atom = Vector2( 1, 1 )
-type = 0
+is_move = true
+is_attack = false
+rider = false
 
 
