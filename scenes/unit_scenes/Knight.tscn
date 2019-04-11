@@ -37,10 +37,4 @@ script = ExtResource( 5 )
 atom = Vector2( 1, 2 )
 type = 0
 
-[node name="Move 2" type="Node" parent="Moves" index="1"]
-
-script = ExtResource( 5 )
-atom = Vector2( 2, 1 )
-type = 0
-
 

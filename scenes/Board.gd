@@ -87,8 +87,8 @@ func on_click(gridX,gridY):
 	currentlyClicked.print_info()
 	if currentlyClicked.get_type() != "abstract_unit":
 		currentlyClicked.set_selected()
-	if currentlyClicked.get_type() == "knight":
-		process_movement_atoms(currentlyClicked.get_movement_atoms(),gridX,gridY)
+	# if currentlyClicked.get_type() == "unit":
+	process_movement_atoms(currentlyClicked.get_movement_atoms(),gridX,gridY)
 
 func process_movement_atoms(movement_atoms, gridX, gridY):
 	for atom in movement_atoms:
@@ -96,7 +96,11 @@ func process_movement_atoms(movement_atoms, gridX, gridY):
 		possible_positions.append(Vector2(gridX + atom.x, gridY + atom.y))
 		possible_positions.append(Vector2(gridX + atom.x, gridY - atom.y))
 		possible_positions.append(Vector2(gridX - atom.x, gridY + atom.y))
-		possible_positions.append(Vector2(gridX - atom.x, gridX - atom.y))
+		possible_positions.append(Vector2(gridX - atom.x, gridY - atom.y))
+		possible_positions.append(Vector2(gridX + atom.y, gridY + atom.x))
+		possible_positions.append(Vector2(gridX + atom.y, gridY - atom.x))
+		possible_positions.append(Vector2(gridX - atom.y, gridY + atom.x))
+		possible_positions.append(Vector2(gridX - atom.y, gridY - atom.x))
 		for tile_coordinate in possible_positions:
 			if tile_coordinate.x < 8 and tile_coordinate.x >= 0 and tile_coordinate.y < 8 and tile_coordinate.y >= 0:
 				boardArray[tile_coordinate.x][tile_coordinate.y].set_highlight("movement")

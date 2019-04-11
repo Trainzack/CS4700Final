@@ -43,6 +43,8 @@ func set_selected():
 	$SelectorIcon.animation = "selected"
 	$SelectorIcon.play()
 
+# func is_type(type): return type == "MyObject" or .is_type(type)
+
 func get_type():
 	return type
 
