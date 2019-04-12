@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/Tile.gd" type="Script" id=1]
 [ext_resource path="res://art/tiles/WhiteTileCube.png" type="Texture" id=2]
@@ -9,13 +9,13 @@
 [ext_resource path="res://art/tiles/TileMovementHighlight4.png" type="Texture" id=7]
 [ext_resource path="res://art/tiles/TileMovementHighlight5.png" type="Texture" id=8]
 [ext_resource path="res://art/tiles/TileMovementHighlight6.png" type="Texture" id=9]
-[ext_resource path="res://art/tiles/TileAttackHighlight1.png" type="Texture" id=10]
-[ext_resource path="res://art/tiles/TileAttackHighlight2.png" type="Texture" id=11]
-[ext_resource path="res://art/tiles/TileAttackHighlight3.png" type="Texture" id=12]
-[ext_resource path="res://art/tiles/TileAttackHighlight4.png" type="Texture" id=13]
-[ext_resource path="res://art/tiles/TileAttackHighlight5.png" type="Texture" id=14]
-[ext_resource path="res://art/tiles/TileAttackHighlight6.png" type="Texture" id=15]
-[ext_resource path="res://art/tiles/HighlightOutline.png" type="Texture" id=16]
+[ext_resource path="res://art/tiles/HighlightOutline.png" type="Texture" id=10]
+[ext_resource path="res://art/tiles/TileAttackHighlight1.png" type="Texture" id=11]
+[ext_resource path="res://art/tiles/TileAttackHighlight2.png" type="Texture" id=12]
+[ext_resource path="res://art/tiles/TileAttackHighlight3.png" type="Texture" id=13]
+[ext_resource path="res://art/tiles/TileAttackHighlight4.png" type="Texture" id=14]
+[ext_resource path="res://art/tiles/TileAttackHighlight5.png" type="Texture" id=15]
+[ext_resource path="res://art/tiles/TileAttackHighlight6.png" type="Texture" id=16]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -39,11 +39,6 @@ animations = [ {
 "name": "movement",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "attack",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "none",
@@ -58,13 +53,27 @@ animations = [ {
 "name": "not_hovered",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 16 ) ],
+"frames": [ ExtResource( 10 ) ],
 "loop": true,
 "name": "hovered",
 "speed": 5.0
 } ]
 
-[sub_resource type="ConvexPolygonShape2D" id=4]
+[sub_resource type="SpriteFrames" id=4]
+
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "none",
+"speed": 5.0
+} ]
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
 
 custom_solver_bias = 0.0
 points = PoolVector2Array( -80, -18, 0, -79, 80, -18, 0, 41 )
@@ -89,7 +98,7 @@ highlight_type = "none"
 frames = SubResource( 1 )
 animation = "white"
 
-[node name="Highlight" type="AnimatedSprite" parent="TileSprite" index="0"]
+[node name="MovementHighlight" type="AnimatedSprite" parent="TileSprite" index="0"]
 
 frames = SubResource( 2 )
 animation = "none"
@@ -103,9 +112,14 @@ frames = SubResource( 3 )
 animation = "not_hovered"
 _sections_unfolded = [ "Transform", "Z Index" ]
 
+[node name="AttackHighlight" type="AnimatedSprite" parent="TileSprite" index="2"]
+
+frames = SubResource( 4 )
+animation = "none"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="SpawnTimer" type="Timer" parent="." index="2"]
 

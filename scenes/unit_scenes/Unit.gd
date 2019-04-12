@@ -10,12 +10,6 @@ onready var selector_icon = $SelectorIcon
 func _ready():
 	pass
 
-#func toggle_highlight():
-#	if highlight.animation == "highlighted":
-#		highlight.animation = "unhighlighted"
-#	else:
-#		highlight.animation = "highlighted"
-
 func get_movement_atoms():
 	var movement_atoms = []
 	for move in moves.get_children():
@@ -28,7 +22,7 @@ func get_attack_atoms():
 	for move in moves.get_children():
 		if move.is_attack:
 			attack_atoms.append(move.atom)
-	return 
+	return attack_atoms
 
 func set_white():
 	$UnitSprite.animation = "white"

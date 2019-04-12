@@ -1,14 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/unit_scenes/Unit.gd" type="Script" id=1]
+[ext_resource path="res://art/ui/SelectorMarker.png" type="Texture" id=2]
+[ext_resource path="res://art/ui/SelectorMarker3.png" type="Texture" id=3]
+[ext_resource path="res://art/ui/SelectorMarker2.png" type="Texture" id=4]
+[ext_resource path="res://art/ui/SelectorMarker4.png" type="Texture" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ null, null, null, null ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "selected",
-"speed": 2.5
+"speed": 3.0
 }, {
 "frames": [  ],
 "loop": true,
@@ -24,6 +28,7 @@ extents = Vector2( 10, 10 )
 [node name="Unit" type="Area2D"]
 
 scale = Vector2( 0.5, 0.5 )
+z_index = 30
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -32,7 +37,7 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Z Index" ]
 health = 0
 type = "abstract_unit"
 
@@ -40,7 +45,6 @@ type = "abstract_unit"
 
 position = Vector2( 0, -90 )
 scale = Vector2( 0.2, 0.2 )
-z_index = 20
 animation = "default"
 _sections_unfolded = [ "Transform", "Z Index" ]
 
@@ -48,7 +52,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 position = Vector2( 0, -210 )
 scale = Vector2( 0.7, 0.7 )
-z_index = 25
+z_index = 10
 frames = SubResource( 1 )
 animation = "unselected"
 _sections_unfolded = [ "Transform", "Z Index" ]
