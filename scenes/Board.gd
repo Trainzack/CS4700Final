@@ -134,6 +134,10 @@ func show_attack_options():
 
 func process_atoms(unit_atoms, gridX, gridY, atom_type):
 	for atom in unit_atoms:
+		#var transforms = [[1, 1], [1,-1],[-1,-1],[-1,1]]
+		#for t in transforms:
+		#	for m in range(8 if atom.rider else 1):
+		#		possible_positions.append(Vector2(
 		var possible_positions = []
 		possible_positions.append(Vector2(gridX + atom.x, gridY + atom.y))
 		possible_positions.append(Vector2(gridX + atom.x, gridY - atom.y))

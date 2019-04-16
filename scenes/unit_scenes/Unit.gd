@@ -15,17 +15,23 @@ func _ready():
 
 func get_movement_atoms():
 	var movement_atoms = []
-	for move in moves.get_children():
+	for move in get_moves():
 		if move.is_move:
 			movement_atoms.append(move.atom)
 	return movement_atoms
 
 func get_attack_atoms():
 	var attack_atoms = []
-	for move in moves.get_children():
+	for move in get_moves():
 		if move.is_attack:
 			attack_atoms.append(move.atom)
 	return attack_atoms
+	
+func get_moves():
+	var m = []
+	for move in moves.get_children():
+		m.append(move)
+	return m
 
 func set_white():
 	$UnitSprite.animation = "white"
