@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/unit_scenes/Unit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/unit_scenes/Knight.gd" type="Script" id=2]
+[ext_resource path="res://art/units/Knight_Light.png" type="Texture" id=3]
+[ext_resource path="res://art/units/Knight_Dark.png" type="Texture" id=4]
+[ext_resource path="res://scenes/unit_scenes/Move.gd" type="Script" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "white",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "black",
+"speed": 5.0
+} ]
+
+[node name="Knight" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+health = 3
+type = "knight"
+
+[node name="UnitSprite" parent="." index="0"]
+
+frames = SubResource( 1 )
+animation = "white"
+
+[node name="Move 1" type="Node" parent="Moves" index="0"]
+
+script = ExtResource( 5 )
+atom = Vector2( 1, 2 )
+is_move = true
+is_attack = true
+rider = false
+
+

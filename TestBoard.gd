@@ -5,9 +5,10 @@ var tile_scene = preload("res://Tile.tscn")
 #offsets used to populate the board. Values come from testing different positions
 var starting_x = 300
 var starting_y = 370
-var iso_x_offset = 83*0.7
-var iso_y_offset = 63*0.7
-var y3D_offset = -36*0.7
+var scaling_factor = 0.7
+var iso_x_offset = 83 * scaling_factor
+var iso_y_offset = 63 * scaling_factor
+var y3D_offset = -36 * scaling_factor
 var boardArray = []
 
 func _ready():
