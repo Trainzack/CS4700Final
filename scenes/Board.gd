@@ -7,6 +7,7 @@ var mann_scene = preload("res://scenes/unit_scenes/Mann.tscn")
 var knight_scene = preload("res://scenes/unit_scenes/Knight.tscn")
 var bishop_scene = preload("res://scenes/unit_scenes/Bishop.tscn")
 var rook_scene = preload("res://scenes/unit_scenes/Rook.tscn")
+var unicorn_scene = preload("res://scenes/unit_scenes/Elephant.tscn")
 
 #offsets used to populate the board. Values come from testing different positions
 var starting_x = 300
@@ -17,12 +18,14 @@ var y3D_offset = -36*0.7
 var boardArray = []
 var unitArray = []
 
-var previously_clicked_coordinate = Vector2(-1,-1)
-var currently_clicked_tile
-var previously_clicked_tile = tile_scene.instance()
-var currently_clicked_unit
-var previously_clicked_unit = unit_scene.instance()
 var dummy_unit = unit_scene.instance()
+var selected_unit = dummy_unit
+var selected_unit_coordinate = Vector2(-1,-1)
+
+signal ally_unit_selected
+signal dummy_unit_selected
+signal ally_has_moved
+signal ally_has_attacked
 
 func _ready():
 	add_child(dummy_unit)
@@ -30,7 +33,12 @@ func _ready():
 	populate_board()
 	
 	var mann = mann_scene.instance()
+	mann.set_black()
 	place_unit(mann,4,6)
+	
+	var unicorn = unicorn_scene.instance()
+	unicorn.set_black()
+	place_unit(unicorn,2,4)
 	
 	var pawn = pawn_scene.instance()
 	place_unit(pawn,2,2)
@@ -88,31 +96,41 @@ func place_unit(placed_unit, gridX, gridY):
 
 #Deselects the previously selected unit and activates a different one.
 func on_click(gridX,gridY):
-	previously_clicked_unit.set_unselected()
-	currently_clicked_unit = unitArray[gridX][gridY]
-	currently_clicked_tile = boardArray[gridX][gridY]
-	print(currently_clicked_tile.can_move_to)
-	print(previously_clicked_unit.get_type())
+	var currently_clicked_tile = boardArray[gridX][gridY]
 	
-	if previously_clicked_unit.get_type() != "abstract_unit" and currently_clicked_tile.can_move_to:
+	if selected_unit.get_type() != "abstract_unit" and currently_clicked_tile.can_move_to:
 		print("moved unit")
-		move_unit(previously_clicked_coordinate.x,previously_clicked_coordinate.y,gridX,gridY)
+		move_unit(selected_unit_coordinate.x,selected_unit_coordinate.y,gridX,gridY)
 		reset_tiles()
 	else:
 		reset_tiles()
 		select_unit(gridX,gridY)
-	previously_clicked_tile = currently_clicked_tile
-	previously_clicked_unit = currently_clicked_unit
-	previously_clicked_coordinate = Vector2(gridX,gridY)
-	
 
 func select_unit(gridX,gridY):
-	currently_clicked_unit.print_info()
+	selected_unit.set_unselected()
+	var currently_clicked_unit = unitArray[gridX][gridY]
 	if currently_clicked_unit.get_type() != "abstract_unit":
-		currently_clicked_unit.set_selected()
-		print("unit selected")
-	process_atoms(currently_clicked_unit.get_movement_atoms(),gridX,gridY,"movement")
-	#process_atoms(currently_clicked_unit.get_attack_atoms(),gridX,gridY,"attack")
+		selected_unit = currently_clicked_unit
+		selected_unit.set_selected()
+		selected_unit_coordinate = Vector2(gridX,gridY)
+		emit_signal("ally_unit_selected")
+		if currently_clicked_unit.has_attacked:
+			emit_signal("ally_has_attacked")
+		if currently_clicked_unit.has_moved:
+			emit_signal("ally_has_moved")
+	
+	else:
+		emit_signal("dummy_unit_selected")
+		selected_unit = dummy_unit
+		selected_unit_coordinate = Vector2(-1,-1)
+
+func show_movement_options():
+	reset_tiles()
+	process_atoms(selected_unit.get_movement_atoms(),selected_unit_coordinate.x,selected_unit_coordinate.y,"movement")
+
+func show_attack_options():
+	reset_tiles()
+	process_atoms(selected_unit.get_attack_atoms(),selected_unit_coordinate.x,selected_unit_coordinate.y,"attack")
 
 func process_atoms(unit_atoms, gridX, gridY, atom_type):
 	for atom in unit_atoms:
@@ -132,7 +150,6 @@ func highlight_tiles(possible_positions,atom_type):
 	for tile_coordinate in possible_positions:
 		if tile_coordinate.x < 8 and tile_coordinate.x >= 0 and tile_coordinate.y < 8 and tile_coordinate.y >= 0:
 			if atom_type == "movement":
-				print(tile_coordinate.x,tile_coordinate.y)
 				boardArray[tile_coordinate.x][tile_coordinate.y].set_movement_option()
 			elif atom_type == "attack":
 				boardArray[tile_coordinate.x][tile_coordinate.y].set_attack_option()
@@ -165,9 +182,10 @@ func move_unit(startingX,startingY,endX,endY):
 	#Set occupied for involved tiles
 	boardArray[startingX][startingY].set_occupied(false)
 	boardArray[endX][endY].set_occupied(true)
+	selected_unit.has_moved = true
+	selected_unit_coordinate = Vector2(endX,endY)
+	emit_signal("ally_has_moved")
 
 #returns the actual coordinate that corresponds with a value in the 2D array of tiles.
 func translate_grid_coordinate(gridX,gridY):
 	return Vector2(starting_x + gridX * iso_x_offset + gridY * iso_x_offset, starting_y - gridY*iso_y_offset + gridX*iso_y_offset)
-
-#func _process(delta):

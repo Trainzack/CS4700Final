@@ -1,10 +1,13 @@
 extends Area2D
-export var health = 0
+export var max_health = 0
+var current_health = max_health
 var equipmentList = []
 export var type = "abstract_unit"
-onready var moves = $Moves 
+onready var moves = $Moves
 
-#onready var highlight = get_node("UnitSprite").get_node("Highlight")
+var has_moved = false
+var has_attacked = false
+
 onready var selector_icon = $SelectorIcon
 
 func _ready():
@@ -42,5 +45,9 @@ func set_selected():
 func get_type():
 	return type
 
+func reset_moves():
+	has_moved = false
+	has_attacked = false
+
 func print_info():
-	print($UnitSprite.animation," ", type, " with health of ", health)
+	print($UnitSprite.animation," ", type, " with health of ", current_health)

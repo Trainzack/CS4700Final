@@ -38,7 +38,7 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
-health = 0
+max_health = 0
 type = "abstract_unit"
 
 [node name="UnitSprite" type="AnimatedSprite" parent="." index="0"]

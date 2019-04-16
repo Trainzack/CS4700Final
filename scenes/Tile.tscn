@@ -3,13 +3,13 @@
 [ext_resource path="res://scenes/Tile.gd" type="Script" id=1]
 [ext_resource path="res://art/tiles/WhiteTileCube.png" type="Texture" id=2]
 [ext_resource path="res://art/tiles/BlackTileCube.png" type="Texture" id=3]
-[ext_resource path="res://art/tiles/TileMovementHighlight1.png" type="Texture" id=4]
-[ext_resource path="res://art/tiles/TileMovementHighlight2.png" type="Texture" id=5]
-[ext_resource path="res://art/tiles/TileMovementHighlight3.png" type="Texture" id=6]
-[ext_resource path="res://art/tiles/TileMovementHighlight4.png" type="Texture" id=7]
-[ext_resource path="res://art/tiles/TileMovementHighlight5.png" type="Texture" id=8]
-[ext_resource path="res://art/tiles/TileMovementHighlight6.png" type="Texture" id=9]
-[ext_resource path="res://art/tiles/HighlightOutline.png" type="Texture" id=10]
+[ext_resource path="res://art/tiles/TileMovementHighlight4.png" type="Texture" id=4]
+[ext_resource path="res://art/tiles/TileMovementHighlight5.png" type="Texture" id=5]
+[ext_resource path="res://art/tiles/TileMovementHighlight6.png" type="Texture" id=6]
+[ext_resource path="res://art/tiles/TileMovementHighlight1.png" type="Texture" id=7]
+[ext_resource path="res://art/tiles/TileMovementHighlight2.png" type="Texture" id=8]
+[ext_resource path="res://art/tiles/TileMovementHighlight3.png" type="Texture" id=9]
+[ext_resource path="res://art/tiles/TileHighlight2.png" type="Texture" id=10]
 [ext_resource path="res://art/tiles/TileAttackHighlight1.png" type="Texture" id=11]
 [ext_resource path="res://art/tiles/TileAttackHighlight2.png" type="Texture" id=12]
 [ext_resource path="res://art/tiles/TileAttackHighlight3.png" type="Texture" id=13]
@@ -100,13 +100,14 @@ animation = "white"
 
 [node name="MovementHighlight" type="AnimatedSprite" parent="TileSprite" index="0"]
 
+z_index = 1
 frames = SubResource( 2 )
 animation = "none"
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Outline" type="AnimatedSprite" parent="TileSprite" index="1"]
 
-position = Vector2( 0, -19 )
+position = Vector2( 0, -28.5 )
 z_index = 10
 frames = SubResource( 3 )
 animation = "not_hovered"
