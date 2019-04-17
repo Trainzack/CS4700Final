@@ -67,8 +67,19 @@ func set_unselected():
 func set_selected():
 	$SelectorIcon.animation = "selected"
 	$SelectorIcon.play()
+	$SelectSound.play()
+
+func set_health(h):
+	current_health = h
+	if current_health > max_health:
+		current_health = max_health
+	# TODO: Updae healthbar
 
 # func is_type(type): return type == "MyObject" or .is_type(type)
+
+# Called wheneveer this unit is move
+func moved():
+	$MoveSound.play()
 
 func get_type():
 	return type

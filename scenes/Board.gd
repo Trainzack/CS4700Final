@@ -228,6 +228,7 @@ func move_unit(startingX,startingY,endX,endY):
 	selected_unit.has_moved = true
 	selected_unit_coordinate = Vector2(endX,endY)
 	emit_signal("ally_has_moved")
+	unit_to_move.moved()
 
 func position_in_bounds(position):
 	return position.x < board_x_size and position.x >= 0 and position.y < board_y_size and position.y >= 0

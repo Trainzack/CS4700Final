@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/unit_click_1.wav-58270cee04061f043a67420ba795c24c.sample"
+
+[deps]
+
+source_file="res://sound/unit_click_1.wav"
+dest_files=[ "res://.import/unit_click_1.wav-58270cee04061f043a67420ba795c24c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
