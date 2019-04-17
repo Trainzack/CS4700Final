@@ -11,6 +11,7 @@ func _ready():
 	$TestBoard.connect("ally_has_attacked",self,"disable_attacks")
 	$UIManager.connect("attack_pressed",self,"display_attacks")
 	$UIManager.connect("movement_pressed",self,"display_moves")
+	$UIManager.connect("end_turn_pressed",self,"end_turn")
 
 func display_options():
 	$UIManager.reset_command_states()
@@ -31,3 +32,9 @@ func display_attacks():
 
 func display_moves():
 	$TestBoard.show_movement_options()
+
+func end_turn():
+	hide_options()
+	print("end turn reached")
+	$TestBoard.reset_unit_moves()
+	$TestBoard.reset_tiles()
