@@ -36,5 +36,6 @@ atom = Vector2( 1, 0 )
 is_move = true
 is_attack = true
 rider = true
+damage = 1
 
 

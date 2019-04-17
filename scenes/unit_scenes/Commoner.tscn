@@ -20,8 +20,6 @@ animations = [ {
 
 [node name="Commoner" instance=ExtResource( 1 )]
 
-type = "abstract_unit"
-
 [node name="UnitSprite" parent="." index="0"]
 
 frames = SubResource( 1 )

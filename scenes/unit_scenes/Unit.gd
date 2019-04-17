@@ -36,6 +36,8 @@ func can_pass_through(tile):
 	
 # Returns whether this unit can attack the specified unit
 func can_attack(unit):
+	if unit.is_dummy() or is_dummy():
+		return false
 	return team != unit.team
 	
 func get_attack_moves():
@@ -70,6 +72,9 @@ func set_selected():
 
 func get_type():
 	return type
+
+func is_dummy():
+	return type == "abstract_unit"
 
 func reset_moves():
 	has_moved = false

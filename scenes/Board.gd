@@ -2,12 +2,20 @@ extends Node
 
 var unit_scene = preload("res://scenes/unit_scenes/Unit.tscn")
 var tile_scene = preload("res://scenes/Tile.tscn")
-var pawn_scene = preload("res://scenes/unit_scenes/Pawn.tscn")
-var mann_scene = preload("res://scenes/unit_scenes/Mann.tscn")
-var knight_scene = preload("res://scenes/unit_scenes/Knight.tscn")
+
 var bishop_scene = preload("res://scenes/unit_scenes/Bishop.tscn")
+var commoner_scene = preload("res://scenes/unit_scenes/Commoner.tscn")
+var elephant_scene = preload("res://scenes/unit_scenes/Elephant.tscn")
+var knight_scene = preload("res://scenes/unit_scenes/Knight.tscn")
+var mann_scene = preload("res://scenes/unit_scenes/Mann.tscn")
+var pawn_scene = preload("res://scenes/unit_scenes/Pawn.tscn")
+var queen_scene = preload("res://scenes/unit_scenes/Queen.tscn")
 var rook_scene = preload("res://scenes/unit_scenes/Rook.tscn")
-var unicorn_scene = preload("res://scenes/unit_scenes/Elephant.tscn")
+var unicorn_scene = preload("res://scenes/unit_scenes/Unicorn.tscn")
+
+
+
+var piece_scenes = [bishop_scene, commoner_scene, elephant_scene, knight_scene, mann_scene, pawn_scene, queen_scene, rook_scene, unicorn_scene]
 
 #offsets used to populate the board. Values come from testing different positions
 var starting_x = 300
@@ -35,24 +43,14 @@ func _ready():
 	create_board()
 	populate_board()
 	
-	var mann = mann_scene.instance()
-	mann.set_black()
-	place_unit(mann,4,6)
-	
-	var unicorn = unicorn_scene.instance()
-	unicorn.set_black()
-	place_unit(unicorn,2,4)
-	
-	var pawn = pawn_scene.instance()
-	place_unit(pawn,2,2)
-	
-	var rook = rook_scene.instance()
-	place_unit(rook,7,5)
-	
-	var knight = knight_scene.instance()
-	place_unit(knight,5,5)
-	var knight_2 = knight_scene.instance()
-	place_unit(knight_2,1,1)
+	for x in range(1,7):
+		var p = piece_scenes[randi() % piece_scenes.size()].instance()
+		p.set_black()
+		place_unit(p, x, 0)
+		
+		p = piece_scenes[randi() % piece_scenes.size()].instance()
+		p.set_white()
+		place_unit(p, x, 7)
 
 func get_tile(position):
 	return boardArray[position.x][position.y]
@@ -178,7 +176,7 @@ func process_moves(unit_moves, unit, gridX, gridY, move_type):
 					break
 				# Get the tile we are currently looking at
 				var tile = get_tile(position)
-				if move_type == "attack" and unit.can_attack(get_unit(position)):
+				if move_type == "attack": #and unit.can_attack(get_unit(position)):
 					possible_positions.append(position)
 				# We do the pass through check after the attack check, as otherwise the check would block us from attacking pieces
 				if not unit.can_pass_through(tile):
