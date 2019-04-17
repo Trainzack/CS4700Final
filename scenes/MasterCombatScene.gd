@@ -1,9 +1,5 @@
 extends Node
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 func _ready():
 	$TestBoard.connect("ally_unit_selected",self,"display_options")
 	$TestBoard.connect("dummy_unit_selected",self,"hide_options")
