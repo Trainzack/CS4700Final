@@ -211,6 +211,13 @@ func reset_tiles():
 		for j in range(0,board_y_size):
 			boardArray[i][j].deactivate()
 
+func reset_unit_moves():
+	selected_unit.set_unselected()
+	selected_unit = dummy_unit
+	for i in range(0,board_x_size):
+		for j in range(0,board_y_size):
+			unitArray[i][j].reset_moves()
+
 func move_unit(startingX,startingY,endX,endY):
 	var unit_to_move = unitArray[startingX][startingY]
 	

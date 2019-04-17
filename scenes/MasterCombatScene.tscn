@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/Board.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/UIManager.tscn" type="PackedScene" id=3]
 
-[node name="MasterCombatScene" type="Node"]
+[node name="MasterCombatScene" type="Node" index="0"]
 
 script = ExtResource( 1 )
 

@@ -80,5 +80,10 @@ func reset_moves():
 	has_moved = false
 	has_attacked = false
 
+func refresh():
+	current_health = max_health
+	has_moved = false
+	has_attacked = false
+
 func print_info():
 	print($UnitSprite.animation," ", type, " with health of ", current_health)

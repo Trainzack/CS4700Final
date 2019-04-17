@@ -1,11 +1,13 @@
 extends Node
 signal movement_pressed
 signal attack_pressed
+signal end_turn_pressed
 onready var commands = $CommandContainer
 
 func _ready():
 	get_node("CommandContainer").get_node("MovementButton").connect("pressed",self,"emit_movement_pressed")
 	get_node("CommandContainer").get_node("AttacksButton").connect("pressed",self,"emit_attack_pressed")
+	get_node("EndTurnContainer").get_node("EndTurnButton").connect("pressed",self,"emit_end_turn_pressed")
 
 func emit_movement_pressed():
 	print("move button pressed")
@@ -14,6 +16,9 @@ func emit_movement_pressed():
 func emit_attack_pressed():
 	print("attack button pressed")
 	emit_signal("attack_pressed")
+
+func emit_end_turn_pressed():
+	emit_signal("end_turn_pressed")
 
 func disable_movement():
 	commands.get_node("MovementButton").disabled = true
