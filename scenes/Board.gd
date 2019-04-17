@@ -18,6 +18,9 @@ var y3D_offset = -36*0.7
 var boardArray = []
 var unitArray = []
 
+var board_x_size = 8
+var board_y_size = 8
+
 var dummy_unit = unit_scene.instance()
 var selected_unit = dummy_unit
 var selected_unit_coordinate = Vector2(-1,-1)
@@ -51,14 +54,21 @@ func _ready():
 	var knight_2 = knight_scene.instance()
 	place_unit(knight_2,1,1)
 
+func get_tile(position):
+	return boardArray[position.x][position.y]
+	
+func get_unit(position):
+	return unitArray[position.x][position.y]
+
+
 #Positions the tiles of the board onto the screen
 #Also fills up the boardArray with tileArrays, creating a 2d array of tiles
 #Tiles occupy z indeces 0-10
 func create_board():
-	for i in range(8):
+	for i in range(board_x_size):
 		var Z = 8
 		var tileArray = []
-		for j in range(8):
+		for j in range(board_y_size):
 			var tileNode = tile_scene.instance()
 			add_child(tileNode)
 			if i%2 == j%2:
@@ -77,9 +87,9 @@ func create_board():
 #Populates the board with invisible dummy units. Currently this is important to
 #be able to create an 8x8 array of units.
 func populate_board():
-	for i in range(0,8):
+	for i in range(0,board_x_size):
 		var tempUnitArray = []
-		for j in range(0,8):
+		for j in range(0,board_y_size):
 			tempUnitArray.append(dummy_unit)
 		unitArray.append(tempUnitArray)
 
@@ -126,33 +136,63 @@ func select_unit(gridX,gridY):
 
 func show_movement_options():
 	reset_tiles()
-	process_atoms(selected_unit.get_movement_atoms(),selected_unit_coordinate.x,selected_unit_coordinate.y,"movement")
+	process_moves(selected_unit.get_movement_moves(),selected_unit,selected_unit_coordinate.x,selected_unit_coordinate.y, "movement")
 
 func show_attack_options():
 	reset_tiles()
-	process_atoms(selected_unit.get_attack_atoms(),selected_unit_coordinate.x,selected_unit_coordinate.y,"attack")
+	process_moves(selected_unit.get_attack_moves(),selected_unit,selected_unit_coordinate.x,selected_unit_coordinate.y, "attack")
 
-func process_atoms(unit_atoms, gridX, gridY, atom_type):
-	for atom in unit_atoms:
-		#var transforms = [[1, 1], [1,-1],[-1,-1],[-1,1]]
-		#for t in transforms:
-		#	for m in range(8 if atom.rider else 1):
-		#		possible_positions.append(Vector2(
+func process_moves(unit_moves, unit, gridX, gridY, move_type):
+	for move in unit_moves:
+		var atom = move.atom
 		var possible_positions = []
-		possible_positions.append(Vector2(gridX + atom.x, gridY + atom.y))
-		possible_positions.append(Vector2(gridX + atom.x, gridY - atom.y))
-		possible_positions.append(Vector2(gridX - atom.x, gridY + atom.y))
-		possible_positions.append(Vector2(gridX - atom.x, gridY - atom.y))
-		possible_positions.append(Vector2(gridX + atom.y, gridY + atom.x))
-		possible_positions.append(Vector2(gridX + atom.y, gridY - atom.x))
-		possible_positions.append(Vector2(gridX - atom.y, gridY + atom.x))
-		possible_positions.append(Vector2(gridX - atom.y, gridY - atom.x))
+		# This is an array of tuples, of form [x mult, y mult, invert]
+		var directions = []
 		
-		highlight_tiles(possible_positions, atom_type)
+		# This will make a list of directions for us to check.
+		for x in [1, -1]:
+			for y in [1, -1]:
+				directions.append([x, y, false])
+				directions.append([x,y, true])
+		
+		print(directions)
+	
+		var count = 1
+		if move.rider:
+			count = max(board_y_size, board_x_size)
+		print(count)
+		for d in directions:
+			
+			var dx = atom.x
+			var dy = atom.y
+			if d[2]:
+				dx = atom.y
+				dy = atom.x
+			dx *= d[0]
+			dy *= d[1]
+			for m in range(1,count + 1):
+				print(m)
+				var position = Vector2(gridX + (dx * m), gridY + (dy * m))
+				if not position_in_bounds(position):
+					# We've hit the end of this direction, let's stop
+					break
+				# Get the tile we are currently looking at
+				var tile = get_tile(position)
+				if move_type == "attack" and unit.can_attack(get_unit(position)):
+					possible_positions.append(position)
+				# We do the pass through check after the attack check, as otherwise the check would block us from attacking pieces
+				if not unit.can_pass_through(tile):
+					break
+				if move_type == "movement" and unit.can_occupy(tile):
+					possible_positions.append(position)
+			
+		highlight_tiles(possible_positions, move_type)
+		
+
 
 func highlight_tiles(possible_positions,atom_type):
 	for tile_coordinate in possible_positions:
-		if tile_coordinate.x < 8 and tile_coordinate.x >= 0 and tile_coordinate.y < 8 and tile_coordinate.y >= 0:
+		if position_in_bounds(tile_coordinate):
 			if atom_type == "movement":
 				boardArray[tile_coordinate.x][tile_coordinate.y].set_movement_option()
 			elif atom_type == "attack":
@@ -168,8 +208,8 @@ func process_mouse_exit(gridX,gridY):
 	boardArray[gridX][gridY].toggle_outline()
 
 func reset_tiles():
-	for i in range(0,8):
-		for j in range(0,8):
+	for i in range(0,board_x_size):
+		for j in range(0,board_y_size):
 			boardArray[i][j].deactivate()
 
 func move_unit(startingX,startingY,endX,endY):
@@ -189,6 +229,9 @@ func move_unit(startingX,startingY,endX,endY):
 	selected_unit.has_moved = true
 	selected_unit_coordinate = Vector2(endX,endY)
 	emit_signal("ally_has_moved")
+
+func position_in_bounds(position):
+	return position.x < board_x_size and position.x >= 0 and position.y < board_y_size and position.y >= 0
 
 #returns the actual coordinate that corresponds with a value in the 2D array of tiles.
 func translate_grid_coordinate(gridX,gridY):

@@ -4,6 +4,7 @@ var current_health = max_health
 var equipmentList = []
 export var type = "abstract_unit"
 onready var moves = $Moves
+var team = null
 
 var has_moved = false
 var has_attacked = false
@@ -13,19 +14,36 @@ onready var selector_icon = $SelectorIcon
 func _ready():
 	pass
 
-func get_movement_atoms():
-	var movement_atoms = []
+func get_movement_moves():
+	var moves = []
 	for move in get_moves():
 		if move.is_move:
-			movement_atoms.append(move.atom)
-	return movement_atoms
+			moves.append(move)
+	return moves
 
-func get_attack_atoms():
-	var attack_atoms = []
+# Returns whether this unit can end its move on a particular tile
+# Useful for allowing upgrades that allow tiles to move over particular types of terrain
+func can_occupy(tile):
+	return not tile.is_occupied()
+
+# Returns whether this unit can pass through a tile without ending its turn there
+func can_pass_through(tile):	
+	if can_occupy(tile):
+		# This should always be true
+		return true
+	# Todo: add other conditions that allow us to pass through tiles we can't occupy
+	return false
+	
+# Returns whether this unit can attack the specified unit
+func can_attack(unit):
+	return team != unit.team
+	
+func get_attack_moves():
+	var moves = []
 	for move in get_moves():
 		if move.is_attack:
-			attack_atoms.append(move.atom)
-	return attack_atoms
+			moves.append(move)
+	return moves
 	
 func get_moves():
 	var m = []
@@ -35,9 +53,11 @@ func get_moves():
 
 func set_white():
 	$UnitSprite.animation = "white"
+	team = 0
 
 func set_black():
 	$UnitSprite.animation = "black"
+	team = 1
 
 func set_unselected():
 	$SelectorIcon.animation = "unselected"
