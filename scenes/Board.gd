@@ -12,10 +12,11 @@ var pawn_scene = preload("res://scenes/unit_scenes/Pawn.tscn")
 var queen_scene = preload("res://scenes/unit_scenes/Queen.tscn")
 var rook_scene = preload("res://scenes/unit_scenes/Rook.tscn")
 var unicorn_scene = preload("res://scenes/unit_scenes/Unicorn.tscn")
+var zebra_scene = preload("res://scenes/unit_scenes/Zebra.tscn")
 
 
 
-var piece_scenes = [bishop_scene, commoner_scene, elephant_scene, knight_scene, mann_scene, pawn_scene, queen_scene, rook_scene, unicorn_scene]
+var piece_scenes = [bishop_scene, commoner_scene, elephant_scene, knight_scene, mann_scene, pawn_scene, queen_scene, rook_scene, unicorn_scene, zebra_scene]
 
 #offsets used to populate the board. Values come from testing different positions
 var starting_x = 300
