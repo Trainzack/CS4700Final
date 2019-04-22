@@ -1,6 +1,7 @@
 extends Area2D
 export var max_health = 3
-var current_health = max_health
+# Make this assignment onready so that ubstypes have a chance to override
+onready var current_health = max_health
 var equipmentList = []
 export var type = "abstract_unit"
 onready var moves = $Moves
@@ -9,6 +10,8 @@ var team = null
 var has_moved = false
 var has_attacked = false
 
+var units_per_health = 32
+
 onready var health_bar = $HealthBar
 
 onready var selector_icon = $SelectorIcon
@@ -16,6 +19,12 @@ onready var selector_icon = $SelectorIcon
 func _ready():
 	health_bar.max_value = max_health
 	health_bar.value = current_health
+	
+	# If max_health ever changes, this code will need to be refactored out!
+	# Make health bar size dependant on max health
+	health_bar.rect_size.x = max_health * units_per_health
+	# Recenter the health bar
+	health_bar.rect_position.x = max_health * units_per_health * -0.5
 	pass
 
 func get_movement_moves():
@@ -80,13 +89,25 @@ func set_health(h):
 	if current_health > max_health:
 		current_health = max_health
 	health_bar.value = current_health
+	if current_health <= 0:
+		die()
+		
+func damage_by(amount):
+	set_health(current_health - amount)
 
 # func is_type(type): return type == "MyObject" or .is_type(type)
 
-# Called wheneveer this unit is move
+# Called whenever this unit is move
 func moved():
 	$MoveSound.play()
-
+	# Debug, test health and damage until we get combat
+	damage_by(1)
+	
+# Called whenever this unit needs to die. Calling this method should be the only thing needed to kill this unit.
+func die():
+	# TODO
+	$DieSound.play()
+	
 func get_type():
 	return type
 

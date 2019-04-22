@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fall_splash_03.wav-bdd25ad2a7b55a845b52240668f969cf.sample"
+
+[deps]
+
+source_file="res://sound/fall_splash_03.wav"
+dest_files=[ "res://.import/fall_splash_03.wav-bdd25ad2a7b55a845b52240668f969cf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100.0
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

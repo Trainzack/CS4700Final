@@ -21,7 +21,7 @@ animations = [ {
 
 [node name="Pawn" instance=ExtResource( 1 )]
 
-health = 2
+max_health = 1
 type = "pawn"
 
 [node name="UnitSprite" parent="." index="0"]
@@ -36,6 +36,7 @@ atom = Vector2( 1, 0 )
 is_move = true
 is_attack = false
 rider = false
+damage = 1
 
 [node name="Node" type="Node" parent="Moves" index="1"]
 
@@ -44,5 +45,6 @@ atom = Vector2( 1, 1 )
 is_move = false
 is_attack = true
 rider = false
+damage = 1
 
 

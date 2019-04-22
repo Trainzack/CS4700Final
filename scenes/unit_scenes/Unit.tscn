@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/unit_scenes/Unit.gd" type="Script" id=1]
 [ext_resource path="res://art/ui/SelectorMarker.png" type="Texture" id=2]
 [ext_resource path="res://art/ui/SelectorMarker3.png" type="Texture" id=3]
 [ext_resource path="res://art/ui/SelectorMarker2.png" type="Texture" id=4]
 [ext_resource path="res://art/ui/SelectorMarker4.png" type="Texture" id=5]
-[ext_resource path="res://sound/unit_select_1.wav" type="AudioStream" id=6]
-[ext_resource path="res://sound/unit_click_1.wav" type="AudioStream" id=7]
+[ext_resource path="res://sound/tap_13.wav" type="AudioStream" id=6]
+[ext_resource path="res://sound/low_tap_02.wav" type="AudioStream" id=7]
+[ext_resource path="res://sound/fall_splash_03.wav" type="AudioStream" id=8]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -171,5 +172,14 @@ exp_edit = false
 rounded = false
 percent_visible = false
 _sections_unfolded = [ "Anchor", "Focus", "Mouse", "Percent", "Rect", "custom_styles" ]
+
+[node name="DieSound" type="AudioStreamPlayer" parent="." index="7"]
+
+stream = ExtResource( 8 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 

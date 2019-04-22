@@ -16,7 +16,7 @@
 [ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=14]
 [ext_resource path="res://sound/shizzle_07.wav" type="AudioStream" id=15]
 
-[node name="UIManager" type="Node" index="0"]
+[node name="UIManager" type="Node"]
 
 script = ExtResource( 1 )
 
