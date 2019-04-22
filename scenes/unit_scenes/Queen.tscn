@@ -22,8 +22,6 @@ animations = [ {
 [node name="Queen" instance=ExtResource( 1 )]
 
 type = "queen"
-land_allowed = true
-water_allowed = false
 
 [node name="UnitSprite" parent="." index="0"]
 

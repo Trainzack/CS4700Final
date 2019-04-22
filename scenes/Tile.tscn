@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/Tile.gd" type="Script" id=1]
 [ext_resource path="res://art/tiles/WhiteTileCube.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://art/tiles/TileAttackHighlight4.png" type="Texture" id=14]
 [ext_resource path="res://art/tiles/TileAttackHighlight5.png" type="Texture" id=15]
 [ext_resource path="res://art/tiles/TileAttackHighlight6.png" type="Texture" id=16]
+[ext_resource path="res://art/tiles/TileAttackHighlight.png" type="Texture" id=17]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -81,7 +82,7 @@ animations = [ {
 "name": "none",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 16 ) ],
+"frames": [ ExtResource( 17 ) ],
 "loop": true,
 "name": "attack",
 "speed": 5.0
@@ -92,7 +93,7 @@ animations = [ {
 custom_solver_bias = 0.0
 points = PoolVector2Array( -80, -18, 0, -79, 80, -18, 0, 41 )
 
-[node name="Tile" type="Area2D"]
+[node name="Tile" type="Area2D" index="0"]
 
 scale = Vector2( 0.7, 0.7 )
 input_pickable = true
@@ -137,8 +138,10 @@ animation = "none"
 
 [node name="SubtleAttackHighlight" type="AnimatedSprite" parent="TileSprite" index="3"]
 
+self_modulate = Color( 1, 1, 1, 0.535922 )
 frames = SubResource( 6 )
 animation = "none"
+_sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 

@@ -2,7 +2,7 @@ extends Node
 
 var unit_scene = preload("res://scenes/unit_scenes/Unit.tscn")
 var tile_scene = preload("res://scenes/Tile.tscn")
-var water_tile_scene = preload("res://scenes/TileWater.tscn")
+var water_tile_scene = preload("res://scenes/WaterTile.tscn")
 
 var bishop_scene = preload("res://scenes/unit_scenes/Bishop.tscn")
 var commoner_scene = preload("res://scenes/unit_scenes/Commoner.tscn")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/Tile.tscn" type="PackedScene" id=1]
+
+[node name="Tile" instance=ExtResource( 1 )]
+
+is_water = true
+
+[node name="TileSprite" parent="." index="0"]
+
+self_modulate = Color( 0.0078125, 0, 1, 1 )
+offset = Vector2( 0, 32 )
+
+[node name="SubtleAttackHighlight" parent="TileSprite" index="3"]
+
+_sections_unfolded = [ "Visibility" ]
+
+
