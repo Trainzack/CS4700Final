@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/UIManager.gd" type="Script" id=1]
 [ext_resource path="res://art/ui/MovementUIGraphic.PNG" type="Texture" id=2]
@@ -13,8 +13,10 @@
 [ext_resource path="res://art/ui/EndTurnButtonClicked.png" type="Texture" id=11]
 [ext_resource path="res://art/ui/EndTurnButtonHovered.png" type="Texture" id=12]
 [ext_resource path="res://sound/chukka_07.wav" type="AudioStream" id=13]
+[ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=14]
+[ext_resource path="res://sound/shizzle_07.wav" type="AudioStream" id=15]
 
-[node name="UIManager" type="Node"]
+[node name="UIManager" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -65,7 +67,6 @@ texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 texture_disabled = ExtResource( 5 )
-_sections_unfolded = [ "Textures" ]
 
 [node name="AttacksButton" type="TextureButton" parent="CommandContainer" index="1"]
 
@@ -92,7 +93,6 @@ texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 8 )
 texture_disabled = ExtResource( 9 )
-_sections_unfolded = [ "Textures" ]
 
 [node name="EndTurnContainer" type="Container" parent="." index="1"]
 
@@ -147,6 +147,24 @@ volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
-bus = "Master"
+bus = "Sound Effects"
+
+[node name="SelectAttackSound" type="AudioStreamPlayer" parent="." index="3"]
+
+stream = ExtResource( 14 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Sound Effects"
+
+[node name="SelectMoveSound" type="AudioStreamPlayer" parent="." index="4"]
+
+stream = ExtResource( 15 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Sound Effects"
 
 

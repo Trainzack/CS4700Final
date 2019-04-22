@@ -86,7 +86,6 @@ func set_health(h):
 # Called wheneveer this unit is move
 func moved():
 	$MoveSound.play()
-	set_health(current_health - 1)
 
 func get_type():
 	return type

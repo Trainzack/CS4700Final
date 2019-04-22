@@ -30,8 +30,8 @@ var y3D_offset = -36*0.7
 var boardArray = []
 var unitArray = []
 
-var board_x_size = 9
-var board_y_size = 9
+var board_x_size = 8
+var board_y_size = 8
 
 var dummy_unit = unit_scene.instance()
 var selected_unit = dummy_unit
@@ -133,7 +133,7 @@ func select_unit(gridX,gridY):
 			emit_signal("ally_has_attacked")
 		if currently_clicked_unit.has_moved:
 			emit_signal("ally_has_moved")
-	
+		
 	else:
 		emit_signal("dummy_unit_selected")
 		selected_unit = dummy_unit
