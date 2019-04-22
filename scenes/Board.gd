@@ -50,12 +50,12 @@ func _ready():
 	var i = 0
 	for x in range(0,board_x_size):
 		var p = piece_scenes[i].instance()
-		p.set_black()
+		p.set_white()
 		place_unit(p, x, 0)
 		i = (i + 1)  % piece_scenes.size()
 		
 		p = piece_scenes[i].instance()
-		p.set_white()
+		p.set_black()
 		place_unit(p, x, board_y_size-1)
 		i = (i + 1)  % piece_scenes.size()
 
