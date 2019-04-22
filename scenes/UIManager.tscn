@@ -12,7 +12,7 @@
 [ext_resource path="res://art/ui/EndTurnButton.png" type="Texture" id=10]
 [ext_resource path="res://art/ui/EndTurnButtonClicked.png" type="Texture" id=11]
 [ext_resource path="res://art/ui/EndTurnButtonHovered.png" type="Texture" id=12]
-[ext_resource path="res://sound/end_turn.wav" type="AudioStream" id=13]
+[ext_resource path="res://sound/chukka_07.wav" type="AudioStream" id=13]
 
 [node name="UIManager" type="Node"]
 

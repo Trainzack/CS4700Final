@@ -1,5 +1,5 @@
 extends Area2D
-export var max_health = 0
+export var max_health = 3
 var current_health = max_health
 var equipmentList = []
 export var type = "abstract_unit"
@@ -9,9 +9,13 @@ var team = null
 var has_moved = false
 var has_attacked = false
 
+onready var health_bar = $HealthBar
+
 onready var selector_icon = $SelectorIcon
 
 func _ready():
+	health_bar.max_value = max_health
+	health_bar.value = current_health
 	pass
 
 func get_movement_moves():
@@ -63,23 +67,26 @@ func set_black():
 
 func set_unselected():
 	$SelectorIcon.animation = "unselected"
+	health_bar.hide()
 
 func set_selected():
 	$SelectorIcon.animation = "selected"
 	$SelectorIcon.play()
 	$SelectSound.play()
+	health_bar.show()
 
 func set_health(h):
 	current_health = h
 	if current_health > max_health:
 		current_health = max_health
-	# TODO: Updae healthbar
+	health_bar.value = current_health
 
 # func is_type(type): return type == "MyObject" or .is_type(type)
 
 # Called wheneveer this unit is move
 func moved():
 	$MoveSound.play()
+	set_health(current_health - 1)
 
 func get_type():
 	return type

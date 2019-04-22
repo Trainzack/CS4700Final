@@ -21,6 +21,7 @@ animations = [ {
 
 [node name="Commoner" instance=ExtResource( 1 )]
 
+max_health = 3
 type = "commoner"
 
 [node name="UnitSprite" parent="." index="0"]
