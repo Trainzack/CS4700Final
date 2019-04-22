@@ -8,6 +8,9 @@ onready var outline = get_node("TileSprite").get_node("Outline")
 var can_move_to = false
 var occupied = false
 
+export var is_water = false
+export var is_wall = false
+
 signal clicked
 
 func set_occupied(occupado):

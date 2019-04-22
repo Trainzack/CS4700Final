@@ -22,6 +22,7 @@ animations = [ {
 [node name="Elephant" instance=ExtResource( 1 )]
 
 type = "elephant"
+water_allowed = true
 
 [node name="UnitSprite" parent="." index="0"]
 

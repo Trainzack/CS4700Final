@@ -23,8 +23,8 @@ _sections_unfolded = [ "Resource" ]
 
 [node name="Giraffe" instance=ExtResource( 1 )]
 
-max_health = 3
 type = "giraffe"
+water_allowed = true
 
 [node name="UnitSprite" parent="." index="0"]
 

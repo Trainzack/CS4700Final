@@ -1,9 +1,16 @@
 extends Area2D
 export var max_health = 3
+export var type = "abstract_unit"
+
+# Whether this piece can move on land
+export var land_allowed = true
+# Whether this piece can move on water
+export var water_allowed = false
+
+
 # Make this assignment onready so that ubstypes have a chance to override
 onready var current_health = max_health
 var equipmentList = []
-export var type = "abstract_unit"
 onready var moves = $Moves
 var team = null
 
@@ -37,6 +44,12 @@ func get_movement_moves():
 # Returns whether this unit can end its move on a particular tile
 # Useful for allowing upgrades that allow tiles to move over particular types of terrain
 func can_occupy(tile):
+	if tile.is_water and not water_allowed:
+		return false
+	if not tile.is_water and not land_allowed:
+		return false
+	if tile.is_wall:
+		return false
 	return not tile.is_occupied()
 
 # Returns whether this unit can pass through a tile without ending its turn there

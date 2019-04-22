@@ -2,6 +2,7 @@ extends Node
 
 var unit_scene = preload("res://scenes/unit_scenes/Unit.tscn")
 var tile_scene = preload("res://scenes/Tile.tscn")
+var water_tile_scene = preload("res://scenes/TileWater.tscn")
 
 var bishop_scene = preload("res://scenes/unit_scenes/Bishop.tscn")
 var commoner_scene = preload("res://scenes/unit_scenes/Commoner.tscn")
@@ -74,7 +75,13 @@ func create_board():
 		var Z = 8
 		var tileArray = []
 		for j in range(board_y_size):
-			var tileNode = tile_scene.instance()
+			var water = (j + 1 < (board_y_size * (3.0/4)) and j > (board_y_size * (1.0/4))) and (i + 1 > (board_x_size * (3.0/4)) or i < (board_x_size * (1.0/4)))
+			print(water)
+			var tileNode = null
+			if water:
+				tileNode = water_tile_scene.instance()
+			else:
+				tileNode = tile_scene.instance()
 			add_child(tileNode)
 			if i%2 == j%2:
 				tileNode.set_tile_type("white")
