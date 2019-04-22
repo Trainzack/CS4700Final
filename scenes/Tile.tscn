@@ -118,7 +118,6 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="MovementHighlight" type="AnimatedSprite" parent="TileSprite" index="0"]
 
-z_index = 1
 frames = SubResource( 2 )
 animation = "none"
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -135,13 +134,14 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 frames = SubResource( 4 )
 animation = "none"
+_sections_unfolded = [ "Z Index" ]
 
 [node name="SubtleAttackHighlight" type="AnimatedSprite" parent="TileSprite" index="3"]
 
 self_modulate = Color( 1, 1, 1, 0.535922 )
 frames = SubResource( 6 )
 animation = "none"
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Visibility", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 

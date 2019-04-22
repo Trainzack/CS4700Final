@@ -23,8 +23,7 @@ animations = [ {
 
 max_health = 7
 type = "centaur"
-land_allowed = true
-water_allowed = false
+wall_allowed = true
 
 [node name="UnitSprite" parent="." index="0"]
 

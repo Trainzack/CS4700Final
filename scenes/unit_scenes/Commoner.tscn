@@ -25,6 +25,7 @@ max_health = 3
 type = "commoner"
 land_allowed = true
 water_allowed = false
+wall_allowed = false
 
 [node name="UnitSprite" parent="." index="0"]
 

@@ -22,6 +22,7 @@ animations = [ {
 [node name="Queen" instance=ExtResource( 1 )]
 
 type = "queen"
+wall_allowed = false
 
 [node name="UnitSprite" parent="." index="0"]
 

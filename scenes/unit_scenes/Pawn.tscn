@@ -26,6 +26,7 @@ max_health = 1
 type = "pawn"
 land_allowed = true
 water_allowed = false
+wall_allowed = false
 
 [node name="UnitSprite" parent="." index="0"]
 

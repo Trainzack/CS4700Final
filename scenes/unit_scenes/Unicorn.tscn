@@ -22,6 +22,7 @@ animations = [ {
 [node name="Unicorn" instance=ExtResource( 1 )]
 
 type = "unicorn"
+wall_allowed = true
 
 [node name="UnitSprite" parent="." index="0"]
 
