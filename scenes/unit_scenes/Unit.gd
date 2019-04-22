@@ -49,6 +49,9 @@ func can_pass_through(tile):
 	
 # Returns whether this unit can attack the specified unit
 func can_attack(unit):
+	# Checking for death is a placeholder, unless we go with ItB style death
+	if is_dead() or unit.is_dead():
+		return false
 	if unit.is_dummy() or is_dummy():
 		return false
 	return team != unit.team
@@ -105,8 +108,14 @@ func moved():
 	
 # Called whenever this unit needs to die. Calling this method should be the only thing needed to kill this unit.
 func die():
-	# TODO
+	# TODO: Finish implementing death!
+	current_health = 0
 	$DieSound.play()
+	# Make translucent
+	$UnitSprite.modulate = Color(1, 1, 1, 0.5)
+	
+func is_dead():
+	return current_health <= 0
 	
 func get_type():
 	return type

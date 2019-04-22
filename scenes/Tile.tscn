@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/Tile.gd" type="Script" id=1]
 [ext_resource path="res://art/tiles/WhiteTileCube.png" type="Texture" id=2]
@@ -73,6 +73,20 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=6]
+
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "none",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+} ]
+
 [sub_resource type="ConvexPolygonShape2D" id=5]
 
 custom_solver_bias = 0.0
@@ -116,6 +130,11 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 [node name="AttackHighlight" type="AnimatedSprite" parent="TileSprite" index="2"]
 
 frames = SubResource( 4 )
+animation = "none"
+
+[node name="SubtleAttackHighlight" type="AnimatedSprite" parent="TileSprite" index="3"]
+
+frames = SubResource( 6 )
 animation = "none"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]

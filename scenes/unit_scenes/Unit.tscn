@@ -86,7 +86,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width", "Corner Radius" ]
 
-[node name="Unit" type="Area2D"]
+[node name="Unit" type="Area2D" index="0"]
 
 scale = Vector2( 0.5, 0.5 )
 z_index = 30
@@ -107,7 +107,7 @@ type = "abstract_unit"
 position = Vector2( 0, -90 )
 scale = Vector2( 0.2, 0.2 )
 animation = "default"
-_sections_unfolded = [ "Transform", "Z Index" ]
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="SelectorIcon" type="AnimatedSprite" parent="." index="1"]
 
