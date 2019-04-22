@@ -16,6 +16,9 @@ export(bool) var is_attack = false
 # Whether this move repeats until stopped
 export(bool) var rider = false
 
+# If this move is an attack, how much damage does it do?
+export(int) var damage = 1
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here

@@ -3,9 +3,13 @@ export var tyle_type = "white"
 export var highlight_type = "none"
 onready var movement_highlight = get_node("TileSprite").get_node("MovementHighlight")
 onready var attack_highlight = get_node("TileSprite").get_node("AttackHighlight")
+onready var subtle_attack_highlight = get_node("TileSprite").get_node("SubtleAttackHighlight")
 onready var outline = get_node("TileSprite").get_node("Outline")
 var can_move_to = false
 var occupied = false
+
+export var is_water = false
+export var is_wall = false
 
 signal clicked
 
@@ -23,6 +27,10 @@ func set_attack_option():
 	attack_highlight.animation = "attack"
 	attack_highlight.play()
 
+func set_subtle_attack_option():
+	subtle_attack_highlight.animation = "attack"
+	subtle_attack_highlight.play()
+
 func set_movement_option():
 	if occupied == false:
 		movement_highlight.animation = "movement"
@@ -38,6 +46,7 @@ func toggle_outline():
 func deactivate():
 	movement_highlight.animation = "none"
 	attack_highlight.animation = "none"
+	subtle_attack_highlight.animation = "none"
 	can_move_to = false
 
 func _ready():

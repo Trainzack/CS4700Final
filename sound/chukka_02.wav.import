@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/chukka_02.wav-a459ab2bb2f363af165c51c57dd98ad3.sample"
+
+[deps]
+
+source_file="res://sound/chukka_02.wav"
+dest_files=[ "res://.import/chukka_02.wav-a459ab2bb2f363af165c51c57dd98ad3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100.0
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

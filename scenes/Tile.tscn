@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/Tile.gd" type="Script" id=1]
 [ext_resource path="res://art/tiles/WhiteTileCube.png" type="Texture" id=2]
@@ -34,14 +34,14 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "movement",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "none",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "movement",
 "speed": 5.0
 } ]
 
@@ -62,14 +62,28 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=4]
 
 animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "none",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "attack",
 "speed": 5.0
-}, {
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+
+animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "none",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "attack",
 "speed": 5.0
 } ]
 
@@ -92,11 +106,14 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 tyle_type = "white"
 highlight_type = "none"
+is_water = false
+is_wall = false
 
 [node name="TileSprite" type="AnimatedSprite" parent="." index="0"]
 
 frames = SubResource( 1 )
 animation = "white"
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="MovementHighlight" type="AnimatedSprite" parent="TileSprite" index="0"]
 
@@ -116,6 +133,11 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 [node name="AttackHighlight" type="AnimatedSprite" parent="TileSprite" index="2"]
 
 frames = SubResource( 4 )
+animation = "none"
+
+[node name="SubtleAttackHighlight" type="AnimatedSprite" parent="TileSprite" index="3"]
+
+frames = SubResource( 6 )
 animation = "none"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]

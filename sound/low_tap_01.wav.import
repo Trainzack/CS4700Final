@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/low_tap_01.wav-6b57ed382f977e0994dc4c3a405032bd.sample"
+
+[deps]
+
+source_file="res://sound/low_tap_01.wav"
+dest_files=[ "res://.import/low_tap_01.wav-6b57ed382f977e0994dc4c3a405032bd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100.0
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
