@@ -5,7 +5,10 @@ var tile_scene = preload("res://scenes/Tile.tscn")
 
 var bishop_scene = preload("res://scenes/unit_scenes/Bishop.tscn")
 var commoner_scene = preload("res://scenes/unit_scenes/Commoner.tscn")
+var centaur_scene = preload("res://scenes/unit_scenes/Centaur.tscn")
 var elephant_scene = preload("res://scenes/unit_scenes/Elephant.tscn")
+var giraffe_scene = preload("res://scenes/unit_scenes/Giraffe.tscn")
+var king_scene = preload("res://scenes/unit_scenes/King.tscn")
 var knight_scene = preload("res://scenes/unit_scenes/Knight.tscn")
 var mann_scene = preload("res://scenes/unit_scenes/Mann.tscn")
 var pawn_scene = preload("res://scenes/unit_scenes/Pawn.tscn")
@@ -16,7 +19,7 @@ var zebra_scene = preload("res://scenes/unit_scenes/Zebra.tscn")
 
 
 
-var piece_scenes = [bishop_scene, commoner_scene, elephant_scene, knight_scene, mann_scene, pawn_scene, queen_scene, rook_scene, unicorn_scene, zebra_scene]
+var piece_scenes = [bishop_scene, commoner_scene, centaur_scene, elephant_scene, giraffe_scene, king_scene, knight_scene, mann_scene, pawn_scene, queen_scene, rook_scene, unicorn_scene, zebra_scene]
 
 #offsets used to populate the board. Values come from testing different positions
 var starting_x = 300
@@ -27,8 +30,8 @@ var y3D_offset = -36*0.7
 var boardArray = []
 var unitArray = []
 
-var board_x_size = 8
-var board_y_size = 8
+var board_x_size = 9
+var board_y_size = 9
 
 var dummy_unit = unit_scene.instance()
 var selected_unit = dummy_unit
@@ -44,14 +47,17 @@ func _ready():
 	create_board()
 	populate_board()
 	
-	for x in range(1,7):
-		var p = piece_scenes[randi() % piece_scenes.size()].instance()
+	var i = 0
+	for x in range(0,board_x_size):
+		var p = piece_scenes[i].instance()
 		p.set_black()
 		place_unit(p, x, 0)
+		i = (i + 1)  % piece_scenes.size()
 		
-		p = piece_scenes[randi() % piece_scenes.size()].instance()
+		p = piece_scenes[i].instance()
 		p.set_white()
-		place_unit(p, x, 7)
+		place_unit(p, x, board_y_size-1)
+		i = (i + 1)  % piece_scenes.size()
 
 func get_tile(position):
 	return boardArray[position.x][position.y]

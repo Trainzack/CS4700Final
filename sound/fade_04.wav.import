@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fade_04.wav-066f46f1ccf04a3145bc272d96450f2c.sample"
+
+[deps]
+
+source_file="res://sound/fade_04.wav"
+dest_files=[ "res://.import/fade_04.wav-066f46f1ccf04a3145bc272d96450f2c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

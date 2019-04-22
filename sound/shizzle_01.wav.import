@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shizzle_01.wav-1b80525e334c4fa28833314f027fd2e9.sample"
+
+[deps]
+
+source_file="res://sound/shizzle_01.wav"
+dest_files=[ "res://.import/shizzle_01.wav-1b80525e334c4fa28833314f027fd2e9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

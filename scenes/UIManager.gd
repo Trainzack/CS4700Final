@@ -19,6 +19,7 @@ func emit_attack_pressed():
 
 func emit_end_turn_pressed():
 	emit_signal("end_turn_pressed")
+	$EndTurnSound.play()
 
 func disable_movement():
 	commands.get_node("MovementButton").disabled = true

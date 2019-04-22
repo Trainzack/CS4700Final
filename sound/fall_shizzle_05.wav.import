@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fall_shizzle_05.wav-6beefc1a29af905181a64a4dc6fd8b87.sample"
+
+[deps]
+
+source_file="res://sound/fall_shizzle_05.wav"
+dest_files=[ "res://.import/fall_shizzle_05.wav-6beefc1a29af905181a64a4dc6fd8b87.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

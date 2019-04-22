@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/UIManager.gd" type="Script" id=1]
 [ext_resource path="res://art/ui/MovementUIGraphic.PNG" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://art/ui/EndTurnButton.png" type="Texture" id=10]
 [ext_resource path="res://art/ui/EndTurnButtonClicked.png" type="Texture" id=11]
 [ext_resource path="res://art/ui/EndTurnButtonHovered.png" type="Texture" id=12]
+[ext_resource path="res://sound/end_turn.wav" type="AudioStream" id=13]
 
 [node name="UIManager" type="Node"]
 
@@ -138,5 +139,14 @@ texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 12 )
 _sections_unfolded = [ "Textures" ]
+
+[node name="EndTurnSound" type="AudioStreamPlayer" parent="." index="2"]
+
+stream = ExtResource( 13 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 
