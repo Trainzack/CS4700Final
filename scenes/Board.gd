@@ -5,23 +5,7 @@ var tile_scene = preload("res://scenes/Tile.tscn")
 var water_tile_scene = preload("res://scenes/WaterTile.tscn")
 var wall_tile_scene = preload("res://scenes/WallTile.tscn")
 
-var bishop_scene = preload("res://scenes/unit_scenes/Bishop.tscn")
-var commoner_scene = preload("res://scenes/unit_scenes/Commoner.tscn")
-var centaur_scene = preload("res://scenes/unit_scenes/Centaur.tscn")
-var elephant_scene = preload("res://scenes/unit_scenes/Elephant.tscn")
-var giraffe_scene = preload("res://scenes/unit_scenes/Giraffe.tscn")
-var king_scene = preload("res://scenes/unit_scenes/King.tscn")
-var knight_scene = preload("res://scenes/unit_scenes/Knight.tscn")
-var mann_scene = preload("res://scenes/unit_scenes/Mann.tscn")
-var pawn_scene = preload("res://scenes/unit_scenes/Pawn.tscn")
-var queen_scene = preload("res://scenes/unit_scenes/Queen.tscn")
-var rook_scene = preload("res://scenes/unit_scenes/Rook.tscn")
-var unicorn_scene = preload("res://scenes/unit_scenes/Unicorn.tscn")
-var zebra_scene = preload("res://scenes/unit_scenes/Zebra.tscn")
-
-
-
-var piece_scenes = [bishop_scene, commoner_scene, centaur_scene, elephant_scene, giraffe_scene, king_scene, knight_scene, mann_scene, pawn_scene, queen_scene, rook_scene, unicorn_scene, zebra_scene]
+var encounter_scene = preload("res://scenes/Encounter.tscn")
 
 #offsets used to populate the board. Values come from testing different positions
 var starting_x = 300
@@ -47,19 +31,7 @@ signal ally_has_attacked
 func _ready():
 	add_child(dummy_unit)
 	create_board()
-	populate_board()
-	
-	var i = 0
-	for x in range(0,board_x_size):
-		var p = piece_scenes[i].instance()
-		p.set_white()
-		place_unit(p, x, 0)
-		i = (i + 1)  % piece_scenes.size()
-		
-		p = piece_scenes[i].instance()
-		p.set_black()
-		place_unit(p, x, board_y_size-1)
-		i = (i + 1)  % piece_scenes.size()
+
 
 func get_tile(position):
 	return boardArray[position.x][position.y]
@@ -67,47 +39,48 @@ func get_tile(position):
 func get_unit(position):
 	return unitArray[position.x][position.y]
 
+# Internal method for placing a particular tile in a particular place
+func place_tile(position, tile):
+	if not position_in_bounds(position):
+		printerr("invalid tile position: " + position)
+	else:
+		# TODO: Remove the tile that's already here
+		add_child(tile)
+		print(position)
+		if int(position.x)%2 == int(position.y)%2:
+			tile.set_tile_type("white")
+		else:
+			tile.set_tile_type("black")
+		tile.position = Vector2(starting_x + position.x*iso_x_offset + position.y*iso_x_offset, starting_y - position.y*iso_y_offset + position.x*iso_y_offset)
+		tile.z_index = board_y_size - position.y
+		tile.connect("mouse_entered", self, "process_mouse_enter", [position.x,position.y])
+		tile.connect("mouse_exited", self, "process_mouse_exit", [position.x,position.y])
+		tile.connect("clicked", self, "on_click", [position.x,position.y])
+		boardArray[position.x][position.y] = tile
+		
+		
 
 #Positions the tiles of the board onto the screen
 #Also fills up the boardArray with tileArrays, creating a 2d array of tiles
 #Tiles occupy z indeces 0-10
 func create_board():
-	for i in range(board_x_size):
-		var Z = 8
+	# Create the 2D array that holds the tiles, and the array that holds the units
+	for x in range(board_x_size):
 		var tileArray = []
-		for j in range(board_y_size):
-			var water = (j + 1 < (board_y_size * (3.0/4)) and j > (board_y_size * (1.0/4))) and (i + 1 > (board_x_size * (3.0/4)) or i < (board_x_size * (1.0/4)))
-			var wall = (j + 1 < (board_y_size * (3.0/4)) and j > (board_y_size * (1.0/4))) and (i + 1 < (board_x_size * (3.0/4)) and i > (board_x_size * (1.0/4)))
-			
-			var tileNode = null
-			if water:
-				tileNode = water_tile_scene.instance()
-			elif wall:
-				tileNode = wall_tile_scene.instance()
-			else:
-				tileNode = tile_scene.instance()
-			add_child(tileNode)
-			if i%2 == j%2:
-				tileNode.set_tile_type("white")
-			else:
-				tileNode.set_tile_type("black")
-				#400,400 chosen as test starting position to populate the board from
-			tileNode.position = Vector2(starting_x + j*iso_x_offset + i*iso_x_offset, starting_y - j*iso_y_offset + i*iso_y_offset)
-			tileNode.z_index = Z - j
-			tileNode.connect("mouse_entered", self, "process_mouse_enter", [i,j])
-			tileNode.connect("mouse_exited", self, "process_mouse_exit", [i,j])
-			tileNode.connect("clicked", self, "on_click", [i,j])
-			tileArray.append(tileNode)
-		boardArray.append(tileArray)
-
-#Populates the board with invisible dummy units. Currently this is important to
-#be able to create an 8x8 array of units.
-func populate_board():
-	for i in range(0,board_x_size):
 		var tempUnitArray = []
-		for j in range(0,board_y_size):
+		for y in range(board_y_size):
+			tileArray.append(null)
 			tempUnitArray.append(dummy_unit)
+		boardArray.append(tileArray)
 		unitArray.append(tempUnitArray)
+		
+	for x in range(board_x_size):
+		for y in range(board_y_size):
+			Position2D
+	
+	var encounter = encounter_scene.instance()
+	encounter.build_board(self)
+	
 
 #For initally placing a unit on the board
 func place_unit(placed_unit, gridX, gridY):
@@ -118,7 +91,7 @@ func place_unit(placed_unit, gridX, gridY):
 		add_child(placed_unit)
 		unitArray[gridX][gridY] = placed_unit
 	else:
-		print("Tile is occupado")
+		printerr("Tile is occupado")
 
 #Deselects the previously selected unit and activates a different one.
 func on_click(gridX,gridY):

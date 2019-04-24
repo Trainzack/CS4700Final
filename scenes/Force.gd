@@ -1,5 +1,9 @@
 extends Node
 
+export(int, "white", "black") var team = 1
+export var player_controlled = false
+var units = []
+
 func _ready():
 	pass
 
@@ -12,7 +16,10 @@ func startTurn():
 	
 # This method returns the units that this force has
 func getUnits():
-	return null
+	return units
 	
 func isPlayerControlled():
-	return false
+	return player_controlled
+	
+func getTeam():
+	return team

@@ -5,5 +5,7 @@
 [node name="AbstractForce" type="Node"]
 
 script = ExtResource( 1 )
+team = 0
+player_controlled = true
 
 
