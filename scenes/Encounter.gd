@@ -21,7 +21,20 @@ var zebra_scene = preload("res://scenes/unit_scenes/Zebra.tscn")
 
 var piece_scenes = [bishop_scene, commoner_scene, centaur_scene, elephant_scene, giraffe_scene, king_scene, knight_scene, mann_scene, pawn_scene, queen_scene, rook_scene, unicorn_scene, zebra_scene]
 
+var type = null
 
+var difficulty = 0
+var reward = 0
+
+func get_difficulty():
+	return difficulty
+	
+func get_reward():
+	return reward
+
+func select_encounter(encounter_type):
+	type = encounter_type 
+	
 
 func build_board(board):
 	

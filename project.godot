@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Chesster Than Light"
-run/main_scene="res://scenes/MasterCombatScene.tscn"
+run/main_scene="res://scenes/OverworldScene.tscn"
 config/icon="res://icon.png"
 
 [audio]
