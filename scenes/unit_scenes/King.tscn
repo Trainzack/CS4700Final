@@ -25,6 +25,7 @@ max_health = 20
 type = "king"
 land_allowed = true
 water_allowed = false
+wall_allowed = false
 
 [node name="UnitSprite" parent="." index="0"]
 

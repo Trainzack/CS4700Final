@@ -21,10 +21,8 @@ animations = [ {
 
 [node name="Zebra" instance=ExtResource( 1 )]
 
-max_health = 3
 type = "zebra"
-land_allowed = true
-water_allowed = false
+wall_allowed = true
 
 [node name="UnitSprite" parent="." index="0"]
 

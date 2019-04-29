@@ -103,6 +103,7 @@ max_health = 3
 type = "abstract_unit"
 land_allowed = true
 water_allowed = false
+wall_allowed = false
 
 [node name="UnitSprite" type="AnimatedSprite" parent="." index="0"]
 

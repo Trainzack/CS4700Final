@@ -6,7 +6,8 @@ export var type = "abstract_unit"
 export var land_allowed = true
 # Whether this piece can move on water
 export var water_allowed = false
-
+# Whether this piece can move on walls
+export var wall_allowed = false
 
 # Make this assignment onready so that ubstypes have a chance to override
 onready var current_health = max_health
@@ -48,7 +49,7 @@ func can_occupy(tile):
 		return false
 	if not tile.is_water and not land_allowed:
 		return false
-	if tile.is_wall:
+	if tile.is_wall and not wall_allowed:
 		return false
 	return not tile.is_occupied()
 
