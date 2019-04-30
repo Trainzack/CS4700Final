@@ -26,15 +26,26 @@ var pieces = {
 }
 
 var encounter_types = {
-	"tut1":	[["........",
-		"........",
+	"tut1":	[[
+		".......M",
+		".......M",
 		"~.......",
-		"~~.MM.~M",
-		"~~.MM.~M",
+		"~~......",
+		"~.......",
 		"~.......",
 		"........",
+		"~.....~~",
+	],[[3,0,"U",1],[3,7,"P",0]]],
+	"tut2":	[[
+		".......M",
+		".......M",
+		"..MM....",
 		"........",
-	],[[3,0,"N",1],[3,7,"P",0]]],
+		"........",
+		"M...MM..",
+		".....MM.",
+		"........",
+	],[[3,0,"R",1],[4,0,"U",1],[3,7,"N",0],[2,7,"P",0],[4,7,"P",0]]],
 	"mini":	[[
 		"M......M",
 		"M......M",
@@ -54,7 +65,16 @@ var encounter_types = {
 		".~....~.",
 		".M~..~M.",
 		"........",
-	],[[3,0,"N",1],[4,0,"N",1],[5,0,"G",1],[6,0,"E",1],[4,6,"K",0]]],
+	],[[3,0,"N",1],[4,0,"E",1],[5,0,"R",1],[6,0,"Q",1],[4,6,"K",0]]],
+}
+
+
+var special_names = {
+	"tut1": "The First Encounter",
+	"tut2": "The Second Encounter",
+	"tut3": "The First Fair Fight",
+	"mini": "Centaur Keep",
+	"final": "The King's Castle"
 }
 
 var type = null
@@ -74,6 +94,9 @@ func select_encounter(encounter_type):
 	type = encounter_type
 	# Todo: add appropriate suffix
 	title = names[randi() % len(names)] + suffixes[randi() % len(suffixes)]
+	
+	if type in special_names:
+		title = special_names[type]
 
 
 func build_test(board):
