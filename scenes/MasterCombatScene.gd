@@ -10,6 +10,7 @@ func _ready():
 	$UIManager.connect("attack_pressed",self,"display_attacks")
 	$UIManager.connect("movement_pressed",self,"display_moves")
 	$UIManager.connect("end_turn_pressed",self,"end_turn")
+	$UIManager.connect("exit_combat",get_parent(),"end_combat")
 
 #generates the board's encounter.
 func set_encounter(encounter):
