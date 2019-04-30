@@ -69,7 +69,7 @@ func _ready():
 					if y < node_y - 1:
 						nodes[x][y].connect_node(nodes[x + 1][y + 1])
 				else:
-					if y > 1:
+					if y > 0:
 						nodes[x][y].connect_node(nodes[x + 1][y - 1])
 						
 	

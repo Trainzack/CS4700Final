@@ -71,6 +71,7 @@ func create_board(encounter):
 		boardArray.append(tileArray)
 		unitArray.append(tempUnitArray)
 		
+	encounter.type = "mini"
 	encounter.build_board(self)
 	
 
