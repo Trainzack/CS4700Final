@@ -64,18 +64,18 @@ func get_movement_moves():
 
 # Returns whether this unit can end its move on a particular tile
 # Useful for allowing upgrades that allow tiles to move over particular types of terrain
-func can_occupy(tile):
+func can_occupy(tile, move_type="move"):
 	if tile.is_water and not water_allowed:
 		return false
-	if not tile.is_water and not land_allowed:
+	if not tile.is_water and not land_allowed and move_type != "attack":
 		return false
 	if tile.is_wall and not wall_allowed:
 		return false
 	return not tile.is_occupied()
 
 # Returns whether this unit can pass through a tile without ending its turn there
-func can_pass_through(tile):	
-	if can_occupy(tile):
+func can_pass_through(tile, move_type):	
+	if can_occupy(tile, move_type):
 		# This should always be true
 		return true
 	# Todo: add other conditions that allow us to pass through tiles we can't occupy

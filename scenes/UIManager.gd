@@ -2,6 +2,7 @@ extends Node
 signal movement_pressed
 signal attack_pressed
 signal end_turn_pressed
+signal exit_combat
 onready var commands = $CommandContainer
 
 var unit_selected = false
@@ -21,6 +22,7 @@ func _ready():
 	get_node("CommandContainer").get_node("MovementButton").connect("pressed",self,"emit_movement_pressed")
 	get_node("CommandContainer").get_node("AttacksButton").connect("pressed",self,"emit_attack_pressed")
 	get_node("EndTurnContainer").get_node("EndTurnButton").connect("pressed",self,"emit_end_turn_pressed")
+	get_node("ExitCombatContainer2/ExitCombatButton").connect("pressed",self,"emit_exit_combat")
 
 #_process is used to wait for user input from the keyboard
 func _process(delta):
@@ -29,6 +31,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("select_attack") and commands.get_node("AttacksButton").disabled == false:
 		emit_attack_pressed()
 	if Input.is_action_just_pressed("end_turn"):
+		print("yeet")
 		emit_end_turn_pressed()
 
 #emit functions propogate signals when the corresponding buttons are pressed
@@ -41,6 +44,9 @@ func emit_attack_pressed():
 	#print("attack button pressed")
 	select_attack_sound.play()
 	emit_signal("attack_pressed")
+
+func emit_exit_combat():
+	emit_signal("exit_combat")
 
 func emit_end_turn_pressed():
 	emit_signal("end_turn_pressed")

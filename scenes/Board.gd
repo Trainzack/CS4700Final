@@ -25,6 +25,9 @@ var dummy_unit = unit_scene.instance()
 var selected_unit = dummy_unit
 var selected_unit_coordinate = Vector2(-1,-1)
 
+# keep track of whether this board has been created already
+var board_ready = false
+
 signal ally_unit_selected
 signal dummy_unit_selected
 signal ally_has_moved
@@ -46,7 +49,7 @@ func place_tile(position, tile):
 	else:
 		# TODO: Remove the tile that's already here
 		add_child(tile)
-		print(position)
+		# print(position)
 		if int(position.x)%2 == int(position.y)%2:
 			tile.set_tile_type("white")
 		else:
@@ -63,18 +66,21 @@ func place_tile(position, tile):
 #Tiles occupy z indeces 0-10
 #Generates the board based on an encounter object thats passed in
 func create_board(encounter):
+	if board_ready:
+		printerr("Board already setup!")
+	else:
 	# Create the 2D array that holds the tiles, and the array that holds the units
-	for x in range(board_x_size):
-		var tileArray = []
-		var tempUnitArray = []
-		for y in range(board_y_size):
-			tileArray.append(null)
-			tempUnitArray.append(dummy_unit)
-		boardArray.append(tileArray)
-		unitArray.append(tempUnitArray)
-		
-	#actually generate the board
-	encounter.build_board(self)
+		for x in range(board_x_size):
+			var tileArray = []
+			var tempUnitArray = []
+			for y in range(board_y_size):
+				tileArray.append(null)
+				tempUnitArray.append(dummy_unit)
+			boardArray.append(tileArray)
+			unitArray.append(tempUnitArray)
+			
+		encounter.build_board(self)
+		board_ready = true
 	
 
 #For initally placing a unit on the board
@@ -158,12 +164,12 @@ func process_moves(unit_moves, unit, gridX, gridY, move_type):
 				directions.append([x, y, false])
 				directions.append([x,y, true])
 		
-		print(directions)
+		# print(directions)
 	
 		var count = 1
 		if move.rider:
 			count = max(board_y_size, board_x_size)
-		print(count)
+		# print(count)
 		for d in directions:
 			
 			var dx = atom.x
@@ -174,7 +180,7 @@ func process_moves(unit_moves, unit, gridX, gridY, move_type):
 			dx *= d[0]
 			dy *= d[1]
 			for m in range(1,count + 1):
-				print(m)
+				# print(m)
 				var position = Vector2(gridX + (dx * m), gridY + (dy * m))
 				if not position_in_bounds(position):
 					# We've hit the end of this direction, let's stop
@@ -187,7 +193,7 @@ func process_moves(unit_moves, unit, gridX, gridY, move_type):
 					else:
 						subtle_highlight_positions.append(position)
 				# We do the pass through check after the attack check, as otherwise the check would block us from attacking pieces
-				if not unit.can_pass_through(tile):
+				if not unit.can_pass_through(tile, move_type):
 					break
 				if move_type == "movement" and unit.can_occupy(tile):
 					possible_positions.append(position)

@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/UIManager.tscn" type="PackedScene" id=3]
 [ext_resource path="res://music/CTL.ogg" type="AudioStream" id=4]
 
-[node name="MasterCombatScene" type="Node" index="0"]
+[node name="MasterCombatScene" type="Node"]
 
 script = ExtResource( 1 )
 

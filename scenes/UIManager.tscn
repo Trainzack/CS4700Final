@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scenes/UIManager.gd" type="Script" id=1]
 [ext_resource path="res://art/ui/MovementUIGraphic.PNG" type="Texture" id=2]
@@ -12,49 +12,50 @@
 [ext_resource path="res://art/ui/EndTurnButton.png" type="Texture" id=10]
 [ext_resource path="res://art/ui/EndTurnButtonClicked.png" type="Texture" id=11]
 [ext_resource path="res://art/ui/EndTurnButtonHovered.png" type="Texture" id=12]
-[ext_resource path="res://art/ui/WhiteTurnUI.png" type="Texture" id=13]
-[ext_resource path="res://art/ui/WhiteTurnUITransition1.png" type="Texture" id=14]
-[ext_resource path="res://art/ui/WhiteTurnUITransition2.png" type="Texture" id=15]
-[ext_resource path="res://art/ui/WhiteTurnUITransition3.png" type="Texture" id=16]
-[ext_resource path="res://art/ui/WhiteTurnUITransition4.png" type="Texture" id=17]
-[ext_resource path="res://art/ui/WhiteTurnUITransition5.png" type="Texture" id=18]
-[ext_resource path="res://art/ui/WhiteTurnUITransition6.png" type="Texture" id=19]
-[ext_resource path="res://art/ui/BlackTurnUI.png" type="Texture" id=20]
-[ext_resource path="res://art/ui/BlackTurnUITransition1.png" type="Texture" id=21]
-[ext_resource path="res://art/ui/BlackTurnUITransition2.png" type="Texture" id=22]
-[ext_resource path="res://art/ui/BlackTurnUITransition3.png" type="Texture" id=23]
-[ext_resource path="res://art/ui/BlackTurnUITransition4.png" type="Texture" id=24]
-[ext_resource path="res://art/ui/BlackTurnUITransition5.png" type="Texture" id=25]
-[ext_resource path="res://art/ui/BlackTurnUITransition6.png" type="Texture" id=26]
-[ext_resource path="res://sound/chukka_07.wav" type="AudioStream" id=27]
-[ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=28]
-[ext_resource path="res://sound/shizzle_07.wav" type="AudioStream" id=29]
+[ext_resource path="res://fonts/font.tres" type="DynamicFont" id=13]
+[ext_resource path="res://art/ui/BlackTurnUITransition1.png" type="Texture" id=14]
+[ext_resource path="res://art/ui/BlackTurnUITransition2.png" type="Texture" id=15]
+[ext_resource path="res://art/ui/BlackTurnUITransition3.png" type="Texture" id=16]
+[ext_resource path="res://art/ui/BlackTurnUITransition4.png" type="Texture" id=17]
+[ext_resource path="res://art/ui/BlackTurnUITransition5.png" type="Texture" id=18]
+[ext_resource path="res://art/ui/BlackTurnUITransition6.png" type="Texture" id=19]
+[ext_resource path="res://art/ui/WhiteTurnUI.png" type="Texture" id=20]
+[ext_resource path="res://art/ui/WhiteTurnUITransition1.png" type="Texture" id=21]
+[ext_resource path="res://art/ui/WhiteTurnUITransition2.png" type="Texture" id=22]
+[ext_resource path="res://art/ui/WhiteTurnUITransition3.png" type="Texture" id=23]
+[ext_resource path="res://art/ui/WhiteTurnUITransition4.png" type="Texture" id=24]
+[ext_resource path="res://art/ui/WhiteTurnUITransition5.png" type="Texture" id=25]
+[ext_resource path="res://art/ui/WhiteTurnUITransition6.png" type="Texture" id=26]
+[ext_resource path="res://art/ui/BlackTurnUI.png" type="Texture" id=27]
+[ext_resource path="res://sound/chukka_07.wav" type="AudioStream" id=28]
+[ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=29]
+[ext_resource path="res://sound/shizzle_07.wav" type="AudioStream" id=30]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 13 ) ],
-"loop": true,
-"name": "white_turn",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "white_turn_transition",
+"speed": 35.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
 "loop": true,
 "name": "black_turn_transition",
 "speed": 35.0
 }, {
 "frames": [ ExtResource( 20 ) ],
 "loop": true,
-"name": "black_turn",
+"name": "white_turn",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 27 ) ],
 "loop": true,
-"name": "white_turn_transition",
-"speed": 35.0
+"name": "black_turn",
+"speed": 5.0
 } ]
 
-[node name="UIManager" type="Node"]
+[node name="UIManager" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -165,21 +166,67 @@ margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = false
-enabled_focus_mode = 2
+enabled_focus_mode = 0
 shortcut = null
 group = null
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 12 )
-_sections_unfolded = [ "Textures" ]
+_sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="WhoseTurnContainer" type="Container" parent="." index="2"]
+[node name="ExitCombatContainer2" type="Container" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 530.0
+margin_bottom = 230.0
+rect_scale = Vector2( 0.6, 0.6 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Margin", "Rect" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ExitCombatButton" type="Button" parent="ExitCombatContainer2" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 500.0
+margin_bottom = 200.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 13 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "End Combat"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect", "Textures", "custom_fonts" ]
+
+[node name="WhoseTurnContainer" type="Container" parent="." index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -207,16 +254,7 @@ position = Vector2( 167, 60 )
 frames = SubResource( 1 )
 animation = "white_turn"
 
-[node name="EndTurnSound" type="AudioStreamPlayer" parent="." index="3"]
-
-stream = ExtResource( 27 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Sound Effects"
-
-[node name="SelectAttackSound" type="AudioStreamPlayer" parent="." index="4"]
+[node name="EndTurnSound" type="AudioStreamPlayer" parent="." index="4"]
 
 stream = ExtResource( 28 )
 volume_db = 0.0
@@ -225,7 +263,7 @@ autoplay = false
 mix_target = 0
 bus = "Sound Effects"
 
-[node name="SelectMoveSound" type="AudioStreamPlayer" parent="." index="5"]
+[node name="SelectAttackSound" type="AudioStreamPlayer" parent="." index="5"]
 
 stream = ExtResource( 29 )
 volume_db = 0.0
@@ -233,5 +271,36 @@ pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Sound Effects"
+
+[node name="SelectMoveSound" type="AudioStreamPlayer" parent="." index="6"]
+
+stream = ExtResource( 30 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Sound Effects"
+
+[node name="ExitCombatContainer" type="Container" parent="." index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 490.0
+margin_bottom = 200.0
+rect_scale = Vector2( 0.6, 0.6 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Margin", "Rect" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 
