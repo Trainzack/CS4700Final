@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/UIManager.gd" type="Script" id=1]
 [ext_resource path="res://art/ui/MovementUIGraphic.PNG" type="Texture" id=2]
@@ -12,11 +12,12 @@
 [ext_resource path="res://art/ui/EndTurnButton.png" type="Texture" id=10]
 [ext_resource path="res://art/ui/EndTurnButtonClicked.png" type="Texture" id=11]
 [ext_resource path="res://art/ui/EndTurnButtonHovered.png" type="Texture" id=12]
-[ext_resource path="res://sound/chukka_07.wav" type="AudioStream" id=13]
-[ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=14]
-[ext_resource path="res://sound/shizzle_07.wav" type="AudioStream" id=15]
+[ext_resource path="res://fonts/font.tres" type="DynamicFont" id=13]
+[ext_resource path="res://sound/chukka_07.wav" type="AudioStream" id=14]
+[ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=15]
+[ext_resource path="res://sound/shizzle_07.wav" type="AudioStream" id=16]
 
-[node name="UIManager" type="Node"]
+[node name="UIManager" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -178,6 +179,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/font = ExtResource( 13 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -185,18 +187,9 @@ group = null
 text = "Exit Combat"
 flat = false
 align = 1
-_sections_unfolded = [ "Rect", "Textures" ]
+_sections_unfolded = [ "Rect", "Textures", "custom_fonts" ]
 
 [node name="EndTurnSound" type="AudioStreamPlayer" parent="." index="3"]
-
-stream = ExtResource( 13 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Sound Effects"
-
-[node name="SelectAttackSound" type="AudioStreamPlayer" parent="." index="4"]
 
 stream = ExtResource( 14 )
 volume_db = 0.0
@@ -205,9 +198,18 @@ autoplay = false
 mix_target = 0
 bus = "Sound Effects"
 
-[node name="SelectMoveSound" type="AudioStreamPlayer" parent="." index="5"]
+[node name="SelectAttackSound" type="AudioStreamPlayer" parent="." index="4"]
 
 stream = ExtResource( 15 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Sound Effects"
+
+[node name="SelectMoveSound" type="AudioStreamPlayer" parent="." index="5"]
+
+stream = ExtResource( 16 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
