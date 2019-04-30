@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/MasterScene.gd" type="Script" id=1]
 [ext_resource path="res://scenes/OverworldScene.tscn" type="PackedScene" id=2]
 
-[node name="MasterScene" type="Node"]
+[node name="MasterScene" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
