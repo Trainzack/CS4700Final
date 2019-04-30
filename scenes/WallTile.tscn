@@ -4,10 +4,15 @@
 
 [node name="WallTile" instance=ExtResource( 1 )]
 
+z_index = 9
 is_wall = true
 
 [node name="TileSprite" parent="." index="0"]
 
-position = Vector2( 0, -32 )
+position = Vector2( 0, -36 )
+
+[node name="PlacementPosition" parent="." index="3"]
+
+position = Vector2( 0, -36 )
 
 
