@@ -6,6 +6,8 @@ var node_scene = preload("res://scenes/OverworldNode.tscn")
 onready var node_container = $Container/Panel
 onready var node_name = $Container/InfoPanel/NodeName
 onready var begin_encounter = $Container/InfoPanel/BeginEncounter
+onready var master_scene = get_parent()
+
 
 var node_distance = 80.0
 
@@ -35,7 +37,10 @@ var selected_node = null
 
 func _ready():
 	begin_encounter.connect("pressed",self,"begin_encounter")
+	if len(nodes) == 0:
+		build_nodes()
 	
+func build_nodes():
 	# Create all of the nodes
 	for x in range(node_x):
 		var node_line = []
@@ -92,7 +97,8 @@ func begin_encounter():
 	if selected_node == null:
 		printerr("Error: Cannot begin encounter when no node is selected!")
 	else:
-		pass
+		master_scene.begin_combat(selected_node.encounter)
+		
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.

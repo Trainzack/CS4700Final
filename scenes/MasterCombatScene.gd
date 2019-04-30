@@ -7,7 +7,6 @@ func _ready():
 	$TestBoard.connect("dummy_unit_selected",self,"hide_options")
 	$TestBoard.connect("ally_has_moved",self,"disable_movement")
 	$TestBoard.connect("ally_has_attacked",self,"disable_attacks")
-	set_encounter(encounter_scene.instance())
 	$UIManager.connect("attack_pressed",self,"display_attacks")
 	$UIManager.connect("movement_pressed",self,"display_moves")
 	$UIManager.connect("end_turn_pressed",self,"end_turn")
