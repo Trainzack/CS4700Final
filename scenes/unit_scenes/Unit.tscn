@@ -12,7 +12,7 @@
 [ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=10]
 [ext_resource path="res://art/ui/UnitMoveUnavailable.png" type="Texture" id=11]
 [ext_resource path="res://art/ui/UnitMoveAvailable.png" type="Texture" id=12]
-[ext_resource path="res://art/ui/UnitAttackUnavailable.png" type="Texture" id=13]
+[ext_resource path="res://art/ui/UnitAttackUnavailable.png.import.png" type="Texture" id=13]
 [ext_resource path="res://art/ui/UnitAttackAvailable.png" type="Texture" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
