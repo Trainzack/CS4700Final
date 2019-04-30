@@ -11,6 +11,8 @@ var unit_selected = false
 onready var end_turn_sound = $EndTurnSound
 onready var select_attack_sound = $SelectAttackSound
 onready var select_move_sound = $SelectMoveSound
+onready var turn_icon_container = $WhoseTurnContainer
+onready var turn_icon = get_node("WhoseTurnContainer").get_node("TurnIcon")
 
 # Whether the currently 
 var can_attack = false
@@ -22,6 +24,7 @@ func _ready():
 	get_node("EndTurnContainer").get_node("EndTurnButton").connect("pressed",self,"emit_end_turn_pressed")
 	get_node("ExitCombatContainer/ExitCombatButton").connect("pressed",self,"emit_exit_combat")
 
+#_process is used to wait for user input from the keyboard
 func _process(delta):
 	if Input.is_action_just_pressed("select_move") and commands.get_node("MovementButton").disabled == false:
 		emit_movement_pressed()
@@ -30,6 +33,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("end_turn"):
 		emit_end_turn_pressed()
 
+#emit functions propogate signals when the corresponding buttons are pressed
 func emit_movement_pressed():
 	#print("move button pressed")
 	select_move_sound.play()
@@ -47,9 +51,11 @@ func emit_end_turn_pressed():
 	emit_signal("end_turn_pressed")
 	end_turn_sound.play()
 
+#disables movement button
 func disable_movement():
 	commands.get_node("MovementButton").disabled = true
 
+#disables attack button
 func disable_attacks():
 	commands.get_node("AttacksButton").disabled = true
 
@@ -62,3 +68,15 @@ func show_command_options():
 
 func hide_command_options():
 	commands.visible = false
+
+#Plays the animation for making the turn icon switch to the other side
+#Once the animation ends it stays displaying either "black's turn" or "white's turn"
+func switch_turn_icon():
+	if turn_icon.animation == "white_turn":
+		turn_icon.play("black_turn_transition")
+		yield(turn_icon,"animation_finished")
+		turn_icon.animation = "black_turn"
+	else:
+		turn_icon.play("white_turn_transition")
+		yield(turn_icon,"animation_finished")
+		turn_icon.animation = "white_turn"

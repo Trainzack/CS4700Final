@@ -21,8 +21,9 @@ animations = [ {
 
 [node name="Queen" instance=ExtResource( 1 )]
 
+max_health = 5
 type = "queen"
-wall_allowed = false
+attack_power = 2
 
 [node name="UnitSprite" parent="." index="0"]
 

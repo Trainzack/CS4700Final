@@ -16,6 +16,8 @@ var y3D_offset = -36*0.7
 var boardArray = []
 var unitArray = []
 
+var acting_team = 0
+
 var board_x_size = 8
 var board_y_size = 8
 
@@ -105,12 +107,14 @@ func on_click(gridX,gridY):
 	#If the tile you clicked has a unit that can be attacked, damage it
 	elif selected_unit.get_type() != "abstract_unit" and currently_clicked_tile.can_attack_space:
 		print("attacked unit")
-		selected_unit.has_attacked = true
+		selected_unit.expend_attack()
 		emit_signal("ally_has_attacked")
 		
 		#If a unit attacks, it uses up its movement as well
-		selected_unit.has_moved = true
+		selected_unit.expend_movement()
 		emit_signal("ally_has_moved")
+		
+		#damage the targeted unit by the selected unit's attack power
 		get_unit(Vector2(gridX,gridY)).damage_by(selected_unit.get_attack_power());
 		reset_tiles()
 		pass
@@ -121,7 +125,7 @@ func on_click(gridX,gridY):
 func select_unit(gridX,gridY):
 	selected_unit.set_unselected()
 	var currently_clicked_unit = unitArray[gridX][gridY]
-	if currently_clicked_unit.get_type() != "abstract_unit":
+	if currently_clicked_unit.get_type() != "abstract_unit" and currently_clicked_unit.get_team() == acting_team:
 		selected_unit = currently_clicked_unit
 		selected_unit.set_selected()
 		selected_unit_coordinate = Vector2(gridX,gridY)
@@ -213,12 +217,15 @@ func highlight_tiles(possible_positions,atom_type):
 func process_mouse_enter(gridX,gridY):
 	if(unitArray[gridX][gridY].get_type() != "abstract_unit"):
 		unitArray[gridX][gridY].display_health()
+	if unitArray[gridX][gridY].get_team() == acting_team:
+		unitArray[gridX][gridY].display_action_icons()
 	boardArray[gridX][gridY].toggle_outline()
 
 #Change this to do something useful for when the mouse exits a tile
 func process_mouse_exit(gridX,gridY):
 	if !unitArray[gridX][gridY].has_focus:
 		unitArray[gridX][gridY].hide_health()
+	unitArray[gridX][gridY].hide_action_icons()
 	boardArray[gridX][gridY].toggle_outline()
 
 func reset_tiles():
@@ -250,13 +257,19 @@ func move_unit(startingX,startingY,endX,endY):
 	boardArray[endX][endY].set_occupied(true)
 	
 	#Set variables and send signals indicating this unit has moved.
-	selected_unit.has_moved = true
+	selected_unit.expend_movement()
 	selected_unit_coordinate = Vector2(endX,endY)
 	emit_signal("ally_has_moved")
 	unit_to_move.moved()
 
 func position_in_bounds(position):
 	return position.x < board_x_size and position.x >= 0 and position.y < board_y_size and position.y >= 0
+
+func switch_acting_team():
+	if acting_team == 1:
+		acting_team = 0
+	elif acting_team == 0:
+		acting_team = 1
 
 #returns the actual coordinate that corresponds with a value in the 2D array of tiles.
 func translate_grid_coordinate(gridX,gridY):
