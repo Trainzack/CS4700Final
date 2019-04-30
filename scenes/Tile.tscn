@@ -146,6 +146,7 @@ _sections_unfolded = [ "Visibility", "Z Index" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 6 )
+_sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="SpawnTimer" type="Timer" parent="." index="2"]
 

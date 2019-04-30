@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/OverworldNode.gd" type="Script" id=1]
 [ext_resource path="res://art/tiles/WhiteTileCube.png" type="Texture" id=2]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=3]
 
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
@@ -12,13 +12,14 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-radius = 10.0
+extents = Vector2( 10, 10 )
 
-[node name="OverworldNode" type="Area2D" index="0"]
+[node name="OverworldNode" type="Area2D"]
 
+scale = Vector2( 0.3, 0.3 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -27,13 +28,14 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
 z_index = 10
-frames = SubResource( 1 )
+frames = SubResource( 3 )
 animation = "default"
-_sections_unfolded = [ "Z Index" ]
+_sections_unfolded = [ "Visibility", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 

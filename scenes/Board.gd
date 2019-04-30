@@ -79,6 +79,7 @@ func create_board():
 			Position2D
 	
 	var encounter = encounter_scene.instance()
+	encounter.type = "tut1"
 	encounter.build_board(self)
 	
 
