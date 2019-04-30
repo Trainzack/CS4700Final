@@ -18,13 +18,18 @@ var team = null
 var has_moved = false
 var has_attacked = false
 
+export var attack_power = 1
+
 var units_per_health = 32
 
 onready var health_bar = $HealthBar
 
 onready var selector_icon = $SelectorIcon
+onready var damage_timer = $DamageTimer
+onready var display_health_timer = $DisplayHealthTimer
 
 func _ready():
+	$DisplayHealthTimer.connect("timeout",self,"hide_health")
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 	
@@ -34,6 +39,9 @@ func _ready():
 	# Recenter the health bar
 	health_bar.rect_position.x = max_health * units_per_health * -0.5
 	pass
+
+func get_attack_power():
+	return attack_power
 
 func get_movement_moves():
 	var moves = []
@@ -108,9 +116,6 @@ func set_health(h):
 	health_bar.value = current_health
 	if current_health <= 0:
 		die()
-		
-func damage_by(amount):
-	set_health(current_health - amount)
 
 # func is_type(type): return type == "MyObject" or .is_type(type)
 
@@ -118,7 +123,7 @@ func damage_by(amount):
 func moved():
 	$MoveSound.play()
 	# Debug, test health and damage until we get combat
-	damage_by(1)
+	#damage_by(1)
 	
 # Called whenever this unit needs to die. Calling this method should be the only thing needed to kill this unit.
 func die():
@@ -137,10 +142,12 @@ func get_type():
 func is_dummy():
 	return type == "abstract_unit"
 
+#To be used during combat to reset the units actions
 func reset_moves():
 	has_moved = false
 	has_attacked = false
 
+#To be used after combat to reset the units actions and restore it to full heatlh
 func refresh():
 	current_health = max_health
 	has_moved = false
@@ -148,3 +155,23 @@ func refresh():
 
 func print_info():
 	print($UnitSprite.animation," ", type, " with health of ", current_health)
+
+func damage_by(amount):
+	$TargetedSound.play()
+	damage_display_health()
+	damage_timer.set_wait_time(0.3)
+	damage_timer.start()
+	yield(damage_timer,"timeout")
+	$DamagedSound.play()
+	set_health(current_health - amount)
+
+func damage_display_health():
+	health_bar.show()
+	$DisplayHealthTimer.set_wait_time(0.6)
+	$DisplayHealthTimer.start()
+
+func display_health():
+	health_bar.show()
+
+func hide_health():
+	health_bar.hide()

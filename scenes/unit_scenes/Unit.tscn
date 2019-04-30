@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/unit_scenes/Unit.gd" type="Script" id=1]
 [ext_resource path="res://art/ui/SelectorMarker.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://sound/tap_13.wav" type="AudioStream" id=6]
 [ext_resource path="res://sound/low_tap_02.wav" type="AudioStream" id=7]
 [ext_resource path="res://sound/fall_splash_03.wav" type="AudioStream" id=8]
+[ext_resource path="res://sound/fade_03.wav" type="AudioStream" id=9]
+[ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -104,6 +106,7 @@ type = "abstract_unit"
 land_allowed = true
 water_allowed = false
 wall_allowed = false
+attack_power = 1
 
 [node name="UnitSprite" type="AnimatedSprite" parent="." index="0"]
 
@@ -116,7 +119,7 @@ _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 position = Vector2( 0, -270 )
 scale = Vector2( 0.7, 0.7 )
-z_index = 10
+z_index = 15
 frames = SubResource( 1 )
 animation = "unselected"
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -184,5 +187,37 @@ pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+
+[node name="DamagedSound" type="AudioStreamPlayer" parent="." index="8"]
+
+stream = ExtResource( 9 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="TargetedSound" type="AudioStreamPlayer" parent="." index="9"]
+
+stream = ExtResource( 10 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="DisplayHealthTimer" type="Timer" parent="." index="10"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = false
+
+[node name="DamageTimer" type="Timer" parent="." index="11"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = false
 
 
