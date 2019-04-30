@@ -1,17 +1,20 @@
 extends Node
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+var encounter_scene = preload("res://scenes/Encounter.tscn")
 
 func _ready():
 	$TestBoard.connect("ally_unit_selected",self,"display_options")
 	$TestBoard.connect("dummy_unit_selected",self,"hide_options")
 	$TestBoard.connect("ally_has_moved",self,"disable_movement")
 	$TestBoard.connect("ally_has_attacked",self,"disable_attacks")
+	set_encounter(encounter_scene.instance())
 	$UIManager.connect("attack_pressed",self,"display_attacks")
 	$UIManager.connect("movement_pressed",self,"display_moves")
 	$UIManager.connect("end_turn_pressed",self,"end_turn")
+
+#generates the board's encounter.
+func set_encounter(encounter):
+	$TestBoard.create_board(encounter)
 
 func display_options():
 	$UIManager.reset_command_states()

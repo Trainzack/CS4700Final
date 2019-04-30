@@ -5,7 +5,9 @@ onready var movement_highlight = get_node("TileSprite").get_node("MovementHighli
 onready var attack_highlight = get_node("TileSprite").get_node("AttackHighlight")
 onready var subtle_attack_highlight = get_node("TileSprite").get_node("SubtleAttackHighlight")
 onready var outline = get_node("TileSprite").get_node("Outline")
+onready var placement_position = get_node("PlacementPosition")
 var can_move_to = false
+var can_attack_space = false
 var occupied = false
 
 export var is_water = false
@@ -26,6 +28,7 @@ func set_tile_type(type):
 func set_attack_option():
 	attack_highlight.animation = "attack"
 	attack_highlight.play()
+	can_attack_space = true
 
 func set_subtle_attack_option():
 	subtle_attack_highlight.animation = "attack"
@@ -48,6 +51,10 @@ func deactivate():
 	attack_highlight.animation = "none"
 	subtle_attack_highlight.animation = "none"
 	can_move_to = false
+	can_attack_space = false
+
+func get_placement_position():
+	return placement_position
 
 func _ready():
 	pass

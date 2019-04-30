@@ -49,14 +49,14 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=3]
 
 animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "not_hovered",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 10 ) ],
 "loop": true,
 "name": "hovered",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "not_hovered",
 "speed": 5.0
 } ]
 
@@ -125,7 +125,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 [node name="Outline" type="AnimatedSprite" parent="TileSprite" index="1"]
 
 position = Vector2( 0, -28.5 )
-z_index = 10
+z_index = 8
 frames = SubResource( 3 )
 animation = "not_hovered"
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -146,13 +146,15 @@ _sections_unfolded = [ "Visibility", "Z Index" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 6 )
-_sections_unfolded = [ "Material", "Visibility" ]
-
 [node name="SpawnTimer" type="Timer" parent="." index="2"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
+
+[node name="PlacementPosition" type="Position2D" parent="." index="3"]
+
+_sections_unfolded = [ "Transform" ]
 
 
