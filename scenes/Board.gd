@@ -71,7 +71,7 @@ func create_board(encounter):
 		boardArray.append(tileArray)
 		unitArray.append(tempUnitArray)
 		
-	encounter.type = "mini"
+	encounter.type = "river"
 	encounter.build_board(self)
 	
 
@@ -183,7 +183,7 @@ func process_moves(unit_moves, unit, gridX, gridY, move_type):
 					else:
 						subtle_highlight_positions.append(position)
 				# We do the pass through check after the attack check, as otherwise the check would block us from attacking pieces
-				if not unit.can_pass_through(tile):
+				if not unit.can_pass_through(tile, move_type):
 					break
 				if move_type == "movement" and unit.can_occupy(tile):
 					possible_positions.append(position)
