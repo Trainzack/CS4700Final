@@ -18,6 +18,10 @@ var team = null
 var has_moved = false
 var has_attacked = false
 
+#A unit has focus if it is being attacked or if it is currently selected
+#used for keeping info of the unit onscreen
+var has_focus = false
+
 export var attack_power = 1
 
 var units_per_health = 32
@@ -29,7 +33,7 @@ onready var damage_timer = $DamageTimer
 onready var display_health_timer = $DisplayHealthTimer
 
 func _ready():
-	$DisplayHealthTimer.connect("timeout",self,"hide_health")
+	$DisplayHealthTimer.connect("timeout",self,"damage_hide_health")
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 	
@@ -101,9 +105,11 @@ func set_black():
 
 func set_unselected():
 	$SelectorIcon.animation = "unselected"
+	has_focus = false
 	health_bar.hide()
 
 func set_selected():
+	has_focus = true
 	$SelectorIcon.animation = "selected"
 	$SelectorIcon.play()
 	$SelectSound.play()
@@ -156,7 +162,13 @@ func refresh():
 func print_info():
 	print($UnitSprite.animation," ", type, " with health of ", current_health)
 
+#Calls the damage_display_health method to show the health and start a timer for how long it stays on screen
+#That timer is run concurrently with the timer that is started in this method.
+#The one that starts in this method delays the call to set_health for a bit. 
+#Once the timer has timed out the health is decremented and since the health is still displayed on screen,
+#this decrease is shown in real time.
 func damage_by(amount):
+	has_focus = true
 	$TargetedSound.play()
 	damage_display_health()
 	damage_timer.set_wait_time(0.3)
@@ -165,10 +177,17 @@ func damage_by(amount):
 	$DamagedSound.play()
 	set_health(current_health - amount)
 
+#Shows the health bar and then starts a timer to keep it on screen for a short time.
+#On the timers timeout, a signal is detected which calls hide_health automatically.
 func damage_display_health():
 	health_bar.show()
-	$DisplayHealthTimer.set_wait_time(0.6)
-	$DisplayHealthTimer.start()
+	display_health_timer.set_wait_time(0.6)
+	display_health_timer.start()
+
+#unfocus the damaged unit and hides its health
+func damage_hide_health():
+	has_focus = false
+	health_bar.hide()
 
 func display_health():
 	health_bar.show()

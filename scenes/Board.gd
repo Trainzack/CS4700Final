@@ -30,8 +30,6 @@ signal ally_has_attacked
 
 func _ready():
 	add_child(dummy_unit)
-	create_board()
-
 
 func get_tile(position):
 	return boardArray[position.x][position.y]
@@ -57,13 +55,12 @@ func place_tile(position, tile):
 		tile.connect("mouse_exited", self, "process_mouse_exit", [position.x,position.y])
 		tile.connect("clicked", self, "on_click", [position.x,position.y])
 		boardArray[position.x][position.y] = tile
-		
-		
 
 #Positions the tiles of the board onto the screen
 #Also fills up the boardArray with tileArrays, creating a 2d array of tiles
 #Tiles occupy z indeces 0-10
-func create_board():
+#Generates the board based on an encounter object thats passed in
+func create_board(encounter):
 	# Create the 2D array that holds the tiles, and the array that holds the units
 	for x in range(board_x_size):
 		var tileArray = []
@@ -73,8 +70,8 @@ func create_board():
 			tempUnitArray.append(dummy_unit)
 		boardArray.append(tileArray)
 		unitArray.append(tempUnitArray)
-	
-	var encounter = encounter_scene.instance()
+		
+	#actually generate the board
 	encounter.build_board(self)
 	
 
@@ -214,7 +211,7 @@ func process_mouse_enter(gridX,gridY):
 
 #Change this to do something useful for when the mouse exits a tile
 func process_mouse_exit(gridX,gridY):
-	if unitArray[gridX][gridY] != selected_unit:
+	if !unitArray[gridX][gridY].has_focus:
 		unitArray[gridX][gridY].hide_health()
 	boardArray[gridX][gridY].toggle_outline()
 
