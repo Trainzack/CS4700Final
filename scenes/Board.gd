@@ -71,7 +71,7 @@ func create_board(encounter):
 		boardArray.append(tileArray)
 		unitArray.append(tempUnitArray)
 		
-	encounter.type = "river"
+	encounter.type = "final"
 	encounter.build_board(self)
 	
 
