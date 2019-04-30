@@ -36,8 +36,12 @@ func display_attacks():
 func display_moves():
 	$TestBoard.show_movement_options()
 
+#End the turn resetting the moves of the units and states of the tiles
+#Then tells the board to switch the acting side as well as the UI.
 func end_turn():
 	hide_options()
 	print("end turn reached")
+	$UIManager.switch_turn_icon()
 	$TestBoard.reset_unit_moves()
 	$TestBoard.reset_tiles()
+	$TestBoard.switch_acting_team()

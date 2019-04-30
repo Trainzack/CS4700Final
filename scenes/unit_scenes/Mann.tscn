@@ -19,9 +19,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Mann" instance=ExtResource( 1 )]
+[node name="Mann" index="0" instance=ExtResource( 1 )]
 
-health = 5
+max_health = 4
 type = "mann"
 
 [node name="UnitSprite" parent="." index="0"]
@@ -35,15 +35,17 @@ animation = "white"
 script = ExtResource( 4 )
 atom = Vector2( 1, 0 )
 is_move = true
-is_attack = false
+is_attack = true
 rider = false
+damage = 2
 
 [node name="Diagonal Move" type="Node" parent="Moves" index="1"]
 
 script = ExtResource( 4 )
 atom = Vector2( 1, 1 )
 is_move = true
-is_attack = false
+is_attack = true
 rider = false
+damage = 2
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/unit_scenes/Unit.gd" type="Script" id=1]
 [ext_resource path="res://art/ui/SelectorMarker.png" type="Texture" id=2]
@@ -10,6 +10,10 @@
 [ext_resource path="res://sound/fall_splash_03.wav" type="AudioStream" id=8]
 [ext_resource path="res://sound/fade_03.wav" type="AudioStream" id=9]
 [ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=10]
+[ext_resource path="res://art/ui/UnitMoveUnavailable.png" type="Texture" id=11]
+[ext_resource path="res://art/ui/UnitMoveAvailable.png" type="Texture" id=12]
+[ext_resource path="res://art/ui/UnitAttackUnavailable.png" type="Texture" id=13]
+[ext_resource path="res://art/ui/UnitAttackAvailable.png" type="Texture" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -87,6 +91,34 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border", "Border Width", "Corner Radius" ]
+
+[sub_resource type="SpriteFrames" id=5]
+
+animations = [ {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "unavailable",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "available",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+
+animations = [ {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "unavailable",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "available",
+"speed": 5.0
+} ]
 
 [node name="Unit" type="Area2D"]
 
@@ -219,5 +251,19 @@ process_mode = 1
 wait_time = 0.5
 one_shot = true
 autostart = false
+
+[node name="MoveAvailability" type="AnimatedSprite" parent="." index="12"]
+
+visible = false
+position = Vector2( -84.8614, -213.743 )
+frames = SubResource( 5 )
+animation = "available"
+
+[node name="AttackAvailability" type="AnimatedSprite" parent="." index="13"]
+
+visible = false
+position = Vector2( -120.114, -214.61 )
+frames = SubResource( 6 )
+animation = "available"
 
 
