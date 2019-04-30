@@ -27,7 +27,8 @@ export var attack_power = 1
 var units_per_health = 32
 
 onready var health_bar = $HealthBar
-
+onready var movement_icon = $MoveAvailability
+onready var attack_icon = $AttackAvailability
 onready var selector_icon = $SelectorIcon
 onready var damage_timer = $DamageTimer
 onready var display_health_timer = $DisplayHealthTimer
@@ -42,6 +43,13 @@ func _ready():
 	health_bar.rect_size.x = max_health * units_per_health
 	# Recenter the health bar
 	health_bar.rect_position.x = max_health * units_per_health * -0.5
+	# Place attack and move icons net to health bar
+	attack_icon.position.y = health_bar.rect_position.y
+	movement_icon.position.y = health_bar.rect_position.y
+	attack_icon.position.x = health_bar.rect_position.x - 20
+	movement_icon.position.x = attack_icon.position.x - 35
+	
+	hide_action_icons()
 	pass
 
 func get_attack_power():
@@ -103,6 +111,9 @@ func set_black():
 	$UnitSprite.animation = "black"
 	team = 1
 
+func get_team():
+	return team
+
 func set_unselected():
 	$SelectorIcon.animation = "unselected"
 	has_focus = false
@@ -151,13 +162,17 @@ func is_dummy():
 #To be used during combat to reset the units actions
 func reset_moves():
 	has_moved = false
+	movement_icon.animation = "available"
 	has_attacked = false
+	attack_icon.animation = "available"
 
 #To be used after combat to reset the units actions and restore it to full heatlh
 func refresh():
 	current_health = max_health
 	has_moved = false
+	movement_icon.animation = "available"
 	has_attacked = false
+	attack_icon.animation = "available"
 
 func print_info():
 	print($UnitSprite.animation," ", type, " with health of ", current_health)
@@ -171,7 +186,7 @@ func damage_by(amount):
 	has_focus = true
 	$TargetedSound.play()
 	damage_display_health()
-	damage_timer.set_wait_time(0.3)
+	damage_timer.set_wait_time(0.4)
 	damage_timer.start()
 	yield(damage_timer,"timeout")
 	$DamagedSound.play()
@@ -181,7 +196,7 @@ func damage_by(amount):
 #On the timers timeout, a signal is detected which calls hide_health automatically.
 func damage_display_health():
 	health_bar.show()
-	display_health_timer.set_wait_time(0.6)
+	display_health_timer.set_wait_time(0.8)
 	display_health_timer.start()
 
 #unfocus the damaged unit and hides its health
@@ -194,3 +209,19 @@ func display_health():
 
 func hide_health():
 	health_bar.hide()
+
+func display_action_icons():
+	attack_icon.show()
+	movement_icon.show()
+
+func hide_action_icons():
+	attack_icon.hide()
+	movement_icon.hide()
+
+func expend_attack():
+	has_attacked = true
+	attack_icon.animation = "unavailable"
+
+func expend_movement():
+	has_moved = true
+	movement_icon.animation = "unavailable"

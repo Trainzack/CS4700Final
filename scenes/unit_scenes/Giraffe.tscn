@@ -25,7 +25,6 @@ _sections_unfolded = [ "Resource" ]
 
 type = "giraffe"
 water_allowed = true
-wall_allowed = false
 
 [node name="UnitSprite" parent="." index="0"]
 
