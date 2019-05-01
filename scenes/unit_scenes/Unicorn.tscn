@@ -23,6 +23,7 @@ animations = [ {
 
 type = "unicorn"
 wall_allowed = true
+attack_power = 2
 
 [node name="UnitSprite" parent="." index="0"]
 

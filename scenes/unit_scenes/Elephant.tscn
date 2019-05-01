@@ -23,6 +23,7 @@ animations = [ {
 
 type = "elephant"
 water_allowed = true
+attack_power = 2
 
 [node name="UnitSprite" parent="." index="0"]
 

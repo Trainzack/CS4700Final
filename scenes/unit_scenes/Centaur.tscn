@@ -24,6 +24,7 @@ animations = [ {
 max_health = 5
 type = "centaur"
 wall_allowed = true
+attack_power = 2
 
 [node name="UnitSprite" parent="." index="0"]
 

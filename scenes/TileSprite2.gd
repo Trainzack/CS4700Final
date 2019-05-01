@@ -5,10 +5,7 @@ extends AnimatedSprite
 # var b = "textvar"
 
 func _ready():
-	self.animation = get_parent().animation
-	print(self.animation)
-	print(get_parent().animation)
-	pass
+	self.animation = get_parent().get_node("TileSprite").animation
 
 #func _process(delta):
 #	self.animation = get_parent().animation

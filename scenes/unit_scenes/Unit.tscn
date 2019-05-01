@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/unit_scenes/Unit.gd" type="Script" id=1]
 [ext_resource path="res://art/ui/SelectorMarker.png" type="Texture" id=2]
@@ -14,6 +14,11 @@
 [ext_resource path="res://art/tiles/UIMovementAvailable.png" type="Texture" id=12]
 [ext_resource path="res://art/tiles/UIAttackUnavailable.png" type="Texture" id=13]
 [ext_resource path="res://art/tiles/UIAttackAvailable.png" type="Texture" id=14]
+[ext_resource path="res://art/ui/3AttackPower.PNG" type="Texture" id=15]
+[ext_resource path="res://art/ui/1AttackPower.PNG" type="Texture" id=16]
+[ext_resource path="res://art/ui/2AttackPower.PNG" type="Texture" id=17]
+[ext_resource path="res://art/ui/5AttackPower.PNG" type="Texture" id=18]
+[ext_resource path="res://art/ui/4AttackPower.PNG" type="Texture" id=19]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -117,6 +122,35 @@ animations = [ {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "available",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+
+animations = [ {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "4",
 "speed": 5.0
 } ]
 
@@ -267,6 +301,14 @@ position = Vector2( -120.114, -214.61 )
 scale = Vector2( 0.35, 0.35 )
 frames = SubResource( 6 )
 animation = "available"
+_sections_unfolded = [ "Transform" ]
+
+[node name="AttackPowerIcon" type="AnimatedSprite" parent="." index="14"]
+
+visible = false
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 7 )
+animation = "1"
 _sections_unfolded = [ "Transform" ]
 
 
