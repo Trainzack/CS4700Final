@@ -19,7 +19,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Elephant" index="0" instance=ExtResource( 1 )]
+[node name="Elephant" instance=ExtResource( 1 )]
 
 type = "elephant"
 water_allowed = true
