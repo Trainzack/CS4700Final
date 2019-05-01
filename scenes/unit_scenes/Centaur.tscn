@@ -21,7 +21,7 @@ animations = [ {
 
 [node name="Centaur" instance=ExtResource( 1 )]
 
-max_health = 5
+max_health = 7
 type = "centaur"
 wall_allowed = true
 attack_power = 2
