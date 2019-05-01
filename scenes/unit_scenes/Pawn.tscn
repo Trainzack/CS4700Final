@@ -22,7 +22,7 @@ animations = [ {
 
 [node name="Pawn" instance=ExtResource( 1 )]
 
-max_health = 1
+max_health = 2
 type = "pawn"
 
 [node name="UnitSprite" parent="." index="0"]

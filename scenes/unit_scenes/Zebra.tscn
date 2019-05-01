@@ -19,7 +19,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Zebra" index="0" instance=ExtResource( 1 )]
+[node name="Zebra" instance=ExtResource( 1 )]
 
 type = "zebra"
 wall_allowed = true

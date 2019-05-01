@@ -47,7 +47,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=3]
 
 animations = [ {
 "frames": [  ],
@@ -61,7 +61,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=4]
 
 animations = [ {
 "frames": [  ],
@@ -75,7 +75,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=5]
 
 animations = [ {
 "frames": [  ],
@@ -89,7 +89,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=6]
 
 animations = [ {
 "frames": [  ],
@@ -103,12 +103,12 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="ConvexPolygonShape2D" id=6]
+[sub_resource type="ConvexPolygonShape2D" id=7]
 
 custom_solver_bias = 0.0
 points = PoolVector2Array( -80, -18, 0, -79, 80, -18, 0, 41 )
 
-[node name="Tile" type="Area2D"]
+[node name="Tile" type="Area2D" index="0"]
 
 scale = Vector2( 0.7, 0.7 )
 input_pickable = true
@@ -139,35 +139,35 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="SubtleMovementHighlight" type="AnimatedSprite" parent="TileSprite" index="1"]
 
-modulate = Color( 1, 1, 1, 0.541412 )
-scale = Vector2( 1, 1 )
-frames = SubResource( 7 )
+modulate = Color( 1, 1, 1, 0.33702 )
+frames = SubResource( 3 )
 animation = "none"
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 [node name="Outline" type="AnimatedSprite" parent="TileSprite" index="2"]
 
 z_index = 1
-frames = SubResource( 3 )
+frames = SubResource( 4 )
 animation = "not_hovered"
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="AttackHighlight" type="AnimatedSprite" parent="TileSprite" index="3"]
 
-frames = SubResource( 4 )
+frames = SubResource( 5 )
 animation = "none"
 _sections_unfolded = [ "Z Index" ]
 
 [node name="SubtleAttackHighlight" type="AnimatedSprite" parent="TileSprite" index="4"]
 
+modulate = Color( 1, 1, 1, 0.690588 )
 self_modulate = Color( 1, 1, 1, 0.535922 )
-frames = SubResource( 5 )
+frames = SubResource( 6 )
 animation = "none"
 _sections_unfolded = [ "Visibility", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="SpawnTimer" type="Timer" parent="." index="2"]
 
