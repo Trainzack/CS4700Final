@@ -43,11 +43,12 @@ func _ready():
 	health_bar.rect_size.x = max_health * units_per_health
 	# Recenter the health bar
 	health_bar.rect_position.x = max_health * units_per_health * -0.5
+	health_bar.show_behind_parent = false
 	# Place attack and move icons net to health bar
-	attack_icon.position.y = health_bar.rect_position.y
-	movement_icon.position.y = health_bar.rect_position.y
+	attack_icon.position.y = health_bar.rect_position.y + 15
+	movement_icon.position.y = health_bar.rect_position.y + 15
 	attack_icon.position.x = health_bar.rect_position.x - 20
-	movement_icon.position.x = attack_icon.position.x - 35
+	movement_icon.position.x = attack_icon.position.x
 	
 	hide_action_icons()
 	pass
@@ -117,14 +118,16 @@ func get_team():
 func set_unselected():
 	$SelectorIcon.animation = "unselected"
 	has_focus = false
-	health_bar.hide()
+	hide_health()
+	hide_action_icons()
 
 func set_selected():
 	has_focus = true
 	$SelectorIcon.animation = "selected"
 	$SelectorIcon.play()
 	$SelectSound.play()
-	health_bar.show()
+	display_health()
+	display_action_icons()
 
 func set_health(h):
 	current_health = h
