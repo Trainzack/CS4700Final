@@ -4,17 +4,13 @@
 
 [node name="WaterTile" instance=ExtResource( 1 )]
 
-z_index = -5
+z_index = -2
 is_water = true
 
 [node name="TileSprite" parent="." index="0"]
 
 self_modulate = Color( 0.0078125, 0, 1, 1 )
 position = Vector2( 0, 36 )
-
-[node name="Outline" parent="TileSprite" index="1"]
-
-position = Vector2( 0, -29.5 )
 
 [node name="PlacementPosition" parent="." index="3"]
 

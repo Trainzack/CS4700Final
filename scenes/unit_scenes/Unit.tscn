@@ -10,10 +10,10 @@
 [ext_resource path="res://sound/fall_splash_03.wav" type="AudioStream" id=8]
 [ext_resource path="res://sound/fade_03.wav" type="AudioStream" id=9]
 [ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=10]
-[ext_resource path="res://art/ui/UnitMoveUnavailable.png" type="Texture" id=11]
-[ext_resource path="res://art/ui/UnitMoveAvailable.png" type="Texture" id=12]
-[ext_resource path="res://art/ui/UnitAttackUnavailable.png.import.png" type="Texture" id=13]
-[ext_resource path="res://art/ui/UnitAttackAvailable.png" type="Texture" id=14]
+[ext_resource path="res://art/tiles/UIMovementUnavailable.png" type="Texture" id=11]
+[ext_resource path="res://art/tiles/UIMovementAvailable.png" type="Texture" id=12]
+[ext_resource path="res://art/tiles/UIAttackUnavailable.png" type="Texture" id=13]
+[ext_resource path="res://art/tiles/UIAttackAvailable.png" type="Texture" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -123,7 +123,6 @@ animations = [ {
 [node name="Unit" type="Area2D"]
 
 scale = Vector2( 0.5, 0.5 )
-z_index = 30
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -209,7 +208,7 @@ value = 1.0
 exp_edit = false
 rounded = false
 percent_visible = false
-_sections_unfolded = [ "Anchor", "Focus", "Mouse", "Percent", "Rect", "custom_styles" ]
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Percent", "Rect", "Size Flags", "Theme", "Visibility", "custom_styles" ]
 
 [node name="DieSound" type="AudioStreamPlayer" parent="." index="7"]
 
@@ -256,14 +255,18 @@ autostart = false
 
 visible = false
 position = Vector2( -84.8614, -213.743 )
+scale = Vector2( 0.35, 0.35 )
 frames = SubResource( 5 )
 animation = "available"
+_sections_unfolded = [ "Transform" ]
 
 [node name="AttackAvailability" type="AnimatedSprite" parent="." index="13"]
 
 visible = false
 position = Vector2( -120.114, -214.61 )
+scale = Vector2( 0.35, 0.35 )
 frames = SubResource( 6 )
 animation = "available"
+_sections_unfolded = [ "Transform" ]
 
 

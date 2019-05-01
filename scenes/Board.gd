@@ -55,7 +55,7 @@ func place_tile(position, tile):
 		else:
 			tile.set_tile_type("black")
 		tile.position = Vector2(starting_x + position.x*iso_x_offset + position.y*iso_x_offset, starting_y - position.y*iso_y_offset + position.x*iso_y_offset)
-		tile.z_index = tile.z_index + (board_y_size - position.y)
+		tile.z_index = tile.z_index - position.y*2 + position.x*2
 		tile.connect("mouse_entered", self, "process_mouse_enter", [position.x,position.y])
 		tile.connect("mouse_exited", self, "process_mouse_exit", [position.x,position.y])
 		tile.connect("clicked", self, "on_click", [position.x,position.y])
@@ -88,7 +88,7 @@ func place_unit(placed_unit, gridX, gridY):
 	if(!boardArray[gridX][gridY].is_occupied()):
 		boardArray[gridX][gridY].set_occupied(true)
 		placed_unit.position = boardArray[gridX][gridY].get_placement_position().get_global_transform().get_origin()
-		placed_unit.z_index = 9 + boardArray[gridX][gridY].z_index
+		placed_unit.z_index = 2 + boardArray[gridX][gridY].z_index
 		add_child(placed_unit)
 		unitArray[gridX][gridY] = placed_unit
 	else:
@@ -121,6 +121,21 @@ func on_click(gridX,gridY):
 	else:
 		reset_tiles()
 		select_unit(gridX,gridY)
+
+func select_ai_unit(unit):
+	selected_unit.set_unselected()
+	for i in range(0,8):
+		for j in range(0,8):
+			if unit == unitArray[i][j]:
+				#currently_clicked_unit = unitArray[i][j]
+				selected_unit = unitArray[i][j]
+				selected_unit.set_selected()
+				selected_unit_coordinate = Vector2(i,j)
+				emit_signal("ally_unit_selected")
+				if selected_unit.has_attacked:
+					emit_signal("ally_has_attacked")
+				if selected_unit.has_moved:
+					emit_signal("ally_has_moved")
 
 func select_unit(gridX,gridY):
 	selected_unit.set_unselected()
@@ -171,7 +186,7 @@ func process_moves(unit_moves, unit, gridX, gridY, move_type):
 			count = max(board_y_size, board_x_size)
 		# print(count)
 		for d in directions:
-			
+			var mode = "active"
 			var dx = atom.x
 			var dy = atom.y
 			if d[2]:
@@ -188,15 +203,20 @@ func process_moves(unit_moves, unit, gridX, gridY, move_type):
 				# Get the tile we are currently looking at
 				var tile = get_tile(position)
 				if move_type == "attack":
-					if unit.can_attack(get_unit(position)):
+					if unit.can_attack(get_unit(position)) and mode == "active":
 						possible_positions.append(position)
 					else:
 						subtle_highlight_positions.append(position)
 				# We do the pass through check after the attack check, as otherwise the check would block us from attacking pieces
 				if not unit.can_pass_through(tile, move_type):
-					break
-				if move_type == "movement" and unit.can_occupy(tile):
-					possible_positions.append(position)
+					mode = "passive"
+					#break
+				if move_type == "movement":
+					if unit.can_occupy(tile) and mode == "active":
+						possible_positions.append(position)
+					else:
+						subtle_highlight_positions.append(position)
+				
 			
 		highlight_tiles(possible_positions, move_type)
 		highlight_tiles(subtle_highlight_positions, move_type + "_subtle")
@@ -211,6 +231,8 @@ func highlight_tiles(possible_positions,atom_type):
 				boardArray[tile_coordinate.x][tile_coordinate.y].set_attack_option()
 			elif atom_type == "attack_subtle":
 				boardArray[tile_coordinate.x][tile_coordinate.y].set_subtle_attack_option()
+			elif atom_type == "movement_subtle":
+				boardArray[tile_coordinate.x][tile_coordinate.y].set_subtle_movement_option()
 
 #Change this to do something useful for when the mouse enters a tile
 #Currently highlights the currently moused over tile
@@ -225,7 +247,7 @@ func process_mouse_enter(gridX,gridY):
 func process_mouse_exit(gridX,gridY):
 	if !unitArray[gridX][gridY].has_focus:
 		unitArray[gridX][gridY].hide_health()
-	unitArray[gridX][gridY].hide_action_icons()
+		unitArray[gridX][gridY].hide_action_icons()
 	boardArray[gridX][gridY].toggle_outline()
 
 func reset_tiles():
@@ -257,8 +279,11 @@ func move_unit(startingX,startingY,endX,endY):
 	boardArray[endX][endY].set_occupied(true)
 	
 	#Set variables and send signals indicating this unit has moved.
-	selected_unit.expend_movement()
+	unit_to_move.expend_movement()
 	selected_unit_coordinate = Vector2(endX,endY)
+	unit_to_move.z_index = 2 + boardArray[endX][endY].z_index
+	unit_to_move.print_info()
+	print(unit_to_move.z_index)
 	emit_signal("ally_has_moved")
 	unit_to_move.moved()
 

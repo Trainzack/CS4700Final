@@ -26,9 +26,9 @@ func _ready():
 
 #_process is used to wait for user input from the keyboard
 func _process(delta):
-	if Input.is_action_just_pressed("select_move") and commands.get_node("MovementButton").disabled == false:
+	if Input.is_action_just_pressed("select_move") and commands.get_node("MovementButton").disabled == false and commands.visible == true:
 		emit_movement_pressed()
-	if Input.is_action_just_pressed("select_attack") and commands.get_node("AttacksButton").disabled == false:
+	if Input.is_action_just_pressed("select_attack") and commands.get_node("AttacksButton").disabled == false and commands.visible == true:
 		emit_attack_pressed()
 	if Input.is_action_just_pressed("end_turn"):
 		print("yeet")
