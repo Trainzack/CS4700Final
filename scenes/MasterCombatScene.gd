@@ -1,6 +1,7 @@
 extends Node
 
 var encounter_scene = preload("res://scenes/Encounter.tscn")
+var pawn_scene = preload("res://scenes/unit_scenes/Knight.tscn")
 
 func _ready():
 	$TestBoard.connect("ally_unit_selected",self,"display_options")
@@ -15,6 +16,20 @@ func _ready():
 #generates the board's encounter.
 func set_encounter(encounter):
 	$TestBoard.create_board(encounter)
+	#var pawn1 = pawn_scene.instance()
+	#var pawn2 = pawn_scene.instance()
+	#pawn1.set_black()
+	#pawn2.set_black()
+	#$TestBoard.switch_acting_team()
+	#$UIManager.switch_turn_icon()
+	#for i in range(0,8,2):
+	#	for j in range(0,8,2):
+	#		$TestBoard.place_unit(pawn_scene.instance(),i,j)
+	#$TestBoard.place_unit(pawn1,0,1)
+	#$TestBoard.place_unit(pawn2,4,6)
+	#$TestBoard.select_ai_unit(pawn1)
+	#$TestBoard.select_ai_unit(pawn1)
+	
 
 func display_options():
 	$UIManager.reset_command_states()

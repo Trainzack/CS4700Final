@@ -4,6 +4,7 @@ export var highlight_type = "none"
 onready var movement_highlight = get_node("TileSprite").get_node("MovementHighlight")
 onready var attack_highlight = get_node("TileSprite").get_node("AttackHighlight")
 onready var subtle_attack_highlight = get_node("TileSprite").get_node("SubtleAttackHighlight")
+onready var subtle_movement_highlight = get_node("TileSprite").get_node("SubtleMovementHighlight")
 onready var outline = get_node("TileSprite").get_node("Outline")
 onready var placement_position = get_node("PlacementPosition")
 var can_move_to = false
@@ -40,6 +41,10 @@ func set_movement_option():
 		movement_highlight.play()
 		can_move_to = true
 
+func set_subtle_movement_option():
+	subtle_movement_highlight.animation = "movement"
+	subtle_movement_highlight.play()
+
 func toggle_outline():
 	if outline.animation == "not_hovered":
 		outline.animation = "hovered"
@@ -50,6 +55,7 @@ func deactivate():
 	movement_highlight.animation = "none"
 	attack_highlight.animation = "none"
 	subtle_attack_highlight.animation = "none"
+	subtle_movement_highlight.animation = "none"
 	can_move_to = false
 	can_attack_space = false
 

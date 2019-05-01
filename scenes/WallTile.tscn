@@ -1,17 +1,43 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Tile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://art/tiles/WhiteTileCube.png" type="Texture" id=2]
+[ext_resource path="res://art/tiles/BlackTileCube.png" type="Texture" id=3]
+[ext_resource path="res://scenes/TileSprite2.gd" type="Script" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "white",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "black",
+"speed": 5.0
+} ]
 
 [node name="WallTile" instance=ExtResource( 1 )]
 
-z_index = 9
+z_index = 2
 is_wall = true
 
 [node name="TileSprite" parent="." index="0"]
 
 position = Vector2( 0, -36 )
 
-[node name="PlacementPosition" parent="." index="3"]
+[node name="TileSprite2" type="AnimatedSprite" parent="." index="1"]
+
+scale = Vector2( 1, 1 )
+z_index = -2
+frames = SubResource( 1 )
+animation = "white"
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="PlacementPosition" parent="." index="4"]
 
 position = Vector2( 0, -36 )
 

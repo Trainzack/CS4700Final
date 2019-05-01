@@ -29,6 +29,7 @@ var units_per_health = 32
 onready var health_bar = $HealthBar
 onready var movement_icon = $MoveAvailability
 onready var attack_icon = $AttackAvailability
+onready var power_icon = $AttackPowerIcon
 onready var selector_icon = $SelectorIcon
 onready var damage_timer = $DamageTimer
 onready var display_health_timer = $DisplayHealthTimer
@@ -43,13 +44,18 @@ func _ready():
 	health_bar.rect_size.x = max_health * units_per_health
 	# Recenter the health bar
 	health_bar.rect_position.x = max_health * units_per_health * -0.5
+	health_bar.show_behind_parent = false
 	# Place attack and move icons net to health bar
-	attack_icon.position.y = health_bar.rect_position.y
-	movement_icon.position.y = health_bar.rect_position.y
+	attack_icon.position.y = health_bar.rect_position.y + 15
+	movement_icon.position.y = health_bar.rect_position.y + 15
 	attack_icon.position.x = health_bar.rect_position.x - 20
-	movement_icon.position.x = attack_icon.position.x - 35
+	movement_icon.position.x = attack_icon.position.x
 	
-	hide_action_icons()
+	power_icon.position.y = attack_icon.position.y
+	power_icon.position.x = movement_icon.position.x - 40
+	power_icon.animation = str(attack_power)
+	hide_stats()
+	#hide_action_icons()
 	pass
 
 func get_attack_power():
@@ -117,14 +123,17 @@ func get_team():
 func set_unselected():
 	$SelectorIcon.animation = "unselected"
 	has_focus = false
-	health_bar.hide()
+	hide_health()
+	hide_action_icons()
 
 func set_selected():
-	has_focus = true
-	$SelectorIcon.animation = "selected"
-	$SelectorIcon.play()
-	$SelectSound.play()
-	health_bar.show()
+	if not is_dead():
+		has_focus = true
+		$SelectorIcon.animation = "selected"
+		$SelectorIcon.play()
+		$SelectSound.play()
+		display_health()
+		display_action_icons()
 
 func set_health(h):
 	current_health = h
@@ -204,6 +213,14 @@ func damage_hide_health():
 	has_focus = false
 	health_bar.hide()
 
+func display_stats():
+	display_health()
+	display_action_icons()
+
+func hide_stats():
+	hide_health()
+	hide_action_icons()
+
 func display_health():
 	health_bar.show()
 
@@ -213,10 +230,12 @@ func hide_health():
 func display_action_icons():
 	attack_icon.show()
 	movement_icon.show()
+	power_icon.show()
 
 func hide_action_icons():
 	attack_icon.hide()
 	movement_icon.hide()
+	power_icon.hide()
 
 func expend_attack():
 	has_attacked = true
