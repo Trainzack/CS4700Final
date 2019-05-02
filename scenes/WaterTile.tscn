@@ -9,8 +9,12 @@ is_water = true
 
 [node name="TileSprite" parent="." index="0"]
 
-self_modulate = Color( 0.0078125, 0, 1, 1 )
+self_modulate = Color( 0, 0.601563, 1, 1 )
 position = Vector2( 0, 36 )
+
+[node name="SubtleAttackHighlight" parent="TileSprite" index="3"]
+
+self_modulate = Color( 1, 1, 1, 1 )
 
 [node name="PlacementPosition" parent="." index="3"]
 

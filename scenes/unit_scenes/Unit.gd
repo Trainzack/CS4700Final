@@ -2,6 +2,8 @@ extends Area2D
 export var max_health = 3
 export var type = "abstract_unit"
 
+export(Material) var highlight_material = null
+
 # Whether this piece can move on land
 export var land_allowed = true
 # Whether this piece can move on water
@@ -125,6 +127,7 @@ func set_unselected():
 	has_focus = false
 	hide_health()
 	hide_action_icons()
+	$UnitSprite.material = null
 
 func set_selected():
 	if not is_dead():
@@ -134,6 +137,7 @@ func set_selected():
 		$SelectSound.play()
 		display_health()
 		display_action_icons()
+		$UnitSprite.material = highlight_material
 
 func set_health(h):
 	current_health = h

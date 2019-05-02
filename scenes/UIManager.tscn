@@ -44,14 +44,14 @@ animations = [ {
 "name": "black_turn_transition",
 "speed": 35.0
 }, {
-"frames": [ ExtResource( 27 ) ],
-"loop": true,
-"name": "black_turn",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 20 ) ],
 "loop": true,
 "name": "white_turn",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 27 ) ],
+"loop": true,
+"name": "black_turn",
 "speed": 5.0
 } ]
 

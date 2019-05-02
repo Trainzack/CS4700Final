@@ -19,7 +19,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Commoner" instance=ExtResource( 1 )]
+[node name="Commoner" index="0" instance=ExtResource( 1 )]
 
 type = "commoner"
 
