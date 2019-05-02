@@ -22,9 +22,8 @@ func _process(delta):
 #Cycles through the acting army's units and selects them
 func cycle_select_unit():
 	$TestBoard.select_unit_by_object(acting_side_units[acting_unit_index])
-	acting_unit_index += 1
-	if acting_unit_index >= acting_side_units.size():
-		acting_unit_index = 0
+	acting_unit_index = (acting_unit_index + 1) % acting_side_units.size()
+	
 
 #generates the board's encounter.
 #Also adds the inital acting side's units to our array
@@ -77,3 +76,4 @@ func end_turn():
 	$TestBoard.reset_tiles()
 	$TestBoard.switch_acting_team()
 	acting_side_units = $TestBoard.get_units_by_team($TestBoard.get_acting_team())
+	acting_unit_index = 0
