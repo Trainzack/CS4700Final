@@ -2,6 +2,8 @@ extends Node
 
 var encounter_scene = preload("res://scenes/Encounter.tscn")
 var pawn_scene = preload("res://scenes/unit_scenes/Knight.tscn")
+var acting_side_units = []
+var acting_unit_index = 0
 
 func _ready():
 	$TestBoard.connect("ally_unit_selected",self,"display_options")
@@ -13,9 +15,23 @@ func _ready():
 	$UIManager.connect("end_turn_pressed",self,"end_turn")
 	$UIManager.connect("exit_combat",get_parent(),"end_combat")
 
+func _process(delta):
+	if Input.is_action_just_pressed("select_next_unit"):
+		cycle_select_unit()
+
+#Cycles through the acting army's units and selects them
+func cycle_select_unit():
+	$TestBoard.select_unit_by_object(acting_side_units[acting_unit_index])
+	acting_unit_index += 1
+	if acting_unit_index >= acting_side_units.size():
+		acting_unit_index = 0
+
 #generates the board's encounter.
+#Also adds the inital acting side's units to our array
 func set_encounter(encounter):
 	$TestBoard.create_board(encounter)
+	acting_side_units = $TestBoard.get_units_by_team($TestBoard.get_acting_team())
+	
 	#var pawn1 = pawn_scene.instance()
 	#var pawn2 = pawn_scene.instance()
 	#pawn1.set_black()
@@ -29,7 +45,6 @@ func set_encounter(encounter):
 	#$TestBoard.place_unit(pawn2,4,6)
 	#$TestBoard.select_ai_unit(pawn1)
 	#$TestBoard.select_ai_unit(pawn1)
-	
 
 func display_options():
 	$UIManager.reset_command_states()
@@ -53,6 +68,7 @@ func display_moves():
 
 #End the turn resetting the moves of the units and states of the tiles
 #Then tells the board to switch the acting side as well as the UI.
+#Also updates the array of units for the upcoming acting side
 func end_turn():
 	hide_options()
 	print("end turn reached")
@@ -60,3 +76,4 @@ func end_turn():
 	$TestBoard.reset_unit_moves()
 	$TestBoard.reset_tiles()
 	$TestBoard.switch_acting_team()
+	acting_side_units = $TestBoard.get_units_by_team($TestBoard.get_acting_team())

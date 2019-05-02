@@ -9,7 +9,7 @@ var encounter_scene = preload("res://scenes/Encounter.tscn")
 
 #offsets used to populate the board. Values come from testing different positions
 var starting_x = 300
-var starting_y = 370
+var starting_y = 400
 var iso_x_offset = 83*0.7
 var iso_y_offset = 63*0.7
 var y3D_offset = -36*0.7
@@ -36,11 +36,25 @@ signal ally_has_attacked
 func _ready():
 	add_child(dummy_unit)
 
+func get_acting_team():
+	return acting_team
+
 func get_tile(position):
 	return boardArray[position.x][position.y]
-	
+
+#Returns the unit at a given position
 func get_unit(position):
 	return unitArray[position.x][position.y]
+
+#Returns an array of the alive units on the board that are on a team
+#Can never return an abstract unit because they don't have a team value
+func get_units_by_team(team):
+	var desired_units_list = []
+	for i in range(0,8):
+		for j in range(0,8):
+			if unitArray[i][j].get_team() == team and not unitArray[i][j].is_dead():
+				desired_units_list.append(unitArray[i][j])
+	return desired_units_list
 
 # Internal method for placing a particular tile in a particular place
 func place_tile(position, tile):
@@ -122,12 +136,13 @@ func on_click(gridX,gridY):
 		reset_tiles()
 		select_unit(gridX,gridY)
 
-func select_ai_unit(unit):
-	selected_unit.set_unselected()
+#Selects a unit on the grid if it matches with the unit object passed in
+func select_unit_by_object(unit):
+	unselect_previously_selected_unit()
+	#Searc the unit array for the given object
 	for i in range(0,8):
 		for j in range(0,8):
-			if unit == unitArray[i][j]:
-				#currently_clicked_unit = unitArray[i][j]
+			if unit == unitArray[i][j] and unit.get_team() == acting_team and not unit.is_dead():
 				selected_unit = unitArray[i][j]
 				selected_unit.set_selected()
 				selected_unit_coordinate = Vector2(i,j)
@@ -137,10 +152,11 @@ func select_ai_unit(unit):
 				if selected_unit.has_moved:
 					emit_signal("ally_has_moved")
 
+#Selects the unit at the given coordinate on the grid
 func select_unit(gridX,gridY):
 	selected_unit.set_unselected()
 	var currently_clicked_unit = unitArray[gridX][gridY]
-	if currently_clicked_unit.get_type() != "abstract_unit" and currently_clicked_unit.get_team() == acting_team:
+	if currently_clicked_unit.get_type() != "abstract_unit" and currently_clicked_unit.get_team() == acting_team and not currently_clicked_unit.is_dead():
 		selected_unit = currently_clicked_unit
 		selected_unit.set_selected()
 		selected_unit_coordinate = Vector2(gridX,gridY)
@@ -149,11 +165,15 @@ func select_unit(gridX,gridY):
 			emit_signal("ally_has_attacked")
 		if currently_clicked_unit.has_moved:
 			emit_signal("ally_has_moved")
-		
 	else:
 		emit_signal("dummy_unit_selected")
 		selected_unit = dummy_unit
 		selected_unit_coordinate = Vector2(-1,-1)
+
+#Unselects the previous selected and resets tile highlights
+func unselect_previously_selected_unit():
+	selected_unit.set_unselected()
+	reset_tiles()
 
 func show_movement_options():
 	reset_tiles()
@@ -240,14 +260,14 @@ func process_mouse_enter(gridX,gridY):
 	if(unitArray[gridX][gridY].get_type() != "abstract_unit"):
 		unitArray[gridX][gridY].display_health()
 	if unitArray[gridX][gridY].get_team() == acting_team:
-		unitArray[gridX][gridY].display_action_icons()
+		if not unitArray[gridX][gridY].is_dead():
+			unitArray[gridX][gridY].display_action_icons()
 	boardArray[gridX][gridY].toggle_outline()
 
 #Change this to do something useful for when the mouse exits a tile
 func process_mouse_exit(gridX,gridY):
 	if !unitArray[gridX][gridY].has_focus:
-		unitArray[gridX][gridY].hide_health()
-		unitArray[gridX][gridY].hide_action_icons()
+		unitArray[gridX][gridY].hide_stats()
 	boardArray[gridX][gridY].toggle_outline()
 
 func reset_tiles():
