@@ -127,13 +127,11 @@ func set_unselected():
 	hide_action_icons()
 
 func set_selected():
-	if not is_dead():
-		has_focus = true
-		$SelectorIcon.animation = "selected"
-		$SelectorIcon.play()
-		$SelectSound.play()
-		display_health()
-		display_action_icons()
+	has_focus = true
+	$SelectorIcon.animation = "selected"
+	$SelectorIcon.play()
+	$SelectSound.play()
+	display_stats()
 
 func set_health(h):
 	current_health = h
@@ -215,7 +213,8 @@ func damage_hide_health():
 
 func display_stats():
 	display_health()
-	display_action_icons()
+	if not is_dead():
+		display_action_icons()
 
 func hide_stats():
 	hide_health()

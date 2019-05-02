@@ -16,9 +16,9 @@
 [ext_resource path="res://art/tiles/UIAttackAvailable.png" type="Texture" id=14]
 [ext_resource path="res://art/ui/3AttackPower.PNG" type="Texture" id=15]
 [ext_resource path="res://art/ui/1AttackPower.PNG" type="Texture" id=16]
-[ext_resource path="res://art/ui/2AttackPower.PNG" type="Texture" id=17]
-[ext_resource path="res://art/ui/5AttackPower.PNG" type="Texture" id=18]
-[ext_resource path="res://art/ui/4AttackPower.PNG" type="Texture" id=19]
+[ext_resource path="res://art/ui/4AttackPower.PNG" type="Texture" id=17]
+[ext_resource path="res://art/ui/2AttackPower.PNG" type="Texture" id=18]
+[ext_resource path="res://art/ui/5AttackPower.PNG" type="Texture" id=19]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -140,17 +140,17 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 17 ) ],
 "loop": true,
-"name": "2",
+"name": "4",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 18 ) ],
 "loop": true,
-"name": "5",
+"name": "2",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 19 ) ],
 "loop": true,
-"name": "4",
+"name": "5",
 "speed": 5.0
 } ]
 
