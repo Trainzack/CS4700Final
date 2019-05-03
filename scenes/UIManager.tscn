@@ -13,14 +13,14 @@
 [ext_resource path="res://art/ui/EndTurnButtonClicked.png" type="Texture" id=11]
 [ext_resource path="res://art/ui/EndTurnButtonHovered.png" type="Texture" id=12]
 [ext_resource path="res://fonts/font.tres" type="DynamicFont" id=13]
-[ext_resource path="res://art/ui/BlackTurnUITransition1.png" type="Texture" id=14]
-[ext_resource path="res://art/ui/BlackTurnUITransition2.png" type="Texture" id=15]
-[ext_resource path="res://art/ui/BlackTurnUITransition3.png" type="Texture" id=16]
-[ext_resource path="res://art/ui/BlackTurnUITransition4.png" type="Texture" id=17]
-[ext_resource path="res://art/ui/BlackTurnUITransition5.png" type="Texture" id=18]
-[ext_resource path="res://art/ui/BlackTurnUITransition6.png" type="Texture" id=19]
-[ext_resource path="res://art/ui/WhiteTurnUI.png" type="Texture" id=20]
-[ext_resource path="res://art/ui/BlackTurnUI.png" type="Texture" id=21]
+[ext_resource path="res://art/ui/WhiteTurnUI.png" type="Texture" id=14]
+[ext_resource path="res://art/ui/BlackTurnUI.png" type="Texture" id=15]
+[ext_resource path="res://art/ui/BlackTurnUITransition1.png" type="Texture" id=16]
+[ext_resource path="res://art/ui/BlackTurnUITransition2.png" type="Texture" id=17]
+[ext_resource path="res://art/ui/BlackTurnUITransition3.png" type="Texture" id=18]
+[ext_resource path="res://art/ui/BlackTurnUITransition4.png" type="Texture" id=19]
+[ext_resource path="res://art/ui/BlackTurnUITransition5.png" type="Texture" id=20]
+[ext_resource path="res://art/ui/BlackTurnUITransition6.png" type="Texture" id=21]
 [ext_resource path="res://art/ui/WhiteTurnUITransition1.png" type="Texture" id=22]
 [ext_resource path="res://art/ui/WhiteTurnUITransition2.png" type="Texture" id=23]
 [ext_resource path="res://art/ui/WhiteTurnUITransition3.png" type="Texture" id=24]
@@ -34,22 +34,22 @@
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "white_turn_transition",
-"speed": 35.0
-}, {
-"frames": [ ExtResource( 20 ) ],
+"frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "white_turn",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 21 ) ],
+"frames": [ ExtResource( 15 ) ],
 "loop": true,
 "name": "black_turn",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 21 ) ],
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "white_turn_transition",
+"speed": 35.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 15 ) ],
 "loop": true,
 "name": "black_turn_transition",
 "speed": 35.0
