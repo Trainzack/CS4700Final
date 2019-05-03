@@ -1,26 +1,25 @@
 [gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scenes/unit_scenes/Unit.gd" type="Script" id=1]
-[ext_resource path="res://shaders/highlight_material.tres" type="Material" id=2]
-[ext_resource path="res://art/ui/SelectorMarker.png" type="Texture" id=3]
-[ext_resource path="res://art/ui/SelectorMarker3.png" type="Texture" id=4]
-[ext_resource path="res://art/ui/SelectorMarker2.png" type="Texture" id=5]
-[ext_resource path="res://art/ui/SelectorMarker4.png" type="Texture" id=6]
-[ext_resource path="res://sound/tap_13.wav" type="AudioStream" id=7]
-[ext_resource path="res://sound/low_tap_02.wav" type="AudioStream" id=8]
-[ext_resource path="res://fonts/font.tres" type="DynamicFont" id=9]
-[ext_resource path="res://sound/fall_splash_03.wav" type="AudioStream" id=10]
-[ext_resource path="res://sound/fade_03.wav" type="AudioStream" id=11]
-[ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=12]
-[ext_resource path="res://art/ui/UnitMoveUnavailable.png" type="Texture" id=13]
-[ext_resource path="res://art/ui/UnitMoveAvailable.png" type="Texture" id=14]
-[ext_resource path="res://art/ui/UnitAttackUnavailable.png" type="Texture" id=15]
-[ext_resource path="res://art/ui/UnitAttackAvailable.png" type="Texture" id=16]
-[ext_resource path="res://art/ui/3AttackPower.PNG" type="Texture" id=17]
-[ext_resource path="res://art/ui/2AttackPower.PNG" type="Texture" id=18]
-[ext_resource path="res://art/ui/1AttackPower.PNG" type="Texture" id=19]
-[ext_resource path="res://art/ui/4AttackPower.PNG" type="Texture" id=20]
-[ext_resource path="res://art/ui/5AttackPower.PNG" type="Texture" id=21]
+
+[ext_resource path="res://art/ui/SelectorMarker.png" type="Texture" id=2]
+[ext_resource path="res://art/ui/SelectorMarker3.png" type="Texture" id=3]
+[ext_resource path="res://art/ui/SelectorMarker2.png" type="Texture" id=4]
+[ext_resource path="res://art/ui/SelectorMarker4.png" type="Texture" id=5]
+[ext_resource path="res://sound/tap_13.wav" type="AudioStream" id=6]
+[ext_resource path="res://sound/low_tap_02.wav" type="AudioStream" id=7]
+[ext_resource path="res://sound/fall_splash_03.wav" type="AudioStream" id=8]
+[ext_resource path="res://sound/fade_03.wav" type="AudioStream" id=9]
+[ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=10]
+[ext_resource path="res://art/tiles/UIMovementAvailable.png" type="Texture" id=11]
+[ext_resource path="res://art/tiles/UIMovementUnavailable.png" type="Texture" id=12]
+[ext_resource path="res://art/tiles/UIAttackAvailable.png" type="Texture" id=13]
+[ext_resource path="res://art/tiles/UIAttackUnavailable.png" type="Texture" id=14]
+[ext_resource path="res://art/ui/3AttackPower.PNG" type="Texture" id=15]
+[ext_resource path="res://art/ui/5AttackPower.PNG" type="Texture" id=16]
+[ext_resource path="res://art/ui/2AttackPower.PNG" type="Texture" id=17]
+[ext_resource path="res://art/ui/1AttackPower.PNG" type="Texture" id=18]
+[ext_resource path="res://art/ui/4AttackPower.PNG" type="Texture" id=19]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -104,12 +103,12 @@ _sections_unfolded = [ "Border", "Border Width", "Corner Radius" ]
 animations = [ {
 "frames": [ ExtResource( 13 ) ],
 "loop": true,
-"name": "unavailable",
+"name": "available",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
-"name": "available",
+"name": "unavailable",
 "speed": 5.0
 } ]
 
@@ -118,12 +117,12 @@ animations = [ {
 animations = [ {
 "frames": [ ExtResource( 15 ) ],
 "loop": true,
-"name": "unavailable",
+"name": "available",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 16 ) ],
 "loop": true,
-"name": "available",
+"name": "unavailable",
 "speed": 5.0
 } ]
 
@@ -137,22 +136,22 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 18 ) ],
 "loop": true,
-"name": "2",
+"name": "5",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 19 ) ],
 "loop": true,
-"name": "1",
+"name": "2",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 20 ) ],
 "loop": true,
-"name": "4",
+"name": "1",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 21 ) ],
 "loop": true,
-"name": "5",
+"name": "4",
 "speed": 5.0
 } ]
 

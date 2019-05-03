@@ -59,7 +59,8 @@ func _ready():
 	power_icon.animation = str(attack_power)
 	hide_stats()
 	#hide_action_icons()
-	pass
+func get_current_health():
+	return current_health
 
 func get_attack_power():
 	return attack_power
@@ -251,3 +252,20 @@ func expend_attack():
 func expend_movement():
 	has_moved = true
 	movement_icon.animation = "unavailable"
+
+func make_full_size():
+	scale.x = 1.0
+	scale.y = 1.0
+
+func can_go_on_water():
+	return water_allowed
+
+func can_go_on_walls():
+	return wall_allowed
+
+func get_sprite_frames():
+	print($UnitSprite.frames)
+	return $UnitSprite.frames
+
+func get_health_bar():
+	return health_bar

@@ -4,16 +4,18 @@ var encounter_scene = preload("res://scenes/Encounter.tscn")
 var pawn_scene = preload("res://scenes/unit_scenes/Knight.tscn")
 var acting_side_units = []
 var acting_unit_index = 0
+onready var board = $TestBoard
+onready var ui_manager = $UIManager
 
 func _ready():
-	$TestBoard.connect("ally_unit_selected",self,"display_options")
-	$TestBoard.connect("dummy_unit_selected",self,"hide_options")
-	$TestBoard.connect("ally_has_moved",self,"disable_movement")
-	$TestBoard.connect("ally_has_attacked",self,"disable_attacks")
-	$UIManager.connect("attack_pressed",self,"display_attacks")
-	$UIManager.connect("movement_pressed",self,"display_moves")
-	$UIManager.connect("end_turn_pressed",self,"end_turn")
-	$UIManager.connect("exit_combat",get_parent(),"end_combat")
+	board.connect("ally_unit_selected",self,"display_options")
+	board.connect("dummy_unit_selected",self,"hide_options")
+	board.connect("ally_has_moved",self,"disable_movement")
+	board.connect("ally_has_attacked",self,"disable_attacks")
+	ui_manager.connect("attack_pressed",self,"display_attacks")
+	ui_manager.connect("movement_pressed",self,"display_moves")
+	ui_manager.connect("end_turn_pressed",self,"end_turn")
+	ui_manager.connect("exit_combat",get_parent(),"end_combat")
 
 func _process(delta):
 	if Input.is_action_just_pressed("select_next_unit"):
@@ -21,9 +23,9 @@ func _process(delta):
 
 #Cycles through the acting army's units and selects them
 func cycle_select_unit():
-	$TestBoard.select_unit_by_object(acting_side_units[acting_unit_index])
+
+	board.select_unit_by_object(acting_side_units[acting_unit_index])
 	acting_unit_index = (acting_unit_index + 1) % acting_side_units.size()
-	
 
 #generates the board's encounter.
 #Also adds the inital acting side's units to our array
@@ -31,16 +33,19 @@ func set_encounter(encounter):
 	$TestBoard.create_board(encounter)
 	acting_side_units = $TestBoard.get_units_by_team($TestBoard.get_acting_team())
 	
-	#var pawn1 = pawn_scene.instance()
+	var pawn1 = pawn_scene.instance()
 	#var pawn2 = pawn_scene.instance()
-	#pawn1.set_black()
+	pawn1.set_white()
 	#pawn2.set_black()
 	#$TestBoard.switch_acting_team()
 	#$UIManager.switch_turn_icon()
 	#for i in range(0,8,2):
 	#	for j in range(0,8,2):
 	#		$TestBoard.place_unit(pawn_scene.instance(),i,j)
-	#$TestBoard.place_unit(pawn1,0,1)
+	$TestBoard.place_unit(pawn1,0,1)
+	var pawn2 = pawn1.duplicate(DUPLICATE_USE_INSTANCING)
+	add_child(pawn2)
+	pawn2.position = Vector2(50,500)
 	#$TestBoard.place_unit(pawn2,4,6)
 	#$TestBoard.select_ai_unit(pawn1)
 	#$TestBoard.select_ai_unit(pawn1)
