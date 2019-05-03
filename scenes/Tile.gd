@@ -5,6 +5,8 @@ onready var movement_highlight = get_node("TileSprite").get_node("MovementHighli
 onready var attack_highlight = get_node("TileSprite").get_node("AttackHighlight")
 onready var subtle_attack_highlight = get_node("TileSprite").get_node("SubtleAttackHighlight")
 onready var subtle_movement_highlight = get_node("TileSprite").get_node("SubtleMovementHighlight")
+onready var unavailable_movement_highlight = get_node("TileSprite").get_node("UnavailableMovementHighlight")
+onready var unavailable_attack_highlight = get_node("TileSprite").get_node("UnavailableAttackHighlight")
 onready var outline = get_node("TileSprite").get_node("Outline")
 onready var placement_position = get_node("PlacementPosition")
 var can_move_to = false
@@ -35,6 +37,10 @@ func set_subtle_attack_option():
 	subtle_attack_highlight.animation = "attack"
 	subtle_attack_highlight.play()
 
+func set_unavailable_attack_option():
+	unavailable_attack_highlight.animation = "attack"
+	unavailable_attack_highlight.play()
+
 func set_movement_option():
 	if occupied == false:
 		movement_highlight.animation = "movement"
@@ -45,6 +51,10 @@ func set_subtle_movement_option():
 	subtle_movement_highlight.animation = "movement"
 	subtle_movement_highlight.play()
 
+func set_unavailable_movement_option():
+	unavailable_movement_highlight.animation = "movement"
+	unavailable_movement_highlight.play()
+
 func toggle_outline():
 	if outline.animation == "not_hovered":
 		outline.animation = "hovered"
@@ -53,9 +63,11 @@ func toggle_outline():
 
 func deactivate():
 	movement_highlight.animation = "none"
+	subtle_movement_highlight.animation = "none"
+	unavailable_movement_highlight.animation = "none"
 	attack_highlight.animation = "none"
 	subtle_attack_highlight.animation = "none"
-	subtle_movement_highlight.animation = "none"
+	unavailable_attack_highlight.animation = "none"
 	can_move_to = false
 	can_attack_space = false
 

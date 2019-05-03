@@ -10,15 +10,15 @@
 [ext_resource path="res://sound/fall_splash_03.wav" type="AudioStream" id=8]
 [ext_resource path="res://sound/fade_03.wav" type="AudioStream" id=9]
 [ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=10]
-[ext_resource path="res://art/tiles/UIMovementUnavailable.png" type="Texture" id=11]
-[ext_resource path="res://art/tiles/UIMovementAvailable.png" type="Texture" id=12]
-[ext_resource path="res://art/tiles/UIAttackUnavailable.png" type="Texture" id=13]
-[ext_resource path="res://art/tiles/UIAttackAvailable.png" type="Texture" id=14]
+[ext_resource path="res://art/tiles/UIMovementAvailable.png" type="Texture" id=11]
+[ext_resource path="res://art/tiles/UIMovementUnavailable.png" type="Texture" id=12]
+[ext_resource path="res://art/tiles/UIAttackAvailable.png" type="Texture" id=13]
+[ext_resource path="res://art/tiles/UIAttackUnavailable.png" type="Texture" id=14]
 [ext_resource path="res://art/ui/3AttackPower.PNG" type="Texture" id=15]
-[ext_resource path="res://art/ui/1AttackPower.PNG" type="Texture" id=16]
-[ext_resource path="res://art/ui/4AttackPower.PNG" type="Texture" id=17]
-[ext_resource path="res://art/ui/2AttackPower.PNG" type="Texture" id=18]
-[ext_resource path="res://art/ui/5AttackPower.PNG" type="Texture" id=19]
+[ext_resource path="res://art/ui/5AttackPower.PNG" type="Texture" id=16]
+[ext_resource path="res://art/ui/2AttackPower.PNG" type="Texture" id=17]
+[ext_resource path="res://art/ui/1AttackPower.PNG" type="Texture" id=18]
+[ext_resource path="res://art/ui/4AttackPower.PNG" type="Texture" id=19]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -102,12 +102,12 @@ _sections_unfolded = [ "Border", "Border Width", "Corner Radius" ]
 animations = [ {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
-"name": "unavailable",
+"name": "available",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
-"name": "available",
+"name": "unavailable",
 "speed": 5.0
 } ]
 
@@ -116,12 +116,12 @@ animations = [ {
 animations = [ {
 "frames": [ ExtResource( 13 ) ],
 "loop": true,
-"name": "unavailable",
+"name": "available",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
-"name": "available",
+"name": "unavailable",
 "speed": 5.0
 } ]
 
@@ -135,22 +135,22 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 16 ) ],
 "loop": true,
-"name": "1",
+"name": "5",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 17 ) ],
 "loop": true,
-"name": "4",
+"name": "2",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 18 ) ],
 "loop": true,
-"name": "2",
+"name": "1",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 19 ) ],
 "loop": true,
-"name": "5",
+"name": "4",
 "speed": 5.0
 } ]
 

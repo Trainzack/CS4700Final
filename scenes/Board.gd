@@ -69,7 +69,7 @@ func place_tile(position, tile):
 		else:
 			tile.set_tile_type("black")
 		tile.position = Vector2(starting_x + position.x*iso_x_offset + position.y*iso_x_offset, starting_y - position.y*iso_y_offset + position.x*iso_y_offset)
-		tile.z_index = tile.z_index - position.y*2 + position.x*2
+		tile.z_index = tile.z_index - position.y*2 + position.x*3
 		tile.connect("mouse_entered", self, "process_mouse_enter", [position.x,position.y])
 		tile.connect("mouse_exited", self, "process_mouse_exit", [position.x,position.y])
 		tile.connect("clicked", self, "on_click", [position.x,position.y])
@@ -190,6 +190,7 @@ func process_moves(unit_moves, unit, gridX, gridY, move_type):
 		var possible_positions = []
 		# The places that will be highlighted subtly
 		var subtle_highlight_positions = []
+		var unavailable_positions = []
 		# This is an array of tuples, of form [x mult, y mult, invert]
 		var directions = []
 		
@@ -225,6 +226,8 @@ func process_moves(unit_moves, unit, gridX, gridY, move_type):
 				if move_type == "attack":
 					if unit.can_attack(get_unit(position)) and mode == "active":
 						possible_positions.append(position)
+					elif mode == "passive":
+						unavailable_positions.append(position)
 					else:
 						subtle_highlight_positions.append(position)
 				# We do the pass through check after the attack check, as otherwise the check would block us from attacking pieces
@@ -235,11 +238,13 @@ func process_moves(unit_moves, unit, gridX, gridY, move_type):
 					if unit.can_occupy(tile) and mode == "active":
 						possible_positions.append(position)
 					else:
-						subtle_highlight_positions.append(position)
+						unavailable_positions.append(position)
 				
 			
 		highlight_tiles(possible_positions, move_type)
 		highlight_tiles(subtle_highlight_positions, move_type + "_subtle")
+		#Don't highlight unavailable tiles for now
+		#highlight_tiles(unavailable_positions, move_type + "_unavailable")
 
 
 func highlight_tiles(possible_positions,atom_type):
@@ -253,6 +258,10 @@ func highlight_tiles(possible_positions,atom_type):
 				boardArray[tile_coordinate.x][tile_coordinate.y].set_subtle_attack_option()
 			elif atom_type == "movement_subtle":
 				boardArray[tile_coordinate.x][tile_coordinate.y].set_subtle_movement_option()
+			elif atom_type == "movement_unavailable":
+				boardArray[tile_coordinate.x][tile_coordinate.y].set_unavailable_movement_option()
+			elif atom_type == "attack_unavailable":
+				boardArray[tile_coordinate.x][tile_coordinate.y].set_unavailable_attack_option()
 
 #Change this to do something useful for when the mouse enters a tile
 #Currently highlights the currently moused over tile
@@ -286,7 +295,7 @@ func move_unit(startingX,startingY,endX,endY):
 	var unit_to_move = unitArray[startingX][startingY]
 	#move the unit in the array
 	unitArray[endX][endY] = unit_to_move
-	unit_to_move.z_index = 9 + boardArray[endX][endY].z_index
+	unit_to_move.z_index = 2 + boardArray[endX][endY].z_index
 	#unit_to_move.z_index = unit_to_move.z_index - (endY - startingY) + (endX - startingX)
 	unitArray[startingX][startingY] = dummy_unit
 	

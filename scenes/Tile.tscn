@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scenes/Tile.gd" type="Script" id=1]
 [ext_resource path="res://art/tiles/WhiteTileCube.png" type="Texture" id=2]
@@ -9,15 +9,16 @@
 [ext_resource path="res://art/tiles/TileMovementHighlight1.png" type="Texture" id=7]
 [ext_resource path="res://art/tiles/TileMovementHighlight2.png" type="Texture" id=8]
 [ext_resource path="res://art/tiles/TileMovementHighlight3.png" type="Texture" id=9]
-[ext_resource path="res://art/tiles/TileMovementHighlight.png" type="Texture" id=10]
-[ext_resource path="res://art/tiles/TileHoverHighlight.png" type="Texture" id=11]
-[ext_resource path="res://art/tiles/TileAttackHighlight1.png" type="Texture" id=12]
-[ext_resource path="res://art/tiles/TileAttackHighlight2.png" type="Texture" id=13]
-[ext_resource path="res://art/tiles/TileAttackHighlight3.png" type="Texture" id=14]
-[ext_resource path="res://art/tiles/TileAttackHighlight4.png" type="Texture" id=15]
-[ext_resource path="res://art/tiles/TileAttackHighlight5.png" type="Texture" id=16]
-[ext_resource path="res://art/tiles/TileAttackHighlight6.png" type="Texture" id=17]
-[ext_resource path="res://art/tiles/TileAttackHighlight.png" type="Texture" id=18]
+[ext_resource path="res://art/ui/TileMovementHighlightUnavailable.png" type="Texture" id=10]
+[ext_resource path="res://art/tiles/TileAttackHighlight1.png" type="Texture" id=11]
+[ext_resource path="res://art/tiles/TileAttackHighlight2.png" type="Texture" id=12]
+[ext_resource path="res://art/tiles/TileAttackHighlight3.png" type="Texture" id=13]
+[ext_resource path="res://art/tiles/TileAttackHighlight4.png" type="Texture" id=14]
+[ext_resource path="res://art/tiles/TileAttackHighlight5.png" type="Texture" id=15]
+[ext_resource path="res://art/tiles/TileAttackHighlight6.png" type="Texture" id=16]
+[ext_resource path="res://art/ui/TileAttackHighlightPreview.png" type="Texture" id=17]
+[ext_resource path="res://art/ui/TileAttackHighlightUnavailable.png" type="Texture" id=18]
+[ext_resource path="res://art/tiles/TileHoverHighlight.png" type="Texture" id=19]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -61,24 +62,24 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=8]
 
 animations = [ {
-"frames": [ ExtResource( 11 ) ],
-"loop": true,
-"name": "hovered",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
-"name": "not_hovered",
+"name": "none",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "movement",
 "speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=5]
 
 animations = [ {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "attack",
 "speed": 5.0
@@ -92,6 +93,20 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=6]
 
 animations = [ {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "none",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=9]
+
+animations = [ {
 "frames": [ ExtResource( 18 ) ],
 "loop": true,
 "name": "attack",
@@ -100,6 +115,20 @@ animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "none",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+
+animations = [ {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "hovered",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "not_hovered",
 "speed": 5.0
 } ]
 
@@ -139,31 +168,44 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="SubtleMovementHighlight" type="AnimatedSprite" parent="TileSprite" index="1"]
 
-modulate = Color( 1, 1, 1, 0.33702 )
+modulate = Color( 1, 1, 1, 0.651961 )
 frames = SubResource( 3 )
 animation = "none"
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
-[node name="Outline" type="AnimatedSprite" parent="TileSprite" index="2"]
+[node name="UnavailableMovementHighlight" type="AnimatedSprite" parent="TileSprite" index="2"]
 
-z_index = 1
-frames = SubResource( 4 )
-animation = "not_hovered"
-_sections_unfolded = [ "Transform", "Z Index" ]
+scale = Vector2( 1, 1 )
+frames = SubResource( 8 )
+animation = "none"
 
 [node name="AttackHighlight" type="AnimatedSprite" parent="TileSprite" index="3"]
 
+scale = Vector2( 1, 1 )
 frames = SubResource( 5 )
 animation = "none"
 _sections_unfolded = [ "Z Index" ]
 
 [node name="SubtleAttackHighlight" type="AnimatedSprite" parent="TileSprite" index="4"]
 
-modulate = Color( 1, 1, 1, 0.690588 )
 self_modulate = Color( 1, 1, 1, 0.535922 )
+scale = Vector2( 1, 1 )
 frames = SubResource( 6 )
 animation = "none"
 _sections_unfolded = [ "Visibility", "Z Index" ]
+
+[node name="UnavailableAttackHighlight" type="AnimatedSprite" parent="TileSprite" index="5"]
+
+scale = Vector2( 1, 1 )
+frames = SubResource( 9 )
+animation = "none"
+
+[node name="Outline" type="AnimatedSprite" parent="TileSprite" index="6"]
+
+z_index = 1
+frames = SubResource( 4 )
+animation = "not_hovered"
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
