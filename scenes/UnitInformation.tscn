@@ -1,8 +1,185 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://scenes/UnitInformation.gd" type="Script" id=1]
 [ext_resource path="res://fonts/unit_ui_name_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://fonts/unit_ui_info_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://art/units/Queen_Dark.png" type="Texture" id=4]
+[ext_resource path="res://art/units/Knight_Light.png" type="Texture" id=5]
+[ext_resource path="res://art/units/Ship_Light.png" type="Texture" id=6]
+[ext_resource path="res://art/units/Unicorn_Dark.png" type="Texture" id=7]
+[ext_resource path="res://art/units/King_Dark.png" type="Texture" id=8]
+[ext_resource path="res://art/units/Ship_Dark.png" type="Texture" id=9]
+[ext_resource path="res://art/units/Unicorn_Light.png" type="Texture" id=10]
+[ext_resource path="res://art/units/Pawn_Light.png" type="Texture" id=11]
+[ext_resource path="res://art/units/Queen_Light.png" type="Texture" id=12]
+[ext_resource path="res://art/units/Commoner_Light.png" type="Texture" id=13]
+[ext_resource path="res://art/units/Centaur_Light.png" type="Texture" id=14]
+[ext_resource path="res://art/units/Elephant_Light.png" type="Texture" id=15]
+[ext_resource path="res://art/units/Zebra_Dark.png" type="Texture" id=16]
+[ext_resource path="res://art/units/Commoner_Dark.png" type="Texture" id=17]
+[ext_resource path="res://art/units/Giraffe_Dark.png" type="Texture" id=18]
+[ext_resource path="res://art/units/Bishop_Dark.png" type="Texture" id=19]
+[ext_resource path="res://art/units/Mann_Dark.png" type="Texture" id=20]
+[ext_resource path="res://art/units/King_Light.png" type="Texture" id=21]
+[ext_resource path="res://art/units/Pawn_Dark.png" type="Texture" id=22]
+[ext_resource path="res://art/units/Rook_Light.png" type="Texture" id=23]
+[ext_resource path="res://art/units/Rook_Dark.png" type="Texture" id=24]
+[ext_resource path="res://art/units/Giraffe_Light.png" type="Texture" id=25]
+[ext_resource path="res://art/units/Knight_Dark.png" type="Texture" id=26]
+[ext_resource path="res://art/units/Bishop_Light.png" type="Texture" id=27]
+[ext_resource path="res://art/units/Mann_Light.png" type="Texture" id=28]
+[ext_resource path="res://art/units/Zebra_Light.png" type="Texture" id=29]
+[ext_resource path="res://art/units/Centaur_Dark.png" type="Texture" id=30]
+[ext_resource path="res://art/units/Elephant_Dark.png" type="Texture" id=31]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "none",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "queen_dark",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "knight_light",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "ship_light",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "unicorn_dark",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "king_dark",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "ship_dark",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "unicorn_light",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "pawn_light",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "queen_light",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "commoner_light",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "centaur_light",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "elephant_light",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "zebra_dark",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "commoner_dark",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "giraffe_dark",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "bishop_dark",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ) ],
+"loop": true,
+"name": "mann_dark",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": true,
+"name": "king_light",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ) ],
+"loop": true,
+"name": "pawn_dark",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ) ],
+"loop": true,
+"name": "rook_light",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ) ],
+"loop": true,
+"name": "rook_dark",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ) ],
+"loop": true,
+"name": "giraffe_light",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ) ],
+"loop": true,
+"name": "knight_dark",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 27 ) ],
+"loop": true,
+"name": "bishop_light",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ) ],
+"loop": true,
+"name": "mann_light",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 29 ) ],
+"loop": true,
+"name": "zebra_light",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 30 ) ],
+"loop": true,
+"name": "centaur_dark",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 31 ) ],
+"loop": true,
+"name": "elephant_dark",
+"speed": 5.0
+} ]
 
 [node name="UnitInformation" type="Node" index="0"]
 
@@ -46,9 +223,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 180.0
-margin_top = 20.0
+margin_top = 5.0
 margin_right = 515.0
-margin_bottom = 90.0
+margin_bottom = 81.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -70,9 +247,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 180.0
-margin_top = 100.0
+margin_top = 85.0
 margin_right = 515.0
-margin_bottom = 150.0
+margin_bottom = 135.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -93,9 +270,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 180.0
-margin_top = 150.0
+margin_top = 135.0
 margin_right = 515.0
-margin_bottom = 200.0
+margin_bottom = 185.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -103,19 +280,64 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 3 )
+text = "Attack Power: "
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_fonts" ]
 
-[node name="HealthBarPosition" type="Position2D" parent="Container/Panel" index="3"]
+[node name="UnitToShow" type="AnimatedSprite" parent="Container/Panel" index="3"]
 
-position = Vector2( 255, 128 )
+position = Vector2( 90, 100 )
+scale = Vector2( 0.17, 0.17 )
+frames = SubResource( 1 )
+animation = "none"
 _sections_unfolded = [ "Transform" ]
 
-[node name="UnitToShow" type="AnimatedSprite" parent="Container/Panel" index="4"]
+[node name="SwimAbility" type="Label" parent="Container/Panel" index="4"]
 
-position = Vector2( 220.464, 223.804 )
-animation = "default"
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 272.0
+margin_top = 190.0
+margin_right = 514.0
+margin_bottom = 239.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 3 )
+text = "Can Swim: "
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="ClimbAbility" type="Label" parent="Container/Panel" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 190.0
+margin_right = 252.0
+margin_bottom = 239.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 3 )
+text = "Can Climb: "
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_fonts" ]
 
 

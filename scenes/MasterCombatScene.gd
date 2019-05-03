@@ -29,45 +29,42 @@ func cycle_select_unit():
 #generates the board's encounter.
 #Also adds the inital acting side's units to our array
 func set_encounter(encounter):
-	$TestBoard.create_board(encounter)
-	acting_side_units = $TestBoard.get_units_by_team($TestBoard.get_acting_team())
+	board.create_board(encounter)
+	acting_side_units = board.get_units_by_team(board.get_acting_team())
 	
-	var pawn1 = pawn_scene.instance()
+	#var pawn1 = pawn_scene.instance()
 	#var pawn2 = pawn_scene.instance()
-	pawn1.set_white()
 	#pawn2.set_black()
 	#$TestBoard.switch_acting_team()
 	#$UIManager.switch_turn_icon()
 	#for i in range(0,8,2):
 	#	for j in range(0,8,2):
-	#		$TestBoard.place_unit(pawn_scene.instance(),i,j)
-	$TestBoard.place_unit(pawn1,0,1)
-	var pawn2 = pawn1.duplicate(DUPLICATE_USE_INSTANCING)
-	add_child(pawn2)
-	pawn2.position = Vector2(50,500)
+	#		$TestBoard.place_unit(pawn_scene.instance(),i,j)=
+	#add_child(pawn2)
+	#pawn2.position = Vector2(50,500)
 	#$TestBoard.place_unit(pawn2,4,6)
 	#$TestBoard.select_ai_unit(pawn1)
 	#$TestBoard.select_ai_unit(pawn1)
 
 func display_options():
-	$UIManager.reset_command_states()
-	$UIManager.show_command_options()
+	ui_manager.reset_command_states()
+	ui_manager.show_command_options()
 
 func hide_options():
-	$UIManager.reset_command_states()
-	$UIManager.hide_command_options()
+	ui_manager.reset_command_states()
+	ui_manager.hide_command_options()
 
 func disable_attacks():
-	$UIManager.disable_attacks()
+	ui_manager.disable_attacks()
 
 func disable_movement():
-	$UIManager.disable_movement()
+	ui_manager.disable_movement()
 
 func display_attacks():
-	$TestBoard.show_attack_options()
+	board.show_attack_options()
 
 func display_moves():
-	$TestBoard.show_movement_options()
+	board.show_movement_options()
 
 #End the turn resetting the moves of the units and states of the tiles
 #Then tells the board to switch the acting side as well as the UI.
@@ -75,8 +72,8 @@ func display_moves():
 func end_turn():
 	hide_options()
 	print("end turn reached")
-	$UIManager.switch_turn_icon()
-	$TestBoard.reset_unit_moves()
-	$TestBoard.reset_tiles()
-	$TestBoard.switch_acting_team()
-	acting_side_units = $TestBoard.get_units_by_team($TestBoard.get_acting_team())
+	ui_manager.switch_turn_icon()
+	board.reset_unit_moves()
+	board.reset_tiles()
+	board.switch_acting_team()
+	acting_side_units = board.get_units_by_team(board.get_acting_team())
