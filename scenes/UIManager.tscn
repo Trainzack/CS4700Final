@@ -20,13 +20,13 @@
 [ext_resource path="res://art/ui/BlackTurnUITransition5.png" type="Texture" id=18]
 [ext_resource path="res://art/ui/BlackTurnUITransition6.png" type="Texture" id=19]
 [ext_resource path="res://art/ui/WhiteTurnUI.png" type="Texture" id=20]
-[ext_resource path="res://art/ui/WhiteTurnUITransition1.png" type="Texture" id=21]
-[ext_resource path="res://art/ui/WhiteTurnUITransition2.png" type="Texture" id=22]
-[ext_resource path="res://art/ui/WhiteTurnUITransition3.png" type="Texture" id=23]
-[ext_resource path="res://art/ui/WhiteTurnUITransition4.png" type="Texture" id=24]
-[ext_resource path="res://art/ui/WhiteTurnUITransition5.png" type="Texture" id=25]
-[ext_resource path="res://art/ui/WhiteTurnUITransition6.png" type="Texture" id=26]
-[ext_resource path="res://art/ui/BlackTurnUI.png" type="Texture" id=27]
+[ext_resource path="res://art/ui/BlackTurnUI.png" type="Texture" id=21]
+[ext_resource path="res://art/ui/WhiteTurnUITransition1.png" type="Texture" id=22]
+[ext_resource path="res://art/ui/WhiteTurnUITransition2.png" type="Texture" id=23]
+[ext_resource path="res://art/ui/WhiteTurnUITransition3.png" type="Texture" id=24]
+[ext_resource path="res://art/ui/WhiteTurnUITransition4.png" type="Texture" id=25]
+[ext_resource path="res://art/ui/WhiteTurnUITransition5.png" type="Texture" id=26]
+[ext_resource path="res://art/ui/WhiteTurnUITransition6.png" type="Texture" id=27]
 [ext_resource path="res://sound/chukka_07.wav" type="AudioStream" id=28]
 [ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=29]
 [ext_resource path="res://sound/shizzle_07.wav" type="AudioStream" id=30]
@@ -39,20 +39,20 @@ animations = [ {
 "name": "white_turn_transition",
 "speed": 35.0
 }, {
-"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
-"loop": true,
-"name": "black_turn_transition",
-"speed": 35.0
-}, {
-"frames": [ ExtResource( 27 ) ],
-"loop": true,
-"name": "black_turn",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 20 ) ],
 "loop": true,
 "name": "white_turn",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": true,
+"name": "black_turn",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "black_turn_transition",
+"speed": 35.0
 } ]
 
 [node name="UIManager" type="Node"]
@@ -66,10 +66,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 989.0
-margin_top = 531.0
-margin_right = 1388.0
-margin_bottom = 748.0
+margin_left = 1000.0
+margin_top = 540.0
+margin_right = 1399.0
+margin_bottom = 757.0
 rect_scale = Vector2( 0.7, 0.7 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
