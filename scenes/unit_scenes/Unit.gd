@@ -139,6 +139,8 @@ func set_selected():
 	$UnitSprite.material = highlight_material
 
 func set_health(h):
+	if h < 0:
+		h = 0
 	current_health = h
 	if current_health > max_health:
 		current_health = max_health

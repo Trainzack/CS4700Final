@@ -9,7 +9,7 @@ var encounter_scene = preload("res://scenes/Encounter.tscn")
 
 #offsets used to populate the board. Values come from testing different positions
 var starting_x = 300
-var starting_y = 400
+var starting_y = 450
 var iso_x_offset = 83*0.7
 var iso_y_offset = 63*0.7
 var y3D_offset = -36*0.7
