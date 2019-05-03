@@ -69,7 +69,7 @@ func place_tile(position, tile):
 		else:
 			tile.set_tile_type("black")
 		tile.position = Vector2(starting_x + position.x*iso_x_offset + position.y*iso_x_offset, starting_y - position.y*iso_y_offset + position.x*iso_y_offset)
-		tile.z_index = tile.z_index - position.y*2 + position.x*2
+		tile.z_index = tile.z_index - position.y*2 + position.x*3
 		tile.connect("mouse_entered", self, "process_mouse_enter", [position.x,position.y])
 		tile.connect("mouse_exited", self, "process_mouse_exit", [position.x,position.y])
 		tile.connect("clicked", self, "on_click", [position.x,position.y])
@@ -243,7 +243,8 @@ func process_moves(unit_moves, unit, gridX, gridY, move_type):
 			
 		highlight_tiles(possible_positions, move_type)
 		highlight_tiles(subtle_highlight_positions, move_type + "_subtle")
-		highlight_tiles(unavailable_positions, move_type + "_unavailable")
+		#Don't highlight unavailable tiles for now
+		#highlight_tiles(unavailable_positions, move_type + "_unavailable")
 
 
 func highlight_tiles(possible_positions,atom_type):
@@ -294,7 +295,7 @@ func move_unit(startingX,startingY,endX,endY):
 	var unit_to_move = unitArray[startingX][startingY]
 	#move the unit in the array
 	unitArray[endX][endY] = unit_to_move
-	unit_to_move.z_index = 9 + boardArray[endX][endY].z_index
+	unit_to_move.z_index = 2 + boardArray[endX][endY].z_index
 	#unit_to_move.z_index = unit_to_move.z_index - (endY - startingY) + (endX - startingX)
 	unitArray[startingX][startingY] = dummy_unit
 	
