@@ -27,6 +27,7 @@ export var attack_power = 1
 var units_per_health = 32
 
 onready var health_bar = $HealthBar
+onready var health_bar_number = $HealthBar/Label
 onready var movement_icon = $MoveAvailability
 onready var attack_icon = $AttackAvailability
 onready var power_icon = $AttackPowerIcon
@@ -37,7 +38,7 @@ onready var display_health_timer = $DisplayHealthTimer
 func _ready():
 	$DisplayHealthTimer.connect("timeout",self,"damage_hide_health")
 	health_bar.max_value = max_health
-	health_bar.value = current_health
+	set_health(current_health)
 	
 	# If max_health ever changes, this code will need to be refactored out!
 	# Make health bar size dependant on max health
@@ -135,10 +136,13 @@ func set_selected():
 	display_stats()
 
 func set_health(h):
+	if h < 0:
+		h = 0
 	current_health = h
 	if current_health > max_health:
 		current_health = max_health
 	health_bar.value = current_health
+	health_bar_number.text = str(current_health) + "/" + str(max_health)
 	if current_health <= 0:
 		die()
 

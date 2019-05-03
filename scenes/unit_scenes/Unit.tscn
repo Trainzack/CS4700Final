@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scenes/unit_scenes/Unit.gd" type="Script" id=1]
 [ext_resource path="res://art/ui/SelectorMarker.png" type="Texture" id=2]
@@ -7,18 +7,19 @@
 [ext_resource path="res://art/ui/SelectorMarker4.png" type="Texture" id=5]
 [ext_resource path="res://sound/tap_13.wav" type="AudioStream" id=6]
 [ext_resource path="res://sound/low_tap_02.wav" type="AudioStream" id=7]
-[ext_resource path="res://sound/fall_splash_03.wav" type="AudioStream" id=8]
-[ext_resource path="res://sound/fade_03.wav" type="AudioStream" id=9]
-[ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=10]
-[ext_resource path="res://art/tiles/UIMovementAvailable.png" type="Texture" id=11]
+[ext_resource path="res://fonts/unit_ui_info_font.tres" type="DynamicFont" id=8]
+[ext_resource path="res://sound/fall_splash_03.wav" type="AudioStream" id=9]
+[ext_resource path="res://sound/fade_03.wav" type="AudioStream" id=10]
+[ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=11]
 [ext_resource path="res://art/tiles/UIMovementUnavailable.png" type="Texture" id=12]
-[ext_resource path="res://art/tiles/UIAttackAvailable.png" type="Texture" id=13]
+[ext_resource path="res://art/tiles/UIMovementAvailable.png" type="Texture" id=13]
 [ext_resource path="res://art/tiles/UIAttackUnavailable.png" type="Texture" id=14]
-[ext_resource path="res://art/ui/3AttackPower.PNG" type="Texture" id=15]
-[ext_resource path="res://art/ui/5AttackPower.PNG" type="Texture" id=16]
+[ext_resource path="res://art/tiles/UIAttackAvailable.png" type="Texture" id=15]
+[ext_resource path="res://art/ui/3AttackPower.PNG" type="Texture" id=16]
 [ext_resource path="res://art/ui/2AttackPower.PNG" type="Texture" id=17]
-[ext_resource path="res://art/ui/1AttackPower.PNG" type="Texture" id=18]
-[ext_resource path="res://art/ui/4AttackPower.PNG" type="Texture" id=19]
+[ext_resource path="res://art/ui/5AttackPower.PNG" type="Texture" id=18]
+[ext_resource path="res://art/ui/1AttackPower.PNG" type="Texture" id=19]
+[ext_resource path="res://art/ui/4AttackPower.PNG" type="Texture" id=20]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -100,42 +101,37 @@ _sections_unfolded = [ "Border", "Border Width", "Corner Radius" ]
 [sub_resource type="SpriteFrames" id=5]
 
 animations = [ {
-"frames": [ ExtResource( 11 ) ],
-"loop": true,
-"name": "available",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "unavailable",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "available",
 "speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=6]
 
 animations = [ {
-"frames": [ ExtResource( 13 ) ],
-"loop": true,
-"name": "available",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "unavailable",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "available",
 "speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=7]
 
 animations = [ {
-"frames": [ ExtResource( 15 ) ],
-"loop": true,
-"name": "3",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 16 ) ],
 "loop": true,
-"name": "5",
+"name": "3",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 17 ) ],
@@ -145,16 +141,21 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 18 ) ],
 "loop": true,
-"name": "1",
+"name": "5",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ) ],
 "loop": true,
 "name": "4",
 "speed": 5.0
 } ]
 
-[node name="Unit" type="Area2D"]
+[node name="Unit" type="Area2D" index="0"]
 
 scale = Vector2( 0.5, 0.5 )
 input_pickable = true
@@ -244,16 +245,32 @@ rounded = false
 percent_visible = false
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Percent", "Rect", "Size Flags", "Theme", "Visibility", "custom_styles" ]
 
+[node name="Label" type="Label" parent="HealthBar" index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -32.0
+margin_right = 128.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 8 )
+text = "X/X"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
 [node name="DieSound" type="AudioStreamPlayer" parent="." index="7"]
-
-stream = ExtResource( 8 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
-
-[node name="DamagedSound" type="AudioStreamPlayer" parent="." index="8"]
 
 stream = ExtResource( 9 )
 volume_db = 0.0
@@ -262,9 +279,18 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="TargetedSound" type="AudioStreamPlayer" parent="." index="9"]
+[node name="DamagedSound" type="AudioStreamPlayer" parent="." index="8"]
 
 stream = ExtResource( 10 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="TargetedSound" type="AudioStreamPlayer" parent="." index="9"]
+
+stream = ExtResource( 11 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
