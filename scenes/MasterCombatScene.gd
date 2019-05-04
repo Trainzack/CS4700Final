@@ -24,7 +24,7 @@ func _ready():
 	ui_manager.connect("attack_pressed",self,"display_attacks")
 	ui_manager.connect("movement_pressed",self,"display_moves")
 	ui_manager.connect("end_turn_pressed",self,"end_turn")
-	ui_manager.connect("exit_combat",get_parent(),"end_combat")
+	ui_manager.connect("exit_combat",get_parent(),"exit_scene")
 
 func set_allotted_turn_time(time):
 	allotted_turn_time = time
@@ -157,6 +157,7 @@ func check_win_condition():
 		end_combat()
 
 func end_combat():
+	$Music.stop()
 	ui_manager.disable_ui()
 	board.disconnect_board()
 	disconnect_combat_signals()

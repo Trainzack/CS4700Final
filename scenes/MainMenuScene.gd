@@ -1,5 +1,6 @@
 extends Node
 
+onready var master_scene = get_parent()
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
@@ -21,23 +22,40 @@ func _ready():
 	button_ht.connect("pressed",self,"how_to_play")
 	button_op.connect("pressed",self,"options")
 	button_qt.connect("pressed",self,"quit")
-	
-	pass
+	unimplemented.connect("confirmed", self, "enable_buttons")
+	enable_buttons()
 
 func disable_buttons():
 	for b in buttons:
 		b.disable()
+		
+func enable_buttons():
+	for b in buttons:
+		b.enable()
+	
 
 func singleplayer():
-	unimplemented.show()
+	disable_buttons()
+	# Wait for sound to play
+	yield(get_tree().create_timer(1.0), "timeout")
+	master_scene.begin_overworld()
 	
 func multiplayer():
+	disable_buttons()
+	# Wait for sound to play
+	yield(get_tree().create_timer(1.0), "timeout")
 	unimplemented.show()
 	
 func how_to_play():
+	disable_buttons()
+	# Wait for sound to play
+	yield(get_tree().create_timer(1.0), "timeout")
 	unimplemented.show()
 	
 func options():
+	disable_buttons()
+	# Wait for sound to play
+	yield(get_tree().create_timer(1.0), "timeout")
 	unimplemented.show()
 	
 func quit():
@@ -45,3 +63,7 @@ func quit():
 	# Wait for sound to play
 	yield(get_tree().create_timer(1.0), "timeout")
 	get_tree().quit()
+
+func show_unimplemented_popup():
+	unimplemented.show()
+	
