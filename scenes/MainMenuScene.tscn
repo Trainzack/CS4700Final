@@ -41,7 +41,7 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 
-[node name="PanelContainer" type="PanelContainer" parent="." index="1"]
+[node name="PanelContainer" type="MarginContainer" parent="." index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -53,6 +53,11 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_constants/margin_right = 300
+custom_constants/margin_top = 50
+custom_constants/margin_left = 300
+custom_constants/margin_bottom = 50
+_sections_unfolded = [ "custom_constants" ]
 
 [node name="PanelContainer" type="HBoxContainer" parent="PanelContainer" index="0"]
 
@@ -60,10 +65,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 1359.0
-margin_bottom = 761.0
+margin_left = 300.0
+margin_top = 50.0
+margin_right = 1066.0
+margin_bottom = 718.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -80,7 +85,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 584.0
-margin_bottom = 754.0
+margin_bottom = 668.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -91,65 +96,71 @@ theme = SubResource( 1 )
 alignment = 0
 _sections_unfolded = [ "Rect", "Size Flags", "Theme", "custom_constants" ]
 
-[node name="Singleplayer" parent="PanelContainer/PanelContainer/MenuButton Container" index="0" instance=ExtResource( 3 )]
-
-margin_right = 584.0
-button_text = "Singleplayer"
-
-[node name="Multiplayer" parent="PanelContainer/PanelContainer/MenuButton Container" index="1" instance=ExtResource( 3 )]
-
-margin_top = 84.0
-margin_right = 584.0
-margin_bottom = 164.0
-button_text = "Multiplayer"
-button_sprite = ExtResource( 4 )
-
-[node name="How To Play" parent="PanelContainer/PanelContainer/MenuButton Container" index="2" instance=ExtResource( 3 )]
-
-margin_top = 168.0
-margin_right = 584.0
-margin_bottom = 248.0
-button_text = "How To Play"
-button_sprite = ExtResource( 5 )
-strong_sound = false
-
-[node name="Options" parent="PanelContainer/PanelContainer/MenuButton Container" index="3" instance=ExtResource( 3 )]
-
-margin_top = 252.0
-margin_right = 584.0
-margin_bottom = 332.0
-button_text = "Options"
-button_sprite = ExtResource( 6 )
-strong_sound = false
-
-[node name="Quit" parent="PanelContainer/PanelContainer/MenuButton Container" index="4" instance=ExtResource( 3 )]
-
-margin_top = 336.0
-margin_right = 584.0
-margin_bottom = 416.0
-button_text = "Quit"
-button_sprite = ExtResource( 7 )
-strong_sound = false
-
-[node name="Container" type="Container" parent="PanelContainer/PanelContainer" index="1"]
+[node name="Label" type="Label" parent="PanelContainer/PanelContainer/MenuButton Container" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 588.0
-margin_right = 1188.0
-margin_bottom = 754.0
-rect_min_size = Vector2( 600, 0 )
+margin_right = 584.0
+margin_bottom = 67.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 0
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 1
-_sections_unfolded = [ "Rect" ]
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "Chesster Than Light"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="AcceptDialog" type="AcceptDialog" parent="PanelContainer/PanelContainer/Container" index="0"]
+[node name="Singleplayer" parent="PanelContainer/PanelContainer/MenuButton Container" index="1" instance=ExtResource( 3 )]
+
+margin_top = 71.0
+margin_right = 584.0
+margin_bottom = 151.0
+button_text = "Singleplayer"
+
+[node name="Multiplayer" parent="PanelContainer/PanelContainer/MenuButton Container" index="2" instance=ExtResource( 3 )]
+
+margin_top = 155.0
+margin_right = 584.0
+margin_bottom = 235.0
+button_text = "Multiplayer"
+button_sprite = ExtResource( 4 )
+
+[node name="How To Play" parent="PanelContainer/PanelContainer/MenuButton Container" index="3" instance=ExtResource( 3 )]
+
+margin_top = 239.0
+margin_right = 584.0
+margin_bottom = 319.0
+button_text = "How To Play"
+button_sprite = ExtResource( 5 )
+strong_sound = false
+
+[node name="Options" parent="PanelContainer/PanelContainer/MenuButton Container" index="4" instance=ExtResource( 3 )]
+
+margin_top = 323.0
+margin_right = 584.0
+margin_bottom = 403.0
+button_text = "Options"
+button_sprite = ExtResource( 6 )
+strong_sound = false
+
+[node name="Quit" parent="PanelContainer/PanelContainer/MenuButton Container" index="5" instance=ExtResource( 3 )]
+
+margin_top = 407.0
+margin_right = 584.0
+margin_bottom = 487.0
+button_text = "Quit"
+button_sprite = ExtResource( 7 )
+strong_sound = false
+
+[node name="AcceptDialog" type="AcceptDialog" parent="PanelContainer" index="1"]
 
 visible = false
 anchor_left = 0.0
@@ -157,9 +168,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 300.0
-margin_top = 300.0
-margin_right = 83.0
-margin_bottom = 58.0
+margin_top = 50.0
+margin_right = 1066.0
+margin_bottom = 718.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -172,26 +183,5 @@ resizable = false
 dialog_text = "This feature has not been implemented yet!"
 dialog_hide_on_ok = true
 _sections_unfolded = [ "Dialog", "Margin", "Popup" ]
-
-[node name="Label" type="Label" parent="PanelContainer/PanelContainer/Container" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 40.0
-margin_bottom = 14.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = ExtResource( 2 )
-text = "Chess (2019)"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
 
