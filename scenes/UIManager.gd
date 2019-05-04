@@ -76,7 +76,7 @@ func show_unit_info(unit):
 	unit_info.show_information(unit)
 
 func hide_unit_info():
-	unit_info.hide()
+	unit_info.hide_information()
 
 func disable_ui():
 	disable_movement()

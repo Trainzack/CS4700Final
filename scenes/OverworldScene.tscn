@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/OverworldScene.gd" type="Script" id=1]
-[ext_resource path="res://fonts/unit_ui_name_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://fonts/font.tres" type="DynamicFont" id=2]
 
 [node name="OverworldScene" type="Node"]
 
