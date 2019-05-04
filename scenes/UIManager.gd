@@ -13,6 +13,7 @@ onready var select_attack_sound = $SelectAttackSound
 onready var select_move_sound = $SelectMoveSound
 onready var turn_icon_container = $WhoseTurnContainer
 onready var turn_icon = get_node("WhoseTurnContainer").get_node("TurnIcon")
+onready var unit_info = $UIUnitInformation
 
 # Whether the currently 
 var can_attack = false
@@ -23,6 +24,7 @@ func _ready():
 	get_node("CommandContainer").get_node("AttacksButton").connect("pressed",self,"emit_attack_pressed")
 	get_node("EndTurnContainer").get_node("EndTurnButton").connect("pressed",self,"emit_end_turn_pressed")
 	get_node("ExitCombatContainer2/ExitCombatButton").connect("pressed",self,"emit_exit_combat")
+	unit_info.hide()
 
 #_process is used to wait for user input from the keyboard
 func _process(delta):
@@ -69,6 +71,12 @@ func show_command_options():
 
 func hide_command_options():
 	commands.visible = false
+
+func show_unit_info(unit):
+	unit_info.show_information(unit)
+
+func hide_unit_info():
+	unit_info.hide()
 
 #Plays the animation for making the turn icon switch to the other side
 #Once the animation ends it stays displaying either "black's turn" or "white's turn"
