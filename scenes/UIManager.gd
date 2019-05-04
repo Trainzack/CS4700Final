@@ -78,6 +78,11 @@ func show_unit_info(unit):
 func hide_unit_info():
 	unit_info.hide()
 
+func disable_ui():
+	disable_movement()
+	disable_attacks()
+	$EndTurnContainer/EndTurnButton.disabled = true
+
 #Plays the animation for making the turn icon switch to the other side
 #Once the animation ends it stays displaying either "black's turn" or "white's turn"
 func switch_turn_icon():
@@ -89,3 +94,13 @@ func switch_turn_icon():
 		turn_icon.play("white_turn_transition")
 		yield(turn_icon,"animation_finished")
 		turn_icon.animation = "white_turn"
+
+func display_white_victory():
+	$VictorySound.play()
+	$VictoryNotification.show()
+	$VictoryNotification.animation = "white_victory"
+
+func display_black_victory():
+	$VictorySound.play()
+	$VictoryNotification.show()
+	$VictoryNotification.animation = "black_victory"
