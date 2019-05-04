@@ -3,6 +3,8 @@ extends Node
 onready var overworld = $OverworldScene
 var combat_scene = null
 
+onready var confirm_sound = $ConfirmSound
+
 var combat_scene_class = preload("res://scenes/MasterCombatScene.tscn")
 
 # class member variables go here, for example:

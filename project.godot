@@ -18,11 +18,16 @@ config/icon="res://icon.png"
 
 channel_disable_threshold_db=-80.0
 
+[autoload]
+
+Global="*res://scenes/Global.tscn"
+
 [display]
 
 window/size/width=1366
 window/size/height=768
-window/size/fullscreen=true
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [importer_defaults]
 
