@@ -1,25 +1,33 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scenes/unit_scenes/Unit.gd" type="Script" id=1]
-[ext_resource path="res://art/ui/SelectorMarker.png" type="Texture" id=2]
-[ext_resource path="res://art/ui/SelectorMarker3.png" type="Texture" id=3]
-[ext_resource path="res://art/ui/SelectorMarker2.png" type="Texture" id=4]
-[ext_resource path="res://art/ui/SelectorMarker4.png" type="Texture" id=5]
-[ext_resource path="res://sound/tap_13.wav" type="AudioStream" id=6]
-[ext_resource path="res://sound/low_tap_02.wav" type="AudioStream" id=7]
-[ext_resource path="res://fonts/unit_ui_info_font.tres" type="DynamicFont" id=8]
-[ext_resource path="res://sound/fall_splash_03.wav" type="AudioStream" id=9]
-[ext_resource path="res://sound/fade_03.wav" type="AudioStream" id=10]
-[ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=11]
-[ext_resource path="res://art/tiles/UIMovementUnavailable.png" type="Texture" id=12]
-[ext_resource path="res://art/tiles/UIMovementAvailable.png" type="Texture" id=13]
-[ext_resource path="res://art/tiles/UIAttackUnavailable.png" type="Texture" id=14]
-[ext_resource path="res://art/tiles/UIAttackAvailable.png" type="Texture" id=15]
-[ext_resource path="res://art/ui/3AttackPower.PNG" type="Texture" id=16]
-[ext_resource path="res://art/ui/2AttackPower.PNG" type="Texture" id=17]
-[ext_resource path="res://art/ui/5AttackPower.PNG" type="Texture" id=18]
-[ext_resource path="res://art/ui/1AttackPower.PNG" type="Texture" id=19]
-[ext_resource path="res://art/ui/4AttackPower.PNG" type="Texture" id=20]
+[ext_resource path="res://art/ui/NewSelectorMarker.png" type="Texture" id=2]
+[ext_resource path="res://art/ui/NewSelectorMarker4.png" type="Texture" id=3]
+[ext_resource path="res://art/ui/NewSelectorMarker3.png" type="Texture" id=4]
+[ext_resource path="res://art/ui/NewSelectorMarker2.png" type="Texture" id=5]
+[ext_resource path="res://art/ui/NewSelectorMarkerBoth.png" type="Texture" id=6]
+[ext_resource path="res://art/ui/NewSelectorMarkerBoth4.png" type="Texture" id=7]
+[ext_resource path="res://art/ui/NewSelectorMarkerBoth3.png" type="Texture" id=8]
+[ext_resource path="res://art/ui/NewSelectorMarkerBoth2.png" type="Texture" id=9]
+[ext_resource path="res://art/ui/NewSelectorMarkerBlue.png" type="Texture" id=10]
+[ext_resource path="res://art/ui/NewSelectorMarkerBlue4.png" type="Texture" id=11]
+[ext_resource path="res://art/ui/NewSelectorMarkerBlue3.png" type="Texture" id=12]
+[ext_resource path="res://art/ui/NewSelectorMarkerBlue2.png" type="Texture" id=13]
+[ext_resource path="res://sound/tap_13.wav" type="AudioStream" id=14]
+[ext_resource path="res://sound/low_tap_02.wav" type="AudioStream" id=15]
+[ext_resource path="res://fonts/unit_ui_info_font.tres" type="DynamicFont" id=16]
+[ext_resource path="res://sound/fall_splash_03.wav" type="AudioStream" id=17]
+[ext_resource path="res://sound/fade_03.wav" type="AudioStream" id=18]
+[ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=19]
+[ext_resource path="res://art/tiles/UIMovementUnavailable.png" type="Texture" id=20]
+[ext_resource path="res://art/tiles/UIMovementAvailable.png" type="Texture" id=21]
+[ext_resource path="res://art/tiles/UIAttackUnavailable.png" type="Texture" id=22]
+[ext_resource path="res://art/tiles/UIAttackAvailable.png" type="Texture" id=23]
+[ext_resource path="res://art/ui/3AttackPower.PNG" type="Texture" id=24]
+[ext_resource path="res://art/ui/2AttackPower.PNG" type="Texture" id=25]
+[ext_resource path="res://art/ui/5AttackPower.PNG" type="Texture" id=26]
+[ext_resource path="res://art/ui/4AttackPower.PNG" type="Texture" id=27]
+[ext_resource path="res://art/ui/1AttackPower.PNG" type="Texture" id=28]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -33,6 +41,16 @@ animations = [ {
 "loop": true,
 "name": "unselected",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "selected_both_d",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "selected_move_d",
+"speed": 3.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -101,12 +119,12 @@ _sections_unfolded = [ "Border", "Border Width", "Corner Radius" ]
 [sub_resource type="SpriteFrames" id=5]
 
 animations = [ {
-"frames": [ ExtResource( 12 ) ],
+"frames": [ ExtResource( 20 ) ],
 "loop": true,
 "name": "unavailable",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ) ],
+"frames": [ ExtResource( 21 ) ],
 "loop": true,
 "name": "available",
 "speed": 5.0
@@ -115,12 +133,12 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=6]
 
 animations = [ {
-"frames": [ ExtResource( 14 ) ],
+"frames": [ ExtResource( 22 ) ],
 "loop": true,
 "name": "unavailable",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 15 ) ],
+"frames": [ ExtResource( 23 ) ],
 "loop": true,
 "name": "available",
 "speed": 5.0
@@ -129,33 +147,33 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=7]
 
 animations = [ {
-"frames": [ ExtResource( 16 ) ],
+"frames": [ ExtResource( 24 ) ],
 "loop": true,
 "name": "3",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 17 ) ],
+"frames": [ ExtResource( 25 ) ],
 "loop": true,
 "name": "2",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 18 ) ],
+"frames": [ ExtResource( 26 ) ],
 "loop": true,
 "name": "5",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 19 ) ],
-"loop": true,
-"name": "1",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 20 ) ],
+"frames": [ ExtResource( 27 ) ],
 "loop": true,
 "name": "4",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
 } ]
 
-[node name="Unit" type="Area2D" index="0"]
+[node name="Unit" type="Area2D"]
 
 scale = Vector2( 0.5, 0.5 )
 input_pickable = true
@@ -200,7 +218,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="SelectSound" type="AudioStreamPlayer" parent="." index="4"]
 
-stream = ExtResource( 6 )
+stream = ExtResource( 14 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -209,7 +227,7 @@ bus = "Sound Effects"
 
 [node name="MoveSound" type="AudioStreamPlayer" parent="." index="5"]
 
-stream = ExtResource( 7 )
+stream = ExtResource( 15 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -261,7 +279,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 16 )
 text = "X/X"
 align = 1
 valign = 1
@@ -272,7 +290,7 @@ _sections_unfolded = [ "Rect", "custom_fonts" ]
 
 [node name="DieSound" type="AudioStreamPlayer" parent="." index="7"]
 
-stream = ExtResource( 9 )
+stream = ExtResource( 17 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -281,7 +299,7 @@ bus = "Master"
 
 [node name="DamagedSound" type="AudioStreamPlayer" parent="." index="8"]
 
-stream = ExtResource( 10 )
+stream = ExtResource( 18 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -290,7 +308,7 @@ bus = "Master"
 
 [node name="TargetedSound" type="AudioStreamPlayer" parent="." index="9"]
 
-stream = ExtResource( 11 )
+stream = ExtResource( 19 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -314,8 +332,8 @@ autostart = false
 [node name="MoveAvailability" type="AnimatedSprite" parent="." index="12"]
 
 visible = false
-position = Vector2( -84.8614, -213.743 )
-scale = Vector2( 0.35, 0.35 )
+position = Vector2( 0, -215 )
+scale = Vector2( 0.45, 0.45 )
 frames = SubResource( 5 )
 animation = "available"
 _sections_unfolded = [ "Transform" ]
@@ -323,8 +341,8 @@ _sections_unfolded = [ "Transform" ]
 [node name="AttackAvailability" type="AnimatedSprite" parent="." index="13"]
 
 visible = false
-position = Vector2( -120.114, -214.61 )
-scale = Vector2( 0.35, 0.35 )
+position = Vector2( 0, -215 )
+scale = Vector2( 0.45, 0.45 )
 frames = SubResource( 6 )
 animation = "available"
 _sections_unfolded = [ "Transform" ]
@@ -332,7 +350,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="AttackPowerIcon" type="AnimatedSprite" parent="." index="14"]
 
 visible = false
-scale = Vector2( 0.3, 0.3 )
+scale = Vector2( 0.38, 0.38 )
 frames = SubResource( 7 )
 animation = "1"
 _sections_unfolded = [ "Transform" ]
