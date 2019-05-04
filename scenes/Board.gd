@@ -129,7 +129,6 @@ func on_click(gridX,gridY):
 	elif selected_unit.get_type() != "abstract_unit" and currently_clicked_tile.can_attack_space:
 		print("attacked unit")
 		selected_unit.expend_attack()
-		emit_signal("ally_has_attacked")
 		
 		#If a unit attacks, it uses up its movement as well
 		selected_unit.expend_movement()
@@ -139,7 +138,7 @@ func on_click(gridX,gridY):
 		#damage the targeted unit by the selected unit's attack power
 		get_unit(Vector2(gridX,gridY)).damage_by(selected_unit.get_attack_power());
 		reset_tiles()
-		pass
+		emit_signal("ally_has_attacked")
 	else:
 		reset_tiles()
 		select_unit(gridX,gridY)
@@ -289,7 +288,7 @@ func process_mouse_exit(gridX,gridY):
 	var unit_to_be_processed = unitArray[gridX][gridY]
 	if !unit_to_be_processed.has_focus:
 		unit_to_be_processed.hide_stats()
-		if unit_to_be_processed.get_team() == acting_team:
+		if unit_to_be_processed.get_team() == acting_team and not unit_to_be_processed.is_dead():
 			unit_to_be_processed.display_action_icons_passive()
 	boardArray[gridX][gridY].toggle_outline()
 
@@ -337,6 +336,13 @@ func switch_acting_team():
 		acting_team = 0
 	elif acting_team == 0:
 		acting_team = 1
+
+func disconnect_board():
+	for i in range(0,board_x_size):
+		for j in range(0,board_y_size):
+			boardArray[i][j].disconnect("mouse_entered", self, "process_mouse_enter")
+			boardArray[i][j].disconnect("mouse_exited", self, "process_mouse_exit")
+			boardArray[i][j].disconnect("clicked", self, "on_click")
 
 #returns the actual coordinate that corresponds with a value in the 2D array of tiles.
 func translate_grid_coordinate(gridX,gridY):

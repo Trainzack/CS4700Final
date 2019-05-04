@@ -6,16 +6,49 @@ var acting_side_units = []
 var acting_unit_index = 0
 onready var board = $TestBoard
 onready var ui_manager = $UIManager
+onready var second_timer = $SecondTimer
+onready var turn_time_label = $TurnTimer/TimerValue
+onready var wait_for_damage_timer = $WaitForDamageTimer
+var allotted_turn_time = 35
+var turn_time_left = allotted_turn_time
+var timed_game = false
 
 func _ready():
+	set_allotted_turn_time(30)
+	set_timed_game()
 	board.connect("ally_unit_selected",self,"on_unit_selected")
 	board.connect("dummy_unit_selected",self,"hide_options")
 	board.connect("ally_has_moved",self,"disable_movement")
 	board.connect("ally_has_attacked",self,"disable_attacks")
+	board.connect("ally_has_attacked",self,"check_win_condition")
 	ui_manager.connect("attack_pressed",self,"display_attacks")
 	ui_manager.connect("movement_pressed",self,"display_moves")
 	ui_manager.connect("end_turn_pressed",self,"end_turn")
 	ui_manager.connect("exit_combat",get_parent(),"end_combat")
+
+func set_allotted_turn_time(time):
+	allotted_turn_time = time
+	turn_time_left = allotted_turn_time
+
+func set_timed_game():
+	timed_game = true
+	second_timer.connect("timeout",self,"countdown_turn_time")
+	second_timer.start()
+	turn_time_label.text = format_turn_time(allotted_turn_time)
+	$TurnTimer.show()
+
+func countdown_turn_time():
+	turn_time_left -= 1
+	turn_time_label.text = format_turn_time(turn_time_left)
+	if(turn_time_left <= 0):
+		turn_time_left = allotted_turn_time
+		turn_time_label.text = format_turn_time(turn_time_left)
+		$EndTurnSound.play()
+		end_turn()
+
+func format_turn_time(time):
+	var formatted = "%02d"
+	return formatted % [time]
 
 func _process(delta):
 	if Input.is_action_just_pressed("select_next_unit"):
@@ -97,3 +130,39 @@ func end_turn():
 	acting_side_units = board.get_units_by_team(board.get_acting_team())
 	set_acting_units()
 	acting_unit_index = 0
+	if timed_game:
+		turn_time_left = allotted_turn_time
+		turn_time_label.text = format_turn_time(turn_time_left)
+	#check_win_condition()
+
+func disconnect_combat_signals():
+	board.disconnect("ally_unit_selected",self,"on_unit_selected")
+	board.disconnect("dummy_unit_selected",self,"hide_options")
+	board.disconnect("ally_has_moved",self,"disable_movement")
+	board.disconnect("ally_has_attacked",self,"disable_attacks")
+	ui_manager.disconnect("attack_pressed",self,"display_attacks")
+	ui_manager.disconnect("movement_pressed",self,"display_moves")
+	ui_manager.disconnect("end_turn_pressed",self,"end_turn")
+	#ui_manager.disconnect("exit_combat",get_parent(),"end_combat")
+
+func check_win_condition():
+	wait_for_damage_timer.start()
+	yield(wait_for_damage_timer,"timeout")
+	print("win condition checked")
+	var white_side = board.get_units_by_team(0)
+	var black_side = board.get_units_by_team(1)
+	print("black_side size is " + str(black_side.size()))
+	print("white_side size is " + str(white_side.size()))
+	if white_side.size() == 0 or black_side.size() == 0:
+		end_combat()
+
+func end_combat():
+	ui_manager.disable_ui()
+	board.disconnect_board()
+	disconnect_combat_signals()
+	if timed_game:
+		second_timer.stop()
+	if board.get_acting_team() == 1:
+		ui_manager.display_black_victory()
+	elif board.get_acting_team() == 0:
+			ui_manager.display_white_victory()
