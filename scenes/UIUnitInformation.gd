@@ -1,31 +1,32 @@
-extends Node
+extends Container
 var unit_scene = preload("res://scenes/unit_scenes/Unit.tscn")
 var pawn_scene = preload("res://scenes/unit_scenes/Centaur.tscn")
 
-onready var unit_to_show = $Container/Panel/UnitToShow
-onready var unit_name = $Container/Panel/UnitName
-onready var unit_attack_power = $Container/Panel/AttackPower
-onready var unit_hp = $Container/Panel/HitPoints
-onready var swim_label = $Container/Panel/SwimAbility
-onready var climb_label = $Container/Panel/ClimbAbility
+onready var unit_to_show = $Panel/UnitToShow
+onready var unit_name = $Panel/UnitName
+onready var unit_attack_power = $Panel/AttackPower
+onready var unit_hp = $Panel/HitPoints
+onready var swim_label = $Panel/SwimAbility
+onready var climb_label = $Panel/ClimbAbility
 
 func _ready():
-	var test_unit = pawn_scene.instance()
-	test_unit.set_black()
+	#var test_unit = pawn_scene.instance()
+	#test_unit.set_black()
 	#add_child(test_unit)
-	construct_unit_data(test_unit)
+	#construct_unit_data(test_unit)
+	pass
 
 func construct_unit_data(unit):
 	set_unit_image(unit)
 	get_unit_information(unit)
 
 func set_scale(x,y):
-	$Container.rect_scale.x = x
-	$Container.rect_scale.y = y
+	rect_scale.x = x
+	rect_scale.y = y
 
 func set_position(x,y):
-	$Container.rect_position.x = x
-	$Container.rect_position.y = y
+	rect_position.x = x
+	rect_position.y = y
 
 func set_unit_image(unit):
 	var animation_string = unit.get_type().to_lower()
@@ -40,10 +41,10 @@ func set_unit_image(unit):
 
 func show_information(unit):
 	construct_unit_data(unit)
-	$Container.show()
+	show()
 
 func hide_information():
-	$Container.hide()
+	hide()
 
 func get_unit_information(unit):
 	unit_name.text = unit.get_type().to_upper()

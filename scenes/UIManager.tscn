@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://scenes/UIManager.gd" type="Script" id=1]
 [ext_resource path="res://art/ui/MovementUIGraphic.PNG" type="Texture" id=2]
@@ -30,18 +30,24 @@
 [ext_resource path="res://sound/chukka_07.wav" type="AudioStream" id=28]
 [ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=29]
 [ext_resource path="res://sound/shizzle_07.wav" type="AudioStream" id=30]
+[ext_resource path="res://scenes/UIUnitInformation.tscn" type="PackedScene" id=31]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 14 ) ],
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
 "loop": true,
-"name": "white_turn",
-"speed": 5.0
+"name": "white_turn_transition",
+"speed": 35.0
 }, {
-"frames": [ ExtResource( 15 ) ],
+"frames": [ ExtResource( 21 ) ],
 "loop": true,
 "name": "black_turn",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ) ],
+"loop": true,
+"name": "white_turn",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 14 ) ],
@@ -55,7 +61,7 @@ animations = [ {
 "speed": 35.0
 } ]
 
-[node name="UIManager" type="Node"]
+[node name="UIManager" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -186,9 +192,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 30.0
-margin_top = 30.0
+margin_top = 525.0
 margin_right = 530.0
-margin_bottom = 230.0
+margin_bottom = 725.0
 rect_scale = Vector2( 0.6, 0.6 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -281,26 +287,12 @@ autoplay = false
 mix_target = 0
 bus = "Sound Effects"
 
-[node name="ExitCombatContainer" type="Container" parent="." index="7"]
+[node name="UIUnitInformation" parent="." index="7" instance=ExtResource( 31 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 30.0
-margin_top = 30.0
-margin_right = 490.0
-margin_bottom = 200.0
-rect_scale = Vector2( 0.6, 0.6 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-_sections_unfolded = [ "Margin", "Rect" ]
-__meta__ = {
-"_edit_group_": true
-}
+margin_top = 20.0
+margin_right = 555.0
+margin_bottom = 420.0
+rect_scale = Vector2( 0.55, 0.55 )
 
 

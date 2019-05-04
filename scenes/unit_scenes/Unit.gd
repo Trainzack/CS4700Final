@@ -21,6 +21,7 @@ var has_attacked = false
 #A unit has focus if it is being attacked or if it is currently selected
 #used for keeping info of the unit onscreen
 var has_focus = false
+var is_acting = false
 
 export var attack_power = 1
 
@@ -36,7 +37,7 @@ onready var damage_timer = $DamageTimer
 onready var display_health_timer = $DisplayHealthTimer
 
 func _ready():
-	$DisplayHealthTimer.connect("timeout",self,"damage_hide_health")
+	$DisplayHealthTimer.connect("timeout",self,"damage_hide_stats")
 	health_bar.max_value = max_health
 	set_health(current_health)
 	
@@ -46,14 +47,9 @@ func _ready():
 	# Recenter the health bar
 	health_bar.rect_position.x = max_health * units_per_health * -0.5
 	health_bar.show_behind_parent = false
-	# Place attack and move icons net to health bar
-	attack_icon.position.y = health_bar.rect_position.y + 15
-	movement_icon.position.y = health_bar.rect_position.y + 15
-	attack_icon.position.x = health_bar.rect_position.x - 20
-	movement_icon.position.x = attack_icon.position.x
 	
-	power_icon.position.y = attack_icon.position.y
-	power_icon.position.x = movement_icon.position.x - 40
+	power_icon.position.y = health_bar.rect_position.y + 15
+	power_icon.position.x = health_bar.rect_position.x - 30
 	power_icon.animation = str(attack_power)
 	hide_stats()
 	#hide_action_icons()
@@ -126,14 +122,25 @@ func set_unselected():
 	$SelectorIcon.animation = "unselected"
 	has_focus = false
 	hide_health()
-	hide_action_icons()
+	hide_attack_power()
+	if is_acting == true:
+		display_action_icons_passive()
 
 func set_selected():
 	has_focus = true
-	$SelectorIcon.animation = "selected"
+	update_selection_icon()
 	$SelectorIcon.play()
 	$SelectSound.play()
+	hide_action_icons()
 	display_stats()
+
+func update_selection_icon():
+	if (not has_attacked) and (not has_moved):
+		$SelectorIcon.animation = "selected"
+	elif (not has_attacked) and (has_moved):
+		$SelectorIcon.animation = "selected_move_d"
+	elif (has_attacked) and (has_moved):
+		$SelectorIcon.animation = "selected_both_d"
 
 func set_health(h):
 	if h < 0:
@@ -173,10 +180,14 @@ func is_dummy():
 
 #To be used during combat to reset the units actions
 func reset_moves():
+	is_acting = false
 	has_moved = false
 	movement_icon.animation = "available"
 	has_attacked = false
 	attack_icon.animation = "available"
+
+func toggle_acting():
+	is_acting = true
 
 #To be used after combat to reset the units actions and restore it to full heatlh
 func refresh():
@@ -212,18 +223,21 @@ func damage_display_health():
 	display_health_timer.start()
 
 #unfocus the damaged unit and hides its health
-func damage_hide_health():
+func damage_hide_stats():
 	has_focus = false
-	health_bar.hide()
+	hide_health()
+	hide_attack_power()
 
 func display_stats():
 	display_health()
 	if not is_dead():
-		display_action_icons()
+		#display_action_icons()
+		display_attack_power()
 
 func hide_stats():
 	hide_health()
 	hide_action_icons()
+	hide_attack_power()
 
 func display_health():
 	health_bar.show()
@@ -234,11 +248,25 @@ func hide_health():
 func display_action_icons():
 	attack_icon.show()
 	movement_icon.show()
-	power_icon.show()
+
+func display_action_icons_passive():
+	attack_icon.position.y = health_bar.rect_position.y + 15
+	movement_icon.position.y = health_bar.rect_position.y + 15
+	display_action_icons()
+
+func display_action_icons_hover():
+	attack_icon.position.y = $SelectorIcon.position.y
+	movement_icon.position.y = $SelectorIcon.position.y
+	display_action_icons()
 
 func hide_action_icons():
 	attack_icon.hide()
 	movement_icon.hide()
+
+func display_attack_power():
+	power_icon.show()
+
+func hide_attack_power():
 	power_icon.hide()
 
 func expend_attack():
@@ -263,5 +291,8 @@ func get_sprite_frames():
 	print($UnitSprite.frames)
 	return $UnitSprite.frames
 
-func get_health_bar():
-	return health_bar
+func has_actions():
+	if(has_attacked == false or has_moved == false):
+		return true
+	else:
+		return false
