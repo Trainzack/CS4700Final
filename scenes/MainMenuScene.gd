@@ -11,7 +11,7 @@ onready var button_ht = $"PanelContainer/PanelContainer/MenuButton Container/How
 onready var button_op = $"PanelContainer/PanelContainer/MenuButton Container/Options"
 onready var button_qt = $"PanelContainer/PanelContainer/MenuButton Container/Quit"
 
-onready var unimplemented = $PanelContainer/PanelContainer/Container/AcceptDialog
+onready var unimplemented = $PanelContainer/AcceptDialog
 
 onready var buttons = [button_sp, button_mp, button_ht, button_op, button_qt]
 

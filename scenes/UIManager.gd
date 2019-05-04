@@ -14,6 +14,7 @@ onready var select_move_sound = $SelectMoveSound
 onready var turn_icon_container = $WhoseTurnContainer
 onready var turn_icon = get_node("WhoseTurnContainer").get_node("TurnIcon")
 onready var unit_info = $UIUnitInformation
+onready var exit_combat = $VictoryNotification/ExitCombatButton
 
 # Whether the currently 
 var can_attack = false
@@ -23,7 +24,7 @@ func _ready():
 	get_node("CommandContainer").get_node("MovementButton").connect("pressed",self,"emit_movement_pressed")
 	get_node("CommandContainer").get_node("AttacksButton").connect("pressed",self,"emit_attack_pressed")
 	get_node("EndTurnContainer").get_node("EndTurnButton").connect("pressed",self,"emit_end_turn_pressed")
-	get_node("ExitCombatContainer2/ExitCombatButton").connect("pressed",self,"emit_exit_combat")
+	exit_combat.connect("pressed",self,"emit_exit_combat")
 	unit_info.hide()
 
 #_process is used to wait for user input from the keyboard
