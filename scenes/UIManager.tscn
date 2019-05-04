@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://scenes/UIManager.gd" type="Script" id=1]
 [ext_resource path="res://art/ui/MovementUIGraphic.PNG" type="Texture" id=2]
@@ -20,17 +20,20 @@
 [ext_resource path="res://art/ui/BlackTurnUITransition5.png" type="Texture" id=18]
 [ext_resource path="res://art/ui/BlackTurnUITransition6.png" type="Texture" id=19]
 [ext_resource path="res://art/ui/WhiteTurnUI.png" type="Texture" id=20]
-[ext_resource path="res://art/ui/BlackTurnUI.png" type="Texture" id=21]
-[ext_resource path="res://art/ui/WhiteTurnUITransition1.png" type="Texture" id=22]
-[ext_resource path="res://art/ui/WhiteTurnUITransition2.png" type="Texture" id=23]
-[ext_resource path="res://art/ui/WhiteTurnUITransition3.png" type="Texture" id=24]
-[ext_resource path="res://art/ui/WhiteTurnUITransition4.png" type="Texture" id=25]
-[ext_resource path="res://art/ui/WhiteTurnUITransition5.png" type="Texture" id=26]
-[ext_resource path="res://art/ui/WhiteTurnUITransition6.png" type="Texture" id=27]
+[ext_resource path="res://art/ui/WhiteTurnUITransition1.png" type="Texture" id=21]
+[ext_resource path="res://art/ui/WhiteTurnUITransition2.png" type="Texture" id=22]
+[ext_resource path="res://art/ui/WhiteTurnUITransition3.png" type="Texture" id=23]
+[ext_resource path="res://art/ui/WhiteTurnUITransition4.png" type="Texture" id=24]
+[ext_resource path="res://art/ui/WhiteTurnUITransition5.png" type="Texture" id=25]
+[ext_resource path="res://art/ui/WhiteTurnUITransition6.png" type="Texture" id=26]
+[ext_resource path="res://art/ui/BlackTurnUI.png" type="Texture" id=27]
 [ext_resource path="res://sound/chukka_07.wav" type="AudioStream" id=28]
 [ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=29]
 [ext_resource path="res://sound/shizzle_07.wav" type="AudioStream" id=30]
 [ext_resource path="res://scenes/UIUnitInformation.tscn" type="PackedScene" id=31]
+[ext_resource path="res://art/ui/black_victory.png" type="Texture" id=32]
+[ext_resource path="res://art/ui/white_victory.png" type="Texture" id=33]
+[ext_resource path="res://sound/fall_splash_03.wav" type="AudioStream" id=34]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -40,20 +43,34 @@ animations = [ {
 "name": "white_turn_transition",
 "speed": 35.0
 }, {
-"frames": [ ExtResource( 21 ) ],
-"loop": true,
-"name": "black_turn",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 20 ) ],
 "loop": true,
 "name": "white_turn",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 21 ) ],
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
 "loop": true,
 "name": "black_turn_transition",
 "speed": 35.0
+}, {
+"frames": [ ExtResource( 27 ) ],
+"loop": true,
+"name": "black_turn",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 32 ) ],
+"loop": true,
+"name": "black_victory",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 33 ) ],
+"loop": true,
+"name": "white_victory",
+"speed": 5.0
 } ]
 
 [node name="UIManager" type="Node" index="0"]
@@ -178,6 +195,7 @@ group = null
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 12 )
+texture_disabled = ExtResource( 11 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="ExitCombatContainer2" type="Container" parent="." index="2"]
@@ -289,5 +307,23 @@ margin_top = 20.0
 margin_right = 555.0
 margin_bottom = 420.0
 rect_scale = Vector2( 0.55, 0.55 )
+
+[node name="VictoryNotification" type="AnimatedSprite" parent="." index="8"]
+
+visible = false
+position = Vector2( 720, 360 )
+z_index = 100
+frames = SubResource( 2 )
+animation = "white_victory"
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="VictorySound" type="AudioStreamPlayer" parent="." index="9"]
+
+stream = ExtResource( 34 )
+volume_db = 10.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 
