@@ -14,8 +14,8 @@ onready var action_panel = $ActionPanel
 var current_action_panel_size
 
 #if you increase or decrease the font size, change these as well
-var default_action_panel_size = 36
-var panel_size_increment = 34
+var default_action_panel_size = 47
+var panel_size_increment = 39
 
 func _ready():
 	#var test_unit = pawn_scene.instance()

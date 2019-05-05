@@ -23,7 +23,7 @@ var chokepoint_types = {
 	1: "tut2",
 	2: "tut3",
 	7: "mini",
-	13: "final"	
+	13: "multiplayer"	
 }
 
 # Hold the nodes

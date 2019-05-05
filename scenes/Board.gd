@@ -53,6 +53,12 @@ func get_unit_by_object(unit):
 			if unit == unitArray[i][j]:
 				return unit
 
+func get_unit_coordinate_by_object(unit):
+	for i in range(board_x_size):
+		for j in range(board_y_size):
+			if unit == unitArray[i][j]:
+				return Vector2(i,j)
+
 #Returns an array of the alive units on the board that are on a team
 #Can never return an abstract unit because they don't have a team value
 func get_units_by_team(team):
@@ -112,8 +118,18 @@ func place_unit(placed_unit, gridX, gridY):
 		placed_unit.z_index = 2 + boardArray[gridX][gridY].z_index
 		add_child(placed_unit)
 		unitArray[gridX][gridY] = placed_unit
+		#This connects a signal to make units dissapear on death. Comment it out to remove feature.
+		placed_unit.connect("unit_death",self,"on_unit_death")
 	else:
 		printerr("Tile is occupado")
+
+func on_unit_death(unit):
+	var unit_position = get_unit_coordinate_by_object(unit)
+	boardArray[unit_position.x][unit_position.y].set_occupied(false)
+	unitArray[unit_position.x][unit_position.y] = dummy_unit
+	unit.disconnect("unit_death",self,"on_unit_death")
+	remove_child(unit)
+	unit.queue_free()
 
 #Deselects the previously selected unit and activates a different one.
 func on_click(gridX,gridY):

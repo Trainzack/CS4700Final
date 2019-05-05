@@ -9,6 +9,8 @@ export var water_allowed = false
 # Whether this piece can move on walls
 export var wall_allowed = false
 
+signal unit_death(unit)
+
 # Make this assignment onready so that ubstypes have a chance to override
 onready var current_health = max_health
 var equipmentList = []
@@ -165,9 +167,14 @@ func moved():
 func die():
 	# TODO: Finish implementing death!
 	current_health = 0
-	$DieSound.play()
 	# Make translucent
 	$UnitSprite.modulate = Color(1, 1, 1, 0.5)
+	$DieSound.play()
+	
+	#Wait a second before sending out the signal for dying
+	$DespawnTimer.start()
+	yield($DespawnTimer,"timeout")
+	emit_signal("unit_death",self)
 	
 func is_dead():
 	return current_health <= 0

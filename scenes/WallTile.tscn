@@ -30,7 +30,6 @@ position = Vector2( 0, -36 )
 
 [node name="TileSprite2" type="AnimatedSprite" parent="." index="1"]
 
-visible = false
 z_index = -2
 frames = SubResource( 1 )
 animation = "white"

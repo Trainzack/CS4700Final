@@ -23,6 +23,9 @@ var pieces = {
 	"S": preload("res://scenes/unit_scenes/Ship.tscn"),
 	"U": preload("res://scenes/unit_scenes/Unicorn.tscn"),
 	"Z": preload("res://scenes/unit_scenes/Zebra.tscn"),
+	"V": preload("res://scenes/unit_scenes/Vanguard.tscn"),
+	"GU": preload("res://scenes/unit_scenes/Guard.tscn"),
+	"CN": preload("res://scenes/unit_scenes/Cannon.tscn"),
 }
 
 var encounter_types = {
@@ -76,6 +79,16 @@ var encounter_types = {
 		".M~..~M.",
 		"........",
 	],[[3,0,"N",1],[4,0,"E",1],[5,0,"R",1],[6,0,"Q",1],[4,6,"K",0]]],
+	"multiplayer":	[[
+		"........",
+		"........",
+		"...MM...",
+		"..M~~M..",
+		"..M~~M..",
+		"...MM...",
+		"........",
+		"........",
+	],[[0,0,"CN",1],[2,0,"V",1],[3,0,"U",1],[4,0,"G",1],[5,0,"V",1],[7,0,"CN",1],[3,1,"B",1],[4,1,"B",1],[1,1,"N",1],[6,1,"N",1],[0,7,"CN",0],[2,7,"V",0],[3,7,"G",0],[4,7,"U",0],[5,7,"V",0],[7,7,"CN",0],[1,6,"N",0],[6,6,"N",0],[3,6,"B",0],[4,6,"B",0],[3,3,"S",0],[4,4,"S",1]]],
 }
 
 
@@ -84,7 +97,8 @@ var special_names = {
 	"tut2": "The Second Encounter",
 	"tut3": "The First Fair Fight",
 	"mini": "Centaur Keep",
-	"final": "The King's Castle"
+	"final": "The King's Castle",
+	"multiplayer": "The Lake in the Mountains"
 }
 
 var type = null
@@ -136,8 +150,7 @@ func build_board(board):
 		place_units(board, encounter_types[type][1])
 	else:
 		build_test(board)
-		
-		
+
 func place_tiles(board, tiles):
 	for x in range(board.board_x_size):
 		for y in range(board.board_y_size):
