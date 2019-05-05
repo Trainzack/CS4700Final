@@ -12,6 +12,7 @@
 [ext_resource path="res://art/ui/EndTurnButton.png" type="Texture" id=10]
 [ext_resource path="res://art/ui/EndTurnButtonClicked.png" type="Texture" id=11]
 [ext_resource path="res://art/ui/EndTurnButtonHovered.png" type="Texture" id=12]
+
 [ext_resource path="res://art/ui/BlackTurnUITransition1.png" type="Texture" id=13]
 [ext_resource path="res://art/ui/BlackTurnUITransition2.png" type="Texture" id=14]
 [ext_resource path="res://art/ui/BlackTurnUITransition3.png" type="Texture" id=15]
@@ -31,6 +32,7 @@
 [ext_resource path="res://sound/shizzle_07.wav" type="AudioStream" id=29]
 [ext_resource path="res://scenes/UIUnitInformation.tscn" type="PackedScene" id=30]
 [ext_resource path="res://art/ui/white_victory.png" type="Texture" id=31]
+
 [ext_resource path="res://art/ui/black_victory.png" type="Texture" id=32]
 [ext_resource path="res://fonts/font.tres" type="DynamicFont" id=33]
 [ext_resource path="res://music/Victory_Royale.ogg" type="AudioStream" id=34]
@@ -43,6 +45,7 @@ animations = [ {
 "name": "white_turn_transition",
 "speed": 35.0
 }, {
+
 "frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
 "loop": true,
 "name": "black_turn_transition",
@@ -55,7 +58,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 26 ) ],
 "loop": true,
-"name": "black_turn",
+"name": "white_turn",
 "speed": 5.0
 } ]
 
@@ -73,7 +76,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="UIManager" type="Node" index="0"]
+[node name="UIManager" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -269,7 +272,7 @@ bus = "Sound Effects"
 [node name="SelectMoveSound" type="AudioStreamPlayer" parent="." index="6"]
 
 stream = ExtResource( 29 )
-volume_db = 0.0
+volume_db = 5.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
@@ -277,11 +280,11 @@ bus = "Sound Effects"
 
 [node name="UIUnitInformation" parent="." index="7" instance=ExtResource( 30 )]
 
-margin_left = 30.0
-margin_top = 20.0
-margin_right = 555.0
-margin_bottom = 420.0
-rect_scale = Vector2( 0.55, 0.55 )
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 528.0
+margin_bottom = 403.0
+rect_scale = Vector2( 0.6, 0.6 )
 
 [node name="VictoryNotification" type="AnimatedSprite" parent="." index="8"]
 

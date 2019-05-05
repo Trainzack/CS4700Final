@@ -6,6 +6,7 @@ var water_tile_scene = preload("res://scenes/WaterTile.tscn")
 var wall_tile_scene = preload("res://scenes/WallTile.tscn")
 
 var encounter_scene = preload("res://scenes/Encounter.tscn")
+onready var meep_merp = $DeniedSound
 
 #offsets used to populate the board. Values come from testing different positions
 var starting_x = 300
@@ -172,6 +173,11 @@ func select_unit(gridX,gridY):
 			emit_signal("ally_has_attacked")
 		if currently_clicked_unit.has_moved:
 			emit_signal("ally_has_moved")
+	elif currently_clicked_unit.get_type() != "abstract_unit" and (currently_clicked_unit.get_team() != acting_team or currently_clicked_unit.is_dead() or !currently_clicked_unit.has_actions()):
+		emit_signal("dummy_unit_selected")
+		meep_merp.play()
+		selected_unit = dummy_unit
+		selected_unit_coordinate = Vector2(-1,-1)
 	else:
 		emit_signal("dummy_unit_selected")
 		selected_unit = dummy_unit

@@ -9,13 +9,13 @@ onready var ui_manager = $UIManager
 onready var second_timer = $SecondTimer
 onready var turn_time_label = $TurnTimer/TimerValue
 onready var wait_for_damage_timer = $WaitForDamageTimer
+onready var meep_merp = $DeniedSound
 var allotted_turn_time = 35
 var turn_time_left = allotted_turn_time
 var timed_game = false
 
 func _ready():
-	set_allotted_turn_time(30)
-	set_timed_game()
+	#set_timed_game(60)
 	board.connect("ally_unit_selected",self,"on_unit_selected")
 	board.connect("dummy_unit_selected",self,"hide_options")
 	board.connect("ally_has_moved",self,"disable_movement")
@@ -30,7 +30,8 @@ func set_allotted_turn_time(time):
 	allotted_turn_time = time
 	turn_time_left = allotted_turn_time
 
-func set_timed_game():
+func set_timed_game(time = 30):
+	set_allotted_turn_time(time)
 	timed_game = true
 	second_timer.connect("timeout",self,"countdown_turn_time")
 	second_timer.start()
@@ -54,7 +55,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("select_next_unit"):
 		cycle_select_unit()
 
-#Cycles through the acting army's units and selects them
+#Cycles through the acting army's units and selects one
+#Skips over units that don't have actions
+#If none have any actions left, none are selected
 func cycle_select_unit():
 	var loop_tracker = 0
 	var unit_selected = false
@@ -67,6 +70,8 @@ func cycle_select_unit():
 		acting_unit_index = (acting_unit_index + 1) % acting_side_units.size()
 		unit_to_consider = acting_side_units[acting_unit_index]
 		loop_tracker += 1
+	if loop_tracker == acting_side_units.size():
+		meep_merp.play()
 
 #sets the acting_unit_index to the next index in the unit array
 func set_cycle_index_to_selected(unit):
