@@ -12,48 +12,51 @@
 [ext_resource path="res://art/ui/EndTurnButton.png" type="Texture" id=10]
 [ext_resource path="res://art/ui/EndTurnButtonClicked.png" type="Texture" id=11]
 [ext_resource path="res://art/ui/EndTurnButtonHovered.png" type="Texture" id=12]
-[ext_resource path="res://fonts/font.tres" type="DynamicFont" id=13]
-[ext_resource path="res://art/ui/BlackTurnUITransition1.png" type="Texture" id=14]
-[ext_resource path="res://art/ui/BlackTurnUITransition2.png" type="Texture" id=15]
-[ext_resource path="res://art/ui/BlackTurnUITransition3.png" type="Texture" id=16]
-[ext_resource path="res://art/ui/BlackTurnUITransition4.png" type="Texture" id=17]
-[ext_resource path="res://art/ui/BlackTurnUITransition5.png" type="Texture" id=18]
-[ext_resource path="res://art/ui/BlackTurnUITransition6.png" type="Texture" id=19]
-[ext_resource path="res://art/ui/WhiteTurnUI.png" type="Texture" id=20]
-[ext_resource path="res://art/ui/BlackTurnUI.png" type="Texture" id=21]
-[ext_resource path="res://art/ui/WhiteTurnUITransition1.png" type="Texture" id=22]
-[ext_resource path="res://art/ui/WhiteTurnUITransition2.png" type="Texture" id=23]
-[ext_resource path="res://art/ui/WhiteTurnUITransition3.png" type="Texture" id=24]
-[ext_resource path="res://art/ui/WhiteTurnUITransition4.png" type="Texture" id=25]
-[ext_resource path="res://art/ui/WhiteTurnUITransition5.png" type="Texture" id=26]
-[ext_resource path="res://art/ui/WhiteTurnUITransition6.png" type="Texture" id=27]
-[ext_resource path="res://sound/chukka_07.wav" type="AudioStream" id=28]
-[ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=29]
-[ext_resource path="res://sound/shizzle_07.wav" type="AudioStream" id=30]
-[ext_resource path="res://scenes/UIUnitInformation.tscn" type="PackedScene" id=31]
+
+[ext_resource path="res://art/ui/BlackTurnUITransition1.png" type="Texture" id=13]
+[ext_resource path="res://art/ui/BlackTurnUITransition2.png" type="Texture" id=14]
+[ext_resource path="res://art/ui/BlackTurnUITransition3.png" type="Texture" id=15]
+[ext_resource path="res://art/ui/BlackTurnUITransition4.png" type="Texture" id=16]
+[ext_resource path="res://art/ui/BlackTurnUITransition5.png" type="Texture" id=17]
+[ext_resource path="res://art/ui/BlackTurnUITransition6.png" type="Texture" id=18]
+[ext_resource path="res://art/ui/WhiteTurnUI.png" type="Texture" id=19]
+[ext_resource path="res://art/ui/WhiteTurnUITransition1.png" type="Texture" id=20]
+[ext_resource path="res://art/ui/WhiteTurnUITransition2.png" type="Texture" id=21]
+[ext_resource path="res://art/ui/WhiteTurnUITransition3.png" type="Texture" id=22]
+[ext_resource path="res://art/ui/WhiteTurnUITransition4.png" type="Texture" id=23]
+[ext_resource path="res://art/ui/WhiteTurnUITransition5.png" type="Texture" id=24]
+[ext_resource path="res://art/ui/WhiteTurnUITransition6.png" type="Texture" id=25]
+[ext_resource path="res://art/ui/BlackTurnUI.png" type="Texture" id=26]
+[ext_resource path="res://sound/chukka_07.wav" type="AudioStream" id=27]
+[ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=28]
+[ext_resource path="res://sound/shizzle_07.wav" type="AudioStream" id=29]
+[ext_resource path="res://scenes/UIUnitInformation.tscn" type="PackedScene" id=30]
+[ext_resource path="res://art/ui/white_victory.png" type="Texture" id=31]
+
 [ext_resource path="res://art/ui/black_victory.png" type="Texture" id=32]
-[ext_resource path="res://art/ui/white_victory.png" type="Texture" id=33]
-[ext_resource path="res://sound/fall_splash_03.wav" type="AudioStream" id=34]
+[ext_resource path="res://fonts/font.tres" type="DynamicFont" id=33]
+[ext_resource path="res://music/Victory_Royale.ogg" type="AudioStream" id=34]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ],
 "loop": true,
 "name": "white_turn_transition",
 "speed": 35.0
 }, {
-"frames": [ ExtResource( 21 ) ],
-"loop": true,
-"name": "black_turn",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 21 ) ],
+
+"frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
 "loop": true,
 "name": "black_turn_transition",
 "speed": 35.0
 }, {
-"frames": [ ExtResource( 20 ) ],
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "white_turn",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ) ],
 "loop": true,
 "name": "white_turn",
 "speed": 5.0
@@ -62,14 +65,14 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
+"frames": [ ExtResource( 31 ), null ],
+"loop": true,
+"name": "white_victory",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 32 ) ],
 "loop": true,
 "name": "black_victory",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 33 ) ],
-"loop": true,
-"name": "white_victory",
 "speed": 5.0
 } ]
 
@@ -220,31 +223,6 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="ExitCombatButton" type="Button" parent="ExitCombatContainer2" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 500.0
-margin_bottom = 200.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 13 )
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "End Combat"
-flat = false
-align = 1
-_sections_unfolded = [ "Rect", "Textures", "custom_fonts" ]
-
 [node name="WhoseTurnContainer" type="Container" parent="." index="3"]
 
 anchor_left = 0.0
@@ -275,7 +253,7 @@ animation = "white_turn"
 
 [node name="EndTurnSound" type="AudioStreamPlayer" parent="." index="4"]
 
-stream = ExtResource( 28 )
+stream = ExtResource( 27 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -284,7 +262,7 @@ bus = "Sound Effects"
 
 [node name="SelectAttackSound" type="AudioStreamPlayer" parent="." index="5"]
 
-stream = ExtResource( 29 )
+stream = ExtResource( 28 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -293,14 +271,14 @@ bus = "Sound Effects"
 
 [node name="SelectMoveSound" type="AudioStreamPlayer" parent="." index="6"]
 
-stream = ExtResource( 30 )
+stream = ExtResource( 29 )
 volume_db = 5.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Sound Effects"
 
-[node name="UIUnitInformation" parent="." index="7" instance=ExtResource( 31 )]
+[node name="UIUnitInformation" parent="." index="7" instance=ExtResource( 30 )]
 
 margin_left = 3.0
 margin_top = 3.0
@@ -317,13 +295,40 @@ frames = SubResource( 2 )
 animation = "white_victory"
 _sections_unfolded = [ "Transform", "Z Index" ]
 
+[node name="ExitCombatButton" type="Button" parent="VictoryNotification" index="0"]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -499.0
+margin_top = -151.0
+margin_right = 1.0
+margin_bottom = 49.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 33 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "End Combat"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect", "Textures", "custom_fonts" ]
+
 [node name="VictorySound" type="AudioStreamPlayer" parent="." index="9"]
 
 stream = ExtResource( 34 )
-volume_db = 10.0
+volume_db = 1.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
-bus = "Master"
+bus = "Music"
 
 
