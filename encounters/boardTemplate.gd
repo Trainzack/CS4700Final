@@ -51,7 +51,7 @@ var mountain_templates = [
 var wall_mountain_templates = [
 	[
 	"MM====MM==MM===M===M====M",
-	"MMMMMMMMM==MMMMMMMMMMMMMM",
+	"MMMMMMMMMMMMMMMMMMMMMMMMM",
 	"M===M====MM=====M==MM===M",
 	]
 ]
@@ -121,9 +121,10 @@ func add_wall_mountains():
 	var x_pos = -1
 	if randi() % 2 == 0:
 		x_pos = 6
+	var y_pos = int(rand_range(-16,0))
 	var flip_x = randi() % 2 == 0
 	var flip_y = randi() % 2 == 0
-	apply_template(wall_mountain_templates[randi() % len(wall_mountain_templates)], x_pos, 0, flip_x, flip_y, true)
+	apply_template(wall_mountain_templates[randi() % len(wall_mountain_templates)], x_pos, y_pos, flip_x, flip_y, true)
 
 func apply_template(template, pos_x=0, pos_y=0, x_flip = false, y_flip= false, r_flip = false):
 	var y = -1

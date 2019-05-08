@@ -25,6 +25,7 @@ func _ready():
 	ui_manager.connect("attack_pressed",self,"display_attacks")
 	ui_manager.connect("movement_pressed",self,"display_moves")
 	ui_manager.connect("end_turn_pressed",self,"end_turn")
+	ui_manager.connect("end_turn_pressed", self, "check_win_condition")
 	ui_manager.connect("exit_combat",get_parent(),"exit_scene")
 
 func set_allotted_turn_time(time):
@@ -164,17 +165,19 @@ func check_win_condition():
 	var black_side = board.get_units_by_team(1)
 	print("black_side size is " + str(black_side.size()))
 	print("white_side size is " + str(white_side.size()))
-	if white_side.size() == 0 or black_side.size() == 0:
-		end_combat()
+	if white_side.size() == 0:
+		end_combat(1)
+	if black_side.size() == 0:
+		end_combat(0)
 
-func end_combat():
+func end_combat(winner):
 	$Music.stop()
 	ui_manager.disable_ui()
 	board.disconnect_board()
 	disconnect_combat_signals()
 	if timed_game:
 		second_timer.stop()
-	if board.get_acting_team() == 1:
+	if winner == 1:
 		ui_manager.display_black_victory()
-	elif board.get_acting_team() == 0:
-			ui_manager.display_white_victory()
+	else:
+		ui_manager.display_white_victory()

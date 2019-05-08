@@ -93,7 +93,7 @@ var encounter_types = {
 	],[[0,0,"CN",1],[2,0,"V",1],[3,0,"U",1],[4,0,"R",1],[5,0,"V",1],[7,0,"CN",1],[3,1,"B",1],[4,1,"B",1],[1,1,"N",1],[6,1,"N",1],[0,7,"CN",0],[2,7,"V",0],[3,7,"R",0],[4,7,"U",0],[5,7,"V",0],[7,7,"CN",0],[1,6,"N",0],[6,6,"N",0],[3,6,"B",0],[4,6,"B",0],[7,6,"S",0],[7,1,"S",1]]],
 }
 
-var board = []
+var tiles = []
 var units = []
 
 
@@ -126,12 +126,12 @@ func select_encounter(encounter_type):
 	title = names[randi() % len(names)]
 	
 	if type in encounter_types:
-		board = encounter_types[type][0]
+		tiles = encounter_types[type][0]
 		units = encounter_types[type][1]
 	else:
 		var encounter_template = encounter_template_scene.new()
 		encounter_template.generate()
-		board = encounter_template.get_board()
+		tiles = encounter_template.get_board()
 		units = encounter_template.get_pieces()
 		title += encounter_template.suffix
 		
@@ -162,7 +162,7 @@ func build_test(board):
 	place_units(board, us)
 
 func build_board(board):
-	place_tiles(board, board)
+	place_tiles(board, tiles)
 	place_units(board, units)
 
 func place_tiles(board, tiles):
