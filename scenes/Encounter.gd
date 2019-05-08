@@ -203,6 +203,8 @@ func determine_x_position(last_x_position):
 		return 1
 	if last_x_position == 1:
 		return 6
+	if last_x_position == 6:
+		return 3
 
 func set_teams(input_white_team,input_black_team):
 	white_team = input_white_team

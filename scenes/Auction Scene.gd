@@ -12,23 +12,30 @@ onready var encounter_name_label = $VBoxContainer/Label
 onready var begin_button = $VBoxContainer/Button
 
 var pieces = [
+[
+
+	preload("res://scenes/unit_scenes/Guard.tscn"),
+	preload("res://scenes/unit_scenes/Knight.tscn"),
+	preload("res://scenes/unit_scenes/Pawn.tscn"),
+	preload("res://scenes/unit_scenes/Vanguard.tscn"),
+	preload("res://scenes/unit_scenes/Mann.tscn"),
+],
+[
 	preload("res://scenes/unit_scenes/Bishop.tscn"),
 	preload("res://scenes/unit_scenes/Commoner.tscn"),
-	preload("res://scenes/unit_scenes/Centaur.tscn"),
-	preload("res://scenes/unit_scenes/Elephant.tscn"),
 	preload("res://scenes/unit_scenes/Giraffe.tscn"),
-	preload("res://scenes/unit_scenes/King.tscn"),
-	preload("res://scenes/unit_scenes/Knight.tscn"),
-	preload("res://scenes/unit_scenes/Mann.tscn"),
-	preload("res://scenes/unit_scenes/Pawn.tscn"),
-	preload("res://scenes/unit_scenes/Queen.tscn"),
 	preload("res://scenes/unit_scenes/Rook.tscn"),
-	preload("res://scenes/unit_scenes/Ship.tscn"),
 	preload("res://scenes/unit_scenes/Unicorn.tscn"),
 	preload("res://scenes/unit_scenes/Zebra.tscn"),
-	preload("res://scenes/unit_scenes/Vanguard.tscn"),
-	preload("res://scenes/unit_scenes/Guard.tscn"),
+],
+[
+
 	preload("res://scenes/unit_scenes/Cannon.tscn"),
+	preload("res://scenes/unit_scenes/Queen.tscn"),
+	preload("res://scenes/unit_scenes/Centaur.tscn"),
+	preload("res://scenes/unit_scenes/Elephant.tscn"),
+	preload("res://scenes/unit_scenes/King.tscn"),
+]
 ]
 
 var points_left = [
@@ -71,9 +78,11 @@ func _ready():
 	
 	begin_button.connect("pressed",self,"start_encounter")
 	
+	var i = 0
 	for con in card_container.get_children():
+		var group = int(i/2)
 		var c = unit_card_scene.instance()
-		var unit_scene = pieces[randi() % pieces.size()]
+		var unit_scene = pieces[group][randi() % pieces[group].size()]
 		var u = unit_scene.instance()
 		add_child(u)
 		print(u.type)
@@ -82,6 +91,7 @@ func _ready():
 		c.set_scene(unit_scene)
 		c.connect("buy_pressed",self,"buy_unit")
 		remove_child(u)
+		i += 1
 
 func start_encounter():
 	if len(units[0]) <= 0 or len(units[1]) <= 0:

@@ -23,6 +23,7 @@ animations = [ {
 
 max_health = 7
 type = "centaur"
+unit_cost = 7
 wall_allowed = true
 attack_power = 2
 
