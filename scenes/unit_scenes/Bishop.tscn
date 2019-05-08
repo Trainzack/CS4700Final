@@ -19,9 +19,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Bishop" instance=ExtResource( 1 )]
+[node name="Bishop" index="0" instance=ExtResource( 1 )]
 
 type = "bishop"
+unit_cost = 3
 
 [node name="UnitSprite" parent="." index="0"]
 

@@ -23,6 +23,7 @@ animations = [ {
 
 max_health = 6
 type = "guard"
+unit_cost = 2
 
 [node name="UnitSprite" parent="." index="0"]
 

@@ -19,9 +19,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Knight" instance=ExtResource( 1 )]
+[node name="Knight" index="0" instance=ExtResource( 1 )]
 
 type = "knight"
+unit_cost = 2
 wall_allowed = true
 
 [node name="UnitSprite" parent="." index="0"]

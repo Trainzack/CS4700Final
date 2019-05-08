@@ -2,8 +2,8 @@ extends Area2D
 export var max_health = 3
 export var type = "abstract_unit"
 
-# How much this piece works
-export var value = 1
+# How much this piece worth
+export var unit_cost = 1
 # Whether this piece can move on land
 export var land_allowed = true
 # Whether this piece can move on water
@@ -57,6 +57,10 @@ func _ready():
 	power_icon.animation = str(attack_power)
 	hide_stats()
 	#hide_action_icons()
+
+func get_cost():
+	return unit_cost
+
 func get_current_health():
 	return current_health
 
