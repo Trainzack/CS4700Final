@@ -36,6 +36,8 @@ func exit_scene(delay=0, sound=false):
 	remove_child(scene_stack.pop_front())
 	yield(get_tree().create_timer(delay), "timeout")
 	add_child(scene_stack[0])
+	if scene_stack[0].has_method("come_back"):
+		scene_stack[0].come_back()
 	
 func begin_overworld():
 	remove_child(main_menu)

@@ -109,6 +109,10 @@ func buy_unit(unit, team):
 	points_left[team] -= u.get_cost()
 	update_label()
 	
+func come_back():
+	# TODO: refresh
+	master_scene.return_to_menu()
+	
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
