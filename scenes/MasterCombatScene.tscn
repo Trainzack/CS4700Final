@@ -8,7 +8,7 @@
 [ext_resource path="res://sound/chukka_07.wav" type="AudioStream" id=6]
 [ext_resource path="res://sound/no_03.wav" type="AudioStream" id=7]
 
-[node name="MasterCombatScene" type="Node"]
+[node name="MasterCombatScene" type="Node" index="0"]
 
 script = ExtResource( 1 )
 

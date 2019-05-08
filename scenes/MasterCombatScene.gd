@@ -84,7 +84,25 @@ func set_cycle_index_to_selected(unit):
 #generates the board's encounter.
 #Also adds the inital acting side's units to our array
 func set_encounter(encounter):
+	#var team1 = []
+	#var team2 = []
+	#for i in range(4):
+	#	var unit = pawn_scene.instance()
+	#	unit.set_white()
+	#	add_child(unit)
+	#	team1.append(unit)
+	#var unit2 = pawn_scene.instance()
+	#add_child(unit2)
+	#unit2.set_black()
+	#team2.append(unit2)
+	#for i in team1:
+	#	add_child(i)
+	#	i.print_info()
+	#add_child(team2[0])
+	#team2[0].print_info()
+	#encounter.set_teams(team1,team2)
 	board.create_board(encounter)
+	#encounter.place_teams(board,team1,team2)
 	acting_side_units = board.get_units_by_team(board.get_acting_team())
 	set_acting_units()
 
