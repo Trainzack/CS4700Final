@@ -54,6 +54,16 @@ func update_label():
 
 func _ready():
 	
+	units = [
+	[],
+	[],
+]
+	
+	points_left = [
+	20,
+	20
+]
+	
 	encounter = encounter_scene.instance()
 	add_child(encounter)
 	encounter.select_encounter("random")
@@ -92,7 +102,7 @@ func start_encounter():
 	
 func buy_unit(unit, team):
 	var u = unit.instance()
-	if points_left[team] < u.get_cost():
+	if points_left[team] < u.get_cost() or len(units[team]) >= 12:
 		Global.denySound()
 		return
 	units[team].append(u)
