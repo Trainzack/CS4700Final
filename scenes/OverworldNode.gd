@@ -36,7 +36,7 @@ func get_reward():
 	return encounter.get_reward()	
 
 func get_name():
-	return encounter.title + ": " + encounter.type
+	return encounter.title
 
 # Connects a node, after both of them have been placed on the map
 func connect_node(next_node):

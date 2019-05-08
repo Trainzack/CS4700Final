@@ -67,7 +67,7 @@ var units_placable_template = [
 	"=++++++=",
 ]
 
-var units = [[0,0,"N",1],[7,0,"N",0],]
+var units = []
 
 var suffix = " Field"
 

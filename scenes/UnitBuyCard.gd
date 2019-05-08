@@ -5,19 +5,17 @@ extends Node
 # var b = "textvar"
 
 var unit = null
-onready var label = $Panel/VBoxContainer/Label
-onready var textured = $Panel/VBoxContainer/CenterContainer/TextureRect
-onready var price = $Panel/VBoxContainer/Price
+onready var label = $VBoxContainer/Label
+onready var textured = $VBoxContainer/CenterContainer/TextureRect
+onready var price = $VBoxContainer/Price
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	pass
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
 
 func set_unit(unit):
-	#todo finish this shit
+	price.text = str(unit.get_cost()) + " CC"
+	label.text = unit.get_type().capitalize()
+	textured.texture = unit.unit_sprite.frames.get_frame("white",0)
