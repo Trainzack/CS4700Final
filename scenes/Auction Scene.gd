@@ -61,37 +61,11 @@ func update_label():
 
 func _ready():
 	
-	units = [
-	[],
-	[],
-]
+	refresh()
 	
-	points_left = [
-	20,
-	20
-]
-	
-	encounter = encounter_scene.instance()
-	add_child(encounter)
-	encounter.select_encounter("random")
-	update_label()
 	
 	begin_button.connect("pressed",self,"start_encounter")
 	
-	var i = 0
-	for con in card_container.get_children():
-		var group = int(i/2)
-		var c = unit_card_scene.instance()
-		var unit_scene = pieces[group][randi() % pieces[group].size()]
-		var u = unit_scene.instance()
-		add_child(u)
-		print(u.type)
-		con.add_child(c)
-		c.set_unit(u)
-		c.set_scene(unit_scene)
-		c.connect("buy_pressed",self,"buy_unit")
-		remove_child(u)
-		i += 1
 
 func start_encounter():
 	if len(units[0]) <= 0 or len(units[1]) <= 0:
@@ -119,10 +93,39 @@ func buy_unit(unit, team):
 	points_left[team] -= u.get_cost()
 	update_label()
 	
+# Called when we return to this scene from a sub-scene
 func come_back():
 	# TODO: refresh
-	master_scene.return_to_menu()
+	# master_scene.return_to_menu()
+	refresh()
 	
+
+func refresh():
+	units = [[],[],]
+	points_left = [20,20]
+	
+	if encounter != null:
+		remove_child(encounter)
+	encounter = encounter_scene.instance()
+	add_child(encounter)
+	encounter.select_encounter("random")
+	update_label()
+	var i = 0
+	for con in card_container.get_children():
+		var group = int(i/2)
+		for thing_to_remove in con.get_children():
+			con.remove_child(thing_to_remove)
+		var c = unit_card_scene.instance()
+		var unit_scene = pieces[group][randi() % pieces[group].size()]
+		var u = unit_scene.instance()
+		add_child(u)
+		print(u.type)
+		con.add_child(c)
+		c.set_unit(u)
+		c.set_scene(unit_scene)
+		c.connect("buy_pressed",self,"buy_unit")
+		remove_child(u)
+		i += 1
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.

@@ -215,6 +215,8 @@ func place_teams(board):
 	var x_position = 3
 	var placed_units = 0
 	var row = 0
+	white_team.sort_custom(self, "unit_comparison")
+
 	for unit in white_team:
 		board.place_unit(unit,x_position,row)
 		x_position = determine_x_position(x_position)
@@ -225,6 +227,7 @@ func place_teams(board):
 	x_position = 3
 	placed_units = 0
 	row = 7
+	black_team.sort_custom(self, "unit_comparison")
 	for unit in black_team:
 		board.place_unit(unit,x_position,row)
 		x_position = determine_x_position(x_position)
@@ -232,3 +235,6 @@ func place_teams(board):
 		#If all 6 black units have been placed in the first row, move down a row.
 		if(placed_units == 6):
 			row -= 1
+			
+func unit_comparison(a, b):
+	return a.get_cost() > b.get_cost()
