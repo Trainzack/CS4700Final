@@ -12,7 +12,6 @@
 [ext_resource path="res://art/ui/EndTurnButton.png" type="Texture" id=10]
 [ext_resource path="res://art/ui/EndTurnButtonClicked.png" type="Texture" id=11]
 [ext_resource path="res://art/ui/EndTurnButtonHovered.png" type="Texture" id=12]
-
 [ext_resource path="res://art/ui/BlackTurnUITransition1.png" type="Texture" id=13]
 [ext_resource path="res://art/ui/BlackTurnUITransition2.png" type="Texture" id=14]
 [ext_resource path="res://art/ui/BlackTurnUITransition3.png" type="Texture" id=15]
@@ -32,7 +31,6 @@
 [ext_resource path="res://sound/shizzle_07.wav" type="AudioStream" id=29]
 [ext_resource path="res://scenes/UIUnitInformation.tscn" type="PackedScene" id=30]
 [ext_resource path="res://art/ui/white_victory.png" type="Texture" id=31]
-
 [ext_resource path="res://art/ui/black_victory.png" type="Texture" id=32]
 [ext_resource path="res://fonts/font.tres" type="DynamicFont" id=33]
 [ext_resource path="res://music/Victory_Royale.ogg" type="AudioStream" id=34]
@@ -45,20 +43,19 @@ animations = [ {
 "name": "white_turn_transition",
 "speed": 35.0
 }, {
-
-"frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
-"loop": true,
-"name": "black_turn_transition",
-"speed": 35.0
-}, {
 "frames": [ ExtResource( 19 ) ],
 "loop": true,
 "name": "white_turn",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "black_turn_transition",
+"speed": 35.0
+}, {
 "frames": [ ExtResource( 26 ) ],
 "loop": true,
-"name": "white_turn",
+"name": "black_turn",
 "speed": 5.0
 } ]
 
