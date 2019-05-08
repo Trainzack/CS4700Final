@@ -117,11 +117,11 @@ func get_moves():
 	return m
 
 func set_white():
-	unit_sprite.animation = "white"
+	$UnitSprite.animation = "white"
 	team = 0
 
 func set_black():
-	unit_sprite.animation = "black"
+	$UnitSprite.animation = "black"
 	team = 1
 
 func get_team():
@@ -175,7 +175,7 @@ func die():
 	# TODO: Finish implementing death!
 	current_health = 0
 	# Make translucent
-	unit_sprite.modulate = Color(1, 1, 1, 0.5)
+	$UnitSprite.modulate = Color(1, 1, 1, 0.5)
 	$DieSound.play()
 	
 	#Wait a second before sending out the signal for dying
@@ -212,7 +212,7 @@ func refresh():
 	attack_icon.animation = "available"
 
 func print_info():
-	print(unit_sprite.animation," ", type, " with health of ", current_health)
+	print($UnitSprite.animation," ", type, " with health of ", current_health)
 
 #Calls the damage_display_health method to show the health and start a timer for how long it stays on screen
 #That timer is run concurrently with the timer that is started in this method.
@@ -302,8 +302,8 @@ func can_go_on_walls():
 	return wall_allowed
 
 func get_sprite_frames():
-	print(unit_sprite.frames)
-	return unit_sprite.frames
+	print($UnitSprite.frames)
+	return $UnitSprite.frames
 
 func has_actions():
 	if(has_attacked == false or has_moved == false):

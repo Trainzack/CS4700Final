@@ -4,11 +4,12 @@ extends Node
 # var a = 2
 # var b = "textvar"
 
+onready var master_scene = get_parent()
 
 
 onready var card_container = $VBoxContainer/CardContainer
 onready var encounter_name_label = $VBoxContainer/Label
-
+onready var begin_button = $VBoxContainer/Button
 
 var pieces = [
 	preload("res://scenes/unit_scenes/Bishop.tscn"),
@@ -50,6 +51,8 @@ func _ready():
 	encounter.select_encounter("random")
 	encounter_name_label.text = encounter.title
 	
+	begin_button.connect("pressed",self,"start_encounter")
+	
 	for con in card_container.get_children():
 		var c = unit_card_scene.instance()
 		var u = pieces[randi() % pieces.size()].instance()
@@ -60,16 +63,19 @@ func _ready():
 		remove_child(u)
 
 func start_encounter():
-	team = -1
+	var team = -1
 	for pieces in units:
 		team += 1
-		for piece in units:
+		for piece in pieces:
 			add_child(piece)
 			remove_child(piece)
 			if team == 0:
 				piece.set_white()
 			else:
 				piece.set_black()
+	encounter.set_teams(units[0], units[1])
+	master_scene.begin_combat(encounter)
+	
 	
 
 #func _process(delta):

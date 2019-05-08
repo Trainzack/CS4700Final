@@ -44,7 +44,7 @@ func multiplayer():
 	disable_buttons()
 	# Wait for sound to play
 	yield(get_tree().create_timer(1.0), "timeout")
-	unimplemented.show()
+	master_scene.begin_auction()
 	
 func how_to_play():
 	disable_buttons()
