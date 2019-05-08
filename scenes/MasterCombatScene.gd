@@ -21,6 +21,7 @@ func _ready():
 	board.connect("ally_has_moved",self,"disable_movement")
 	board.connect("ally_has_attacked",self,"disable_attacks")
 	board.connect("ally_has_attacked",self,"check_win_condition")
+	board.connect("nothing_highlighted",self,"play_meep_merp")
 	ui_manager.connect("attack_pressed",self,"display_attacks")
 	ui_manager.connect("movement_pressed",self,"display_moves")
 	ui_manager.connect("end_turn_pressed",self,"end_turn")
@@ -140,11 +141,16 @@ func end_turn():
 		turn_time_label.text = format_turn_time(turn_time_left)
 	#check_win_condition()
 
+func play_meep_merp():
+	meep_merp.play()
+	
+
 func disconnect_combat_signals():
 	board.disconnect("ally_unit_selected",self,"on_unit_selected")
 	board.disconnect("dummy_unit_selected",self,"hide_options")
 	board.disconnect("ally_has_moved",self,"disable_movement")
 	board.disconnect("ally_has_attacked",self,"disable_attacks")
+	board.disconnect("nothing_highlighted",self,"play_meep_merp")
 	ui_manager.disconnect("attack_pressed",self,"display_attacks")
 	ui_manager.disconnect("movement_pressed",self,"display_moves")
 	ui_manager.disconnect("end_turn_pressed",self,"end_turn")

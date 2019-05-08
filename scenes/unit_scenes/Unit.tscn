@@ -19,15 +19,15 @@
 [ext_resource path="res://sound/fall_splash_03.wav" type="AudioStream" id=17]
 [ext_resource path="res://sound/fade_03.wav" type="AudioStream" id=18]
 [ext_resource path="res://sound/tap_04.wav" type="AudioStream" id=19]
-[ext_resource path="res://art/tiles/UIMovementUnavailable.png" type="Texture" id=20]
-[ext_resource path="res://art/tiles/UIMovementAvailable.png" type="Texture" id=21]
-[ext_resource path="res://art/tiles/UIAttackUnavailable.png" type="Texture" id=22]
-[ext_resource path="res://art/tiles/UIAttackAvailable.png" type="Texture" id=23]
+[ext_resource path="res://art/tiles/UIMovementAvailable.png" type="Texture" id=20]
+[ext_resource path="res://art/tiles/UIMovementUnavailable.png" type="Texture" id=21]
+[ext_resource path="res://art/tiles/UIAttackAvailable.png" type="Texture" id=22]
+[ext_resource path="res://art/tiles/UIAttackUnavailable.png" type="Texture" id=23]
 [ext_resource path="res://art/ui/4AttackPower.PNG" type="Texture" id=24]
-[ext_resource path="res://art/ui/5AttackPower.PNG" type="Texture" id=25]
-[ext_resource path="res://art/ui/1AttackPower.PNG" type="Texture" id=26]
-[ext_resource path="res://art/ui/2AttackPower.PNG" type="Texture" id=27]
-[ext_resource path="res://art/ui/3AttackPower.PNG" type="Texture" id=28]
+[ext_resource path="res://art/ui/2AttackPower.PNG" type="Texture" id=25]
+[ext_resource path="res://art/ui/3AttackPower.PNG" type="Texture" id=26]
+[ext_resource path="res://art/ui/1AttackPower.PNG" type="Texture" id=27]
+[ext_resource path="res://art/ui/5AttackPower.PNG" type="Texture" id=28]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -121,12 +121,12 @@ _sections_unfolded = [ "Border", "Border Width", "Corner Radius" ]
 animations = [ {
 "frames": [ ExtResource( 20 ) ],
 "loop": true,
-"name": "unavailable",
+"name": "available",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 21 ) ],
 "loop": true,
-"name": "available",
+"name": "unavailable",
 "speed": 5.0
 } ]
 
@@ -135,12 +135,12 @@ animations = [ {
 animations = [ {
 "frames": [ ExtResource( 22 ) ],
 "loop": true,
-"name": "unavailable",
+"name": "available",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 23 ) ],
 "loop": true,
-"name": "available",
+"name": "unavailable",
 "speed": 5.0
 } ]
 
@@ -154,26 +154,26 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 25 ) ],
 "loop": true,
-"name": "5",
+"name": "2",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 26 ) ],
 "loop": true,
-"name": "1",
+"name": "3",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 27 ) ],
 "loop": true,
-"name": "2",
+"name": "1",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 28 ) ],
 "loop": true,
-"name": "3",
+"name": "5",
 "speed": 5.0
 } ]
 
-[node name="Unit" type="Area2D" index="0"]
+[node name="Unit" type="Area2D"]
 
 scale = Vector2( 0.5, 0.5 )
 input_pickable = true

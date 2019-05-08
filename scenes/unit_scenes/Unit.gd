@@ -71,8 +71,8 @@ func get_movement_moves():
 # Returns whether this unit can end its move on a particular tile
 # Useful for allowing upgrades that allow tiles to move over particular types of terrain
 func can_occupy(tile, move_type="move"):
-	if tile.is_water and not water_allowed:
-		return false
+	#if tile.is_water and not water_allowed:
+	#	return false
 	if not tile.is_water and not land_allowed and move_type != "attack":
 		return false
 	if tile.is_wall and not wall_allowed:
@@ -288,7 +288,7 @@ func make_full_size():
 	scale.x = 1.0
 	scale.y = 1.0
 
-func can_go_on_water():
+func can_attack_from_water():
 	return water_allowed
 
 func can_go_on_walls():

@@ -74,4 +74,13 @@ is_attack = true
 rider = false
 damage = 1
 
+[node name="Move 2" type="Node" parent="Moves" index="5"]
+
+script = ExtResource( 4 )
+atom = Vector2( 1, 1 )
+is_move = true
+is_attack = false
+rider = false
+damage = 1
+
 

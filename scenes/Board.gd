@@ -33,6 +33,7 @@ signal ally_unit_selected(unit)
 signal dummy_unit_selected
 signal ally_has_moved
 signal ally_has_attacked
+signal nothing_highlighted
 
 func _ready():
 	add_child(dummy_unit)
@@ -207,13 +208,26 @@ func unselect_previously_selected_unit():
 
 func show_movement_options():
 	reset_tiles()
-	process_moves(selected_unit.get_movement_moves(),selected_unit,selected_unit_coordinate.x,selected_unit_coordinate.y, "movement")
+	if!(process_moves(selected_unit.get_movement_moves(),selected_unit,selected_unit_coordinate.x,selected_unit_coordinate.y, "movement")):
+		emit_signal("nothing_highlighted")
 
 func show_attack_options():
 	reset_tiles()
-	process_moves(selected_unit.get_attack_moves(),selected_unit,selected_unit_coordinate.x,selected_unit_coordinate.y, "attack")
+	if!(process_moves(selected_unit.get_attack_moves(),selected_unit,selected_unit_coordinate.x,selected_unit_coordinate.y, "attack")):
+		emit_signal("nothing_highlighted")
 
+#check if a unit is submerged in a water tile and if it is, wether or not it can attack from there.
+func check_water_attack(gridX,gridY,unit):
+	if boardArray[gridX][gridY].is_water and unit.can_attack_from_water():
+		return true
+	if boardArray[gridX][gridY].is_water and !unit.can_attack_from_water():
+		return false
+	else:
+		return true
+
+#Returns true if anything was highlighted, otherwise returns false
 func process_moves(unit_moves, unit, gridX, gridY, move_type):
+	var anything_highlighted = false
 	for move in unit_moves:
 		var atom = move.atom
 		# The places that will be highlighted
@@ -223,6 +237,7 @@ func process_moves(unit_moves, unit, gridX, gridY, move_type):
 		var unavailable_positions = []
 		# This is an array of tuples, of form [x mult, y mult, invert]
 		var directions = []
+		
 		
 		# This will make a list of directions for us to check.
 		for x in [1, -1]:
@@ -253,7 +268,7 @@ func process_moves(unit_moves, unit, gridX, gridY, move_type):
 					break
 				# Get the tile we are currently looking at
 				var tile = get_tile(position)
-				if move_type == "attack":
+				if move_type == "attack" and check_water_attack(gridX,gridY,unit):
 					if unit.can_attack(get_unit(position)) and mode == "active":
 						possible_positions.append(position)
 					elif mode == "passive":
@@ -269,12 +284,14 @@ func process_moves(unit_moves, unit, gridX, gridY, move_type):
 						possible_positions.append(position)
 					else:
 						unavailable_positions.append(position)
-				
-			
+	
+		if possible_positions.size() != 0 or subtle_highlight_positions.size() != 0:
+			anything_highlighted = true
 		highlight_tiles(possible_positions, move_type)
 		highlight_tiles(subtle_highlight_positions, move_type + "_subtle")
 		#Don't highlight unavailable tiles for now
 		#highlight_tiles(unavailable_positions, move_type + "_unavailable")
+	return anything_highlighted
 
 
 func highlight_tiles(possible_positions,atom_type):
