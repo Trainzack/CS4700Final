@@ -114,10 +114,10 @@ func create_board(encounter):
 #For initally placing a unit on the board
 func place_unit(placed_unit, gridX, gridY):
 	if(!boardArray[gridX][gridY].is_occupied()):
+		add_child(placed_unit)
 		boardArray[gridX][gridY].set_occupied(true)
 		placed_unit.position = boardArray[gridX][gridY].get_placement_position().get_global_transform().get_origin()
 		placed_unit.z_index = 2 + boardArray[gridX][gridY].z_index
-		add_child(placed_unit)
 		unitArray[gridX][gridY] = placed_unit
 		#This connects a signal to make units dissapear on death. Comment it out to remove feature.
 		placed_unit.connect("unit_death",self,"on_unit_death")

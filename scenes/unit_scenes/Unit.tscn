@@ -24,10 +24,10 @@
 [ext_resource path="res://art/tiles/UIAttackAvailable.png" type="Texture" id=22]
 [ext_resource path="res://art/tiles/UIAttackUnavailable.png" type="Texture" id=23]
 [ext_resource path="res://art/ui/4AttackPower.PNG" type="Texture" id=24]
-[ext_resource path="res://art/ui/2AttackPower.PNG" type="Texture" id=25]
-[ext_resource path="res://art/ui/3AttackPower.PNG" type="Texture" id=26]
-[ext_resource path="res://art/ui/1AttackPower.PNG" type="Texture" id=27]
-[ext_resource path="res://art/ui/5AttackPower.PNG" type="Texture" id=28]
+[ext_resource path="res://art/ui/5AttackPower.PNG" type="Texture" id=25]
+[ext_resource path="res://art/ui/2AttackPower.PNG" type="Texture" id=26]
+[ext_resource path="res://art/ui/3AttackPower.PNG" type="Texture" id=27]
+[ext_resource path="res://art/ui/1AttackPower.PNG" type="Texture" id=28]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -154,26 +154,26 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 25 ) ],
 "loop": true,
-"name": "2",
+"name": "5",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 26 ) ],
 "loop": true,
-"name": "3",
+"name": "2",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 27 ) ],
 "loop": true,
-"name": "1",
+"name": "3",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 28 ) ],
 "loop": true,
-"name": "5",
+"name": "1",
 "speed": 5.0
 } ]
 
-[node name="Unit" type="Area2D" index="0"]
+[node name="Unit" type="Area2D"]
 
 scale = Vector2( 0.5, 0.5 )
 input_pickable = true
@@ -187,11 +187,10 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 max_health = 3
 type = "abstract_unit"
-value = 1
+unit_cost = 0
 land_allowed = true
 water_allowed = false
 wall_allowed = false
-unit_cost = 0
 attack_power = 1
 
 [node name="UnitSprite" type="AnimatedSprite" parent="." index="0"]
