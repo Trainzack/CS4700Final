@@ -63,7 +63,7 @@ func get_unit_general_information(unit):
 	unit_name.text = unit.get_type().to_upper()
 	unit_hp.text = "HP: " + str(unit.get_current_health()) + " / " + str(unit.max_health)
 	unit_attack_power.text = "Attack Power: " + str(unit.get_attack_power())
-	swim_label.text = "Can go through water" if unit.can_go_on_water() else "Cannot go through water"
+	swim_label.text = "Can attack from water" if unit.can_attack_from_water() else "Cannot attack from water"
 	climb_label.text = "Can traverse high ground" if unit.can_go_on_walls() else "Cannot traverse high ground"
 
 #Constructs the action panel's information and sets its size based on 
