@@ -23,6 +23,7 @@ animations = [ {
 
 max_health = 2
 type = "vanguard"
+unit_cost = 2
 wall_allowed = true
 attack_power = 2
 

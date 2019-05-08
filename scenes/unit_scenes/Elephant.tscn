@@ -19,9 +19,11 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Elephant" instance=ExtResource( 1 )]
+[node name="Elephant" index="0" instance=ExtResource( 1 )]
 
+max_health = 4
 type = "elephant"
+unit_cost = 7
 water_allowed = true
 attack_power = 3
 

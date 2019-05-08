@@ -19,10 +19,11 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Queen" instance=ExtResource( 1 )]
+[node name="Queen" index="0" instance=ExtResource( 1 )]
 
 max_health = 5
 type = "queen"
+unit_cost = 6
 attack_power = 2
 
 [node name="UnitSprite" parent="." index="0"]
