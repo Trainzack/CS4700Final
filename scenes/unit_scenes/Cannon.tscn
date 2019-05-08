@@ -19,7 +19,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Cannon" index="0" instance=ExtResource( 1 )]
+[node name="Cannon" instance=ExtResource( 1 )]
 
 max_health = 5
 type = "cannon"

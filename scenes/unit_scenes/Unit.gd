@@ -39,8 +39,9 @@ onready var power_icon = $AttackPowerIcon
 onready var selector_icon = $SelectorIcon
 onready var damage_timer = $DamageTimer
 onready var display_health_timer = $DisplayHealthTimer
+onready var unit_sprite = $UnitSprite
 
-func _ready():
+func _ready(): 
 	$DisplayHealthTimer.connect("timeout",self,"damage_hide_stats")
 	health_bar.max_value = max_health
 	set_health(current_health)

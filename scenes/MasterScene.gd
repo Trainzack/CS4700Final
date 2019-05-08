@@ -7,6 +7,7 @@ onready var confirm_sound = $ConfirmSound
 
 var combat_scene_class = preload("res://scenes/MasterCombatScene.tscn")
 var overworld_scene_class = preload("res://scenes/OverworldScene.tscn")
+var auction_scene_class = preload("res://scenes/Auction Scene.tscn")
 
 onready var quit_main_menu_box = $CanvasLayer/ConfirmationDialog
 
@@ -29,8 +30,11 @@ func begin_combat(encounter):
 	combat_scene.set_encounter(encounter)
 	scene_stack.push_front(combat_scene)
 		
-func exit_scene():
+func exit_scene(delay=0, sound=false):
+	if sound:
+		Global.confirmSound()
 	remove_child(scene_stack.pop_front())
+	yield(get_tree().create_timer(delay), "timeout")
 	add_child(scene_stack[0])
 	
 func begin_overworld():
@@ -38,6 +42,14 @@ func begin_overworld():
 	var overworld = overworld_scene_class.instance()
 	add_child(overworld)
 	scene_stack.push_front(overworld)
+		
+func begin_auction():
+	remove_child(main_menu)
+	var auction = auction_scene_class.instance()
+	add_child(auction)
+	scene_stack.push_front(auction)
+	
+
 	
 func return_to_menu():
 	remove_child(scene_stack.pop_front())

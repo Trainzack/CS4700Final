@@ -26,7 +26,7 @@ func _ready():
 	ui_manager.connect("movement_pressed",self,"display_moves")
 	ui_manager.connect("end_turn_pressed",self,"end_turn")
 	ui_manager.connect("end_turn_pressed", self, "check_win_condition")
-	ui_manager.connect("exit_combat",get_parent(),"exit_scene")
+	ui_manager.connect("exit_combat",get_parent(),"exit_scene",[1,true])
 
 func set_allotted_turn_time(time):
 	allotted_turn_time = time
