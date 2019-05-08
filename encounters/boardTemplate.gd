@@ -56,7 +56,18 @@ var wall_mountain_templates = [
 	]
 ]
 
-var units = []
+var units_placable_template = [
+	"=++++++=",
+	"=++++++=",
+	"========",
+	"========",
+	"========",
+	"========",
+	"=++++++=",
+	"=++++++=",
+]
+
+var units = [[0,0,"N",1],[7,0,"N",0],]
 
 var suffix = " Field"
 
@@ -77,6 +88,8 @@ func generate():
 	
 	if add_long_river:
 		add_long_river()
+		
+	apply_template(units_placable_template)
 		
 	if add_dividing_river and add_long_river:
 		suffix = " Lake"
@@ -155,4 +168,9 @@ func get_board():
 	return board
 
 func set_tile(x, y, value):
-	board[y][x] = value
+	if value == "=":
+		return
+	if value == "+" and board[x][y] == "M":
+		board[y][x] = "."
+	else:
+		board[y][x] = value

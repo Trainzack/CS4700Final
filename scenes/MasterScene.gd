@@ -29,8 +29,11 @@ func begin_combat(encounter):
 	combat_scene.set_encounter(encounter)
 	scene_stack.push_front(combat_scene)
 		
-func exit_scene():
+func exit_scene(delay=0, sound=false):
+	if sound:
+		Global.confirmSound()
 	remove_child(scene_stack.pop_front())
+	yield(get_tree().create_timer(delay), "timeout")
 	add_child(scene_stack[0])
 	
 func begin_overworld():
