@@ -12,7 +12,7 @@
 
 default_font = ExtResource( 2 )
 
-[node name="MainMenuScene" type="Node" index="0"]
+[node name="MainMenuScene" type="Node"]
 
 script = ExtResource( 1 )
 

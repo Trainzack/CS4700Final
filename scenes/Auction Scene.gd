@@ -63,11 +63,14 @@ func _ready():
 	
 	for con in card_container.get_children():
 		var c = unit_card_scene.instance()
-		var u = pieces[randi() % pieces.size()].instance()
+		var unit_scene = pieces[randi() % pieces.size()]
+		var u = unit_scene.instance()
 		add_child(u)
 		print(u.type)
 		con.add_child(c)
 		c.set_unit(u)
+		c.set_scene(unit_scene)
+		c.connect("buy_pressed",self,"buy_unit")
 		remove_child(u)
 
 func start_encounter():
@@ -87,12 +90,13 @@ func start_encounter():
 	encounter.set_teams(units[0], units[1])
 	master_scene.begin_combat(encounter)
 	
-func buy_unit(team, unit):
-	if points_left[team] < unit.get_cost():
+func buy_unit(unit, team):
+	var u = unit.instance()
+	if points_left[team] < u.get_cost():
 		Global.denySound()
 		return
-	pieces[team].append(unit)
-	points_left[team] -= unit.get_cost()
+	units[team].append(u)
+	points_left[team] -= u.get_cost()
 	update_label()
 	
 
