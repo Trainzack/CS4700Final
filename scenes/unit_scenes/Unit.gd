@@ -2,6 +2,8 @@ extends Area2D
 export var max_health = 3
 export var type = "abstract_unit"
 
+# How much this piece works
+export var value = 1
 # Whether this piece can move on land
 export var land_allowed = true
 # Whether this piece can move on water
