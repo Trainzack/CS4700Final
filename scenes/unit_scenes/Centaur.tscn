@@ -19,10 +19,11 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Centaur" instance=ExtResource( 1 )]
+[node name="Centaur" index="0" instance=ExtResource( 1 )]
 
-max_health = 7
+max_health = 6
 type = "centaur"
+unit_cost = 7
 wall_allowed = true
 attack_power = 2
 

@@ -19,10 +19,11 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Ship" instance=ExtResource( 1 )]
+[node name="Ship" index="0" instance=ExtResource( 1 )]
 
 max_health = 5
 type = "ship"
+unit_cost = 3
 land_allowed = false
 water_allowed = true
 
