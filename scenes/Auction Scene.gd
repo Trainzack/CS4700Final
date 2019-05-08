@@ -76,6 +76,8 @@ func start_encounter():
 	encounter.set_teams(units[0], units[1])
 	master_scene.begin_combat(encounter)
 	
+func buy_unit(team, unit):
+	pass
 	
 
 #func _process(delta):
