@@ -84,10 +84,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-
 margin_right = 584.0
 margin_bottom = 668.0
-
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -105,7 +103,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 584.0
-margin_bottom = 67.0
+margin_bottom = 43.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -122,43 +120,42 @@ _sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
 [node name="Singleplayer" parent="PanelContainer/PanelContainer/MenuButton Container" index="1" instance=ExtResource( 3 )]
 
-margin_top = 71.0
+margin_top = 47.0
 margin_right = 584.0
-margin_bottom = 151.0
+margin_bottom = 127.0
 button_text = "Singleplayer"
-
 
 [node name="Multiplayer" parent="PanelContainer/PanelContainer/MenuButton Container" index="2" instance=ExtResource( 3 )]
 
-margin_top = 155.0
+margin_top = 131.0
 margin_right = 584.0
-margin_bottom = 235.0
+margin_bottom = 211.0
 button_text = "Multiplayer"
 button_sprite = ExtResource( 4 )
 
 [node name="How To Play" parent="PanelContainer/PanelContainer/MenuButton Container" index="3" instance=ExtResource( 3 )]
 
-margin_top = 239.0
+margin_top = 215.0
 margin_right = 584.0
-margin_bottom = 319.0
+margin_bottom = 295.0
 button_text = "How To Play"
 button_sprite = ExtResource( 5 )
 strong_sound = false
 
 [node name="Options" parent="PanelContainer/PanelContainer/MenuButton Container" index="4" instance=ExtResource( 3 )]
 
-margin_top = 323.0
+margin_top = 299.0
 margin_right = 584.0
-margin_bottom = 403.0
+margin_bottom = 379.0
 button_text = "Options"
 button_sprite = ExtResource( 6 )
 strong_sound = false
 
 [node name="Quit" parent="PanelContainer/PanelContainer/MenuButton Container" index="5" instance=ExtResource( 3 )]
 
-margin_top = 407.0
+margin_top = 383.0
 margin_right = 584.0
-margin_bottom = 487.0
+margin_bottom = 463.0
 button_text = "Quit"
 button_sprite = ExtResource( 7 )
 strong_sound = false
@@ -170,12 +167,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-
 margin_left = 300.0
 margin_top = 50.0
 margin_right = 1066.0
 margin_bottom = 718.0
-
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
