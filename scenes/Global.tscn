@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Global.gd" type="Script" id=1]
 [ext_resource path="res://sound/fwap_04.wav" type="AudioStream" id=2]
+[ext_resource path="res://sound/no_04.wav" type="AudioStream" id=3]
 
 [node name="Global" type="Node"]
 
@@ -15,5 +16,14 @@ pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+
+[node name="SoundNo" type="AudioStreamPlayer" parent="." index="1"]
+
+stream = ExtResource( 3 )
+volume_db = 0.6
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Sound Effects"
 
 

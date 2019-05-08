@@ -31,6 +31,11 @@ var pieces = [
 	preload("res://scenes/unit_scenes/Cannon.tscn"),
 ]
 
+var points_left = [
+	20,
+	20
+]
+
 var unit_card_scene = preload("res://scenes/UnitBuyCard.tscn")
 
 var encounter_scene = preload("res://scenes/Encounter.tscn")
@@ -38,18 +43,21 @@ var encounter_scene = preload("res://scenes/Encounter.tscn")
 var unit_cards = []
 
 var units = [
- 	[pieces[0].instance()],
-	[pieces[0].instance()],
+	[],
+	[],
 ]
 
 var encounter = null
+
+func update_label():
+	encounter_name_label.text = encounter.title + ", White: " + str(points_left[0]) + " CC, Black: " + str(points_left[1]) + " CC"
 
 func _ready():
 	
 	encounter = encounter_scene.instance()
 	add_child(encounter)
 	encounter.select_encounter("random")
-	encounter_name_label.text = encounter.title
+	update_label()
 	
 	begin_button.connect("pressed",self,"start_encounter")
 	
@@ -63,6 +71,9 @@ func _ready():
 		remove_child(u)
 
 func start_encounter():
+	if len(units[0]) <= 0 or len(units[1]) <= 0:
+		Global.denySound()
+		return
 	var team = -1
 	for pieces in units:
 		team += 1
@@ -77,7 +88,12 @@ func start_encounter():
 	master_scene.begin_combat(encounter)
 	
 func buy_unit(team, unit):
-	pass
+	if points_left[team] < unit.get_cost():
+		Global.denySound()
+		return
+	pieces[team].append(unit)
+	points_left[team] -= unit.get_cost()
+	update_label()
 	
 
 #func _process(delta):

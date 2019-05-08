@@ -12,7 +12,7 @@
 
 default_font = ExtResource( 2 )
 
-[node name="MainMenuScene" type="Node"]
+[node name="MainMenuScene" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -135,6 +135,7 @@ button_sprite = ExtResource( 4 )
 
 [node name="How To Play" parent="PanelContainer/PanelContainer/MenuButton Container" index="3" instance=ExtResource( 3 )]
 
+visible = false
 margin_top = 215.0
 margin_right = 584.0
 margin_bottom = 295.0
@@ -144,18 +145,19 @@ strong_sound = false
 
 [node name="Options" parent="PanelContainer/PanelContainer/MenuButton Container" index="4" instance=ExtResource( 3 )]
 
-margin_top = 299.0
+visible = false
+margin_top = 215.0
 margin_right = 584.0
-margin_bottom = 379.0
+margin_bottom = 295.0
 button_text = "Options"
 button_sprite = ExtResource( 6 )
 strong_sound = false
 
 [node name="Quit" parent="PanelContainer/PanelContainer/MenuButton Container" index="5" instance=ExtResource( 3 )]
 
-margin_top = 383.0
+margin_top = 215.0
 margin_right = 584.0
-margin_bottom = 463.0
+margin_bottom = 295.0
 button_text = "Quit"
 button_sprite = ExtResource( 7 )
 strong_sound = false
