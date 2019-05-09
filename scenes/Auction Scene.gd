@@ -10,6 +10,8 @@ onready var master_scene = get_parent()
 onready var card_container = $VBoxContainer/CardContainer
 onready var encounter_name_label = $VBoxContainer/Label
 onready var begin_button = $VBoxContainer/Button
+#onready var white_piece_box = $VBoxContainer/WhitePieces
+#onready var black_piece_box = $VBoxContainer/BlackPieces
 
 var pieces = [
 [
@@ -92,6 +94,21 @@ func buy_unit(unit, team):
 	units[team].append(u)
 	points_left[team] -= u.get_cost()
 	update_label()
+	#var box = white_piece_box
+	#var t_name = "white"
+	#if team == 1:
+	#	box = black_piece_box
+	#	t_name = "black"
+	#var tex = TextureRect.new()
+	#box.add_child(tex)
+	#add_child(u)
+	#tex.texture = u.unit_sprite.frames.get_frame(t_name,0)
+	#tex.SIZE_EXPAND_FILL = false
+	#tex.rect_min_size = Vector2(50,50)
+	#remove_child(u)
+	
+	
+	
 	
 # Called when we return to this scene from a sub-scene
 func come_back():
@@ -126,6 +143,9 @@ func refresh():
 		c.connect("buy_pressed",self,"buy_unit")
 		remove_child(u)
 		i += 1
+	#for box in [white_piece_box, black_piece_box]:
+	#	for child in box.get_children():
+	#		box.remove_child(child)
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
